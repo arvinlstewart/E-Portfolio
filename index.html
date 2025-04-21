@@ -4,46 +4,59 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Arvin Stewart | Portfolio</title>
-  
+
   <!-- Link to external CSS file -->
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="css/styles.css">
+
+  <!-- Favicon -->
+  <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
+  <!-- Dark Mode Toggle -->
+  <button id="darkModeToggle" aria-label="Toggle dark mode">🌙</button>
+
   <!-- Header Section -->
   <header>
-    <!-- Profile Image -->
-    <img src="images/profile-placeholder.jpg" alt="Arvin Stewart" class="profile-img">
-    <h1>Arvin Stewart</h1>
-    <p>Programmatic Campaign Analyst | Ad Ops Strategist | Workflow Automation Expert</p>
+    <img src="images/portfolio.png" alt="Arvin Stewart" class="profile-img">
+        <p>Programmatic Campaign Analyst | Ad Ops Strategist | Workflow Automation Expert</p>
     <div class="button-group">
-      <a href="mailto:arvin@arvinstewart.com">Email</a>
-      <a href="https://www.linkedin.com/in/arvin-stewart" target="_blank">LinkedIn</a>
+      <a href="mailto:arvinlstewart@gmail.com">Email</a>
+      <a href="https://www.linkedin.com/in/arvin-stew-ads" target="_blank">LinkedIn</a>
       <a href="resume.pdf" download>Resume</a>
     </div>
   </header>
 
   <!-- About Me Section -->
-  <section>
+      <section class="scroll-reveal">
     <h2>About Me</h2>
-    <p>I specialize in programmatic advertising, campaign performance optimization, and automated workflow solutions. I've worked across multiple DSPs including StackAdapt, Amobee, Xandr, and DV360, helping brands maximize ROI while streamlining campaign execution.</p>
+    <p>With a background rooted in digital media and a passion for precision, I’ve built my career at the intersection of programmatic strategy, workflow design, and performance optimization. I bring over a decade of hands-on experience navigating complex advertising ecosystems, from campaign trafficking to strategic media planning and platform automation. My work is driven by a philosophy of clarity and scalability: systems should be as intuitive as they are efficient.</p>
+    <p>Whether it’s creating Excel-based automation tools, mentoring teams, or collaborating with product developers to improve DSP functionality, I believe in designing workflows that empower people—not replace them. I see ad operations not as a backend function, but as the engine room of great marketing—where data meets decisions, and where optimization can unlock real value.</p>
+    <p>In addition to my work in ad operations, I’ve spent over five years teaching Excel to working professionals across a wide range of industries. This experience has shaped my belief that powerful tools like Excel can—and should—be accessible, adaptable, and empowering for teams at every level. Teaching has deepened my commitment to demystifying data and making automation practical, not intimidating.</p>
+    <p>Ultimately, I strive to turn fragmented, manual processes into streamlined, insight-driven systems that help teams move faster, work smarter, and focus on what truly matters: performance and growth.</p>
+    <p>Whether it’s creating Excel-based automation tools, mentoring teams, or collaborating with product developers to improve DSP functionality, I believe in designing workflows that empower people—not replace them. I see ad operations not as a backend function, but as the engine room of great marketing—where data meets decisions, and where optimization can unlock real value.</p>
+    <p>Ultimately, I strive to turn fragmented, manual processes into streamlined, insight-driven systems that help teams move faster, work smarter, and focus on what truly matters: performance and growth.</p>
   </section>
 
+
   <!-- Featured Work Section -->
-  <section>
+  <section class="scroll-reveal">
     <h2>Featured Work</h2>
     <div class="card-grid">
-      <div class="card">
-        <img src="images/IMAGE2.png" alt="Sheet Sync" class="project-img">
+      <div class="card" onclick="highlightCard(this)">
+        <img src="images/logo-sheet-sync.png" alt="Sheet Sync Logo" class="project-img">
         <h3>Excel Automation Suite: Sheet Sync</h3>
         <p>A set of dynamic Excel tools designed to automate ad ops QA, optimization, and campaign tracking, reducing manual processes and improving accuracy.</p>
       </div>
-      <div class="card">
-        <img src="images/IMAGE3.png" alt="Campaign Strategy" class="project-img">
+      <div class="card" onclick="highlightCard(this)">
+        <img src="images/logo-campaign-strategy.png" alt="Campaign Strategy Logo" class="project-img">
         <h3>Programmatic Campaign Strategy</h3>
         <p>Oversaw strategy and performance across Display, Native, CTV, and Paid Social—achieving KPIs 5x over benchmark and cutting media spend by 50% YoY.</p>
       </div>
-      <div class="card">
-        <img src="images/image4.png" alt="Platform Feedback" class="project-img">
+      <div class="card" onclick="highlightCard(this)">
+        <img src="images/logo-platform-feedback.png" alt="Platform Feedback Logo" class="project-img">
         <h3>Platform Feedback & Innovation</h3>
         <p>Partnered with StackAdapt engineers to influence new features like campaign-level inheritance from campaign groups—enhancing workflow efficiency.</p>
       </div>
@@ -51,7 +64,7 @@
   </section>
 
   <!-- Contact Section -->
-  <section>
+  <section class="scroll-reveal">
     <h2>Let's Connect</h2>
     <p>I'm open to freelance consulting, workflow design, or full-time roles in Ad Tech and Media Operations. Let’s explore how we can work together.</p>
     <a class="button-group" href="mailto:arvin@arvinstewart.com">Send me a message</a>
