@@ -17,13 +17,12 @@
     <body>
    <!-- Sticky Header -->
 <div class="sticky-header">
-  
     <div class="logo">
-      <a href="index.html">
         <img src="images/portfolio.png" alt="Arvin Stewart" class="profile-img" id="siteLogo">
-      </a>
-    </div>
+       
 
+
+    </div>
   
   
     <!-- Header Section -->
@@ -80,7 +79,7 @@
         <p id="modalDescription">Full project description will go here.</p>
         </div>
     </div>
-    <script src="js/scripts.js"></script>
+    
 <!-- Modal Structure -->
 <div id="projectModal" class="modal">
     <div class="modal-content animated">
@@ -94,6 +93,72 @@
       </div>
     </div>
   </div>
+    <!-- Trigger Button -->
+<button id="openQuizBtn" class="cta-button">Have Ad Ops Challenges?</button>
+
+<!-- Modal Questionnaire -->
+<div id="quizModal" class="modal">
+  <div class="modal-content">
+    <span id="closeQuiz" class="close-button">&times;</span>
+
+    <form id="quizForm">
+      <div class="quiz-step active">
+        <h3>What ad ops challenges are you facing?</h3>
+        <label><input type="checkbox" name="issues" value="Inconsistent naming"> Inconsistent naming</label><br>
+        <label><input type="checkbox" name="issues" value="QA errors"> QA errors</label><br>
+        <label><input type="checkbox" name="issues" value="Slow optimizations"> Slow optimizations</label><br>
+        <label><input type="checkbox" name="issues" value="Clunky platform workflows"> Clunky platform workflows</label><br>
+        <label><input type="checkbox" name="issues" value="Lack of automation"> Lack of automation</label><br>
+        <button type="button" class="next-btn">Next</button>
+      </div>
+
+      <div class="quiz-step">
+        <h3>How many ad platforms or DSPs are you actively using?</h3>
+        <select name="platforms">
+          <option value="1">1</option>
+          <option value="2-3">2–3</option>
+          <option value="4+">4 or more</option>
+        </select>
+        <button type="button" class="next-btn">Next</button>
+      </div>
+
+      <div class="quiz-step">
+        <h3>Do you have a formal QA or trafficking process?</h3>
+        <label><input type="radio" name="qaProcess" value="Yes"> Yes</label><br>
+        <label><input type="radio" name="qaProcess" value="No"> No</label><br>
+        <button type="button" class="next-btn">Next</button>
+      </div>
+
+      <div class="quiz-step">
+        <h3>How quickly are optimization insights acted on?</h3>
+        <label><input type="radio" name="optSpeed" value="1 day"> Within 1 day</label><br>
+        <label><input type="radio" name="optSpeed" value="2–3 days"> 2–3 days</label><br>
+        <label><input type="radio" name="optSpeed" value="1 week"> 1 week</label><br>
+        <label><input type="radio" name="optSpeed" value="No clear process"> No clear process</label><br>
+        <button type="button" class="next-btn">Next</button>
+      </div>
+
+      <div class="quiz-step">
+        <h3>Ready to solve these challenges?</h3>
+        <p>Share your name and email so I can follow up with a few tailored ideas:</p>
       
+        <label for="fullName">Your Name:</label><br>
+        <input type="text" id="fullName" name="fullName" required><br><br>
+      
+        <label for="email">Your Email:</label><br>
+        <input type="email" id="email" name="email" required><br><br>
+
+        <label for="Job Title">Job Title:</label><br>
+        <input type="text" id="jobtitle" name="jobtitle" required><br><br>
+      
+        <button type="submit" class="submit-btn">Send My Responses</button>
+      </div>
+      
+    </form>
+  </div>
+</div>
+
+
+<script src="js/scripts.js"></script>
 </body>
     </html>
