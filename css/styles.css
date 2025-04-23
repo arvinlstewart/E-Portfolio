@@ -1,4 +1,9 @@
-/* Base styles */
+* {
+  box-sizing: border-box;
+}
+
+
+/* Base Styles */
 body {
   font-family: 'Montserrat', sans-serif;
   background: #f9f9f9;
@@ -29,7 +34,7 @@ a {
   text-decoration: none;
 }
 
-/* Button group styles */
+/* Button Group Styles */
 .button-group {
   margin-top: 1rem;
 }
@@ -48,7 +53,7 @@ a {
   background-color: #005599;
 }
 
-/* Profile image */
+/* Profile Image */
 .profile-img {
   width: 100%;
   max-width: 150px;
@@ -58,7 +63,7 @@ a {
   margin-bottom: 1rem;
 }
 
-/* Card layout */
+/* Card Layout */
 .card-grid {
   display: flex;
   flex-wrap: wrap;
@@ -96,6 +101,28 @@ a {
   margin-bottom: 0.5rem;
 }
 
+/* Card Hover Overlay */
+.card-hover {
+  position: relative;
+  overflow: hidden;
+}
+
+.card-hover-content {
+  position: absolute;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.85);
+  color: white;
+  width: 100%;
+  padding: 1rem;
+  transform: translateY(100%);
+  transition: transform 0.3s ease-in-out;
+  box-sizing: border-box;
+}
+
+.card-hover:hover .card-hover-content {
+  transform: translateY(0);
+}
+
 /* Dark Mode */
 body.dark-mode {
   background-color: #121212;
@@ -117,7 +144,7 @@ body.dark-mode h2 {
   color: #99ccff;
 }
 
-/* Dark mode toggle */
+/* Dark Mode Toggle */
 #darkModeToggle {
   position: fixed;
   top: 1rem;
@@ -129,7 +156,7 @@ body.dark-mode h2 {
   z-index: 1000;
 }
 
-/* Scroll reveal */
+/* Scroll Reveal */
 .scroll-reveal {
   opacity: 0;
   transform: translateY(20px);
@@ -140,3 +167,175 @@ body.dark-mode h2 {
   opacity: 1;
   transform: none;
 }
+
+/* Hero Section */
+.hero-section {
+  width: 100%;
+  overflow: hidden;
+}
+
+.hero-section picture,
+.hero-gif {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+}
+
+/* Modal Styles */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 999;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+.modal-content {
+  background-color: #fff;
+  margin: 5% auto;
+  padding: 2rem;
+  border-radius: 8px;
+  width: 90%;
+  max-width: 700px;
+  position: relative;
+  animation: slideUp 0.3s ease-out;
+  color: #333;
+}
+
+/* Dark Mode Adjustments */
+body.dark-mode .modal-content {
+  background-color: #1e1e1e;
+  color: #f0f0f0;
+}
+
+body.dark-mode .close-button {
+  color: #f0f0f0;
+}
+
+body.dark-mode .modal-nav button {
+  background-color: #444;
+  color: #fff;
+}
+
+body.dark-mode .modal-nav button:hover {
+  background-color: #666;
+}
+
+/* Modal Slide Animation */
+@keyframes slideUp {
+  from {
+    transform: translateY(40px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+
+.modal-image {
+  width: 100%;
+  max-height: 250px;
+  object-fit: cover;
+  border-radius: 6px;
+  margin-bottom: 1rem;
+}
+
+.close-button {
+  color: #aaa;
+  position: absolute;
+  top: 1rem;
+  right: 1.5rem;
+  font-size: 1.5rem;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.close-button:hover {
+  color: #333;
+}
+
+/* Modal Navigation Buttons */
+.modal-nav {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 2rem;
+}
+
+.modal-nav button {
+  background-color: #003366;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.modal-nav button:hover {
+  background-color: #005599;
+}
+
+.sticky-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background-color: #f9f9f9;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  border-bottom: 1px solid #ddd;
+  flex-wrap: wrap;
+
+  /* NEW FIXES */
+  width: 100vw;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+
+
+/* Equal spacing using flex-basis */
+.sticky-header .logo,
+.sticky-header header,
+.sticky-header #darkModeToggle {
+  flex: 1 1 0;
+  text-align: center;
+}
+
+/* Logo stays aligned left */
+.sticky-header .logo {
+  text-align: left;
+}
+
+/* Toggle stays aligned right */
+.sticky-header #darkModeToggle {
+  text-align: right;
+  font-size: 1.5rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  position: relative;
+  top: 0;
+}
+
+/* Header links */
+.sticky-header header .button-group {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+
+body.dark-mode .sticky-header {
+  background-color: #1e1e1e;
+  border-bottom: 1px solid #333;
+}
+
