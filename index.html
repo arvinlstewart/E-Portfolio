@@ -15,12 +15,24 @@
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
+ <div class="logo"> <img src="images/portfolio.png" alt="Arvin Stewart" class="profile-img"></div>
+  <!-- Hero Section -->
+<section class="hero-section">
+  <picture>
+    <!-- Mobile first -->
+    <source media="(max-width: 767px)" srcset="images/hero-mobile.gif">
+    <!-- Tablet -->
+    <source media="(max-width: 1024px)" srcset="images/hero-tablet.gif">
+    <!-- Desktop and up -->
+    <img src="images/hero-desktop.gif" alt="Arvin Stewart Hero Animation" class="hero-gif">
+  </picture>
+</section>
+
   <!-- Dark Mode Toggle -->
   <button id="darkModeToggle" aria-label="Toggle dark mode">🌙</button>
 
   <!-- Header Section -->
   <header>
-    <img src="images/portfolio.png" alt="Arvin Stewart" class="profile-img">
     <p>Programmatic Campaign Analyst | Ad Ops Strategist | Workflow Automation Expert</p>
     <div class="button-group">
       <a href="mailto:arvinlstewart@gmail.com">Email</a>
