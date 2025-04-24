@@ -146,23 +146,10 @@ closeQuiz.addEventListener("click", () => {
 
 document.getElementById("quizForm").addEventListener("submit", (e) => {
   e.preventDefault();
-
   const form = e.target;
-  const name = form.fullName.value.trim();
-  const email = form.email.value.trim();
-  const jobtitle = form.jobtitle ? form.jobtitle.value.trim() : '';
-  const issues = Array.from(form.querySelectorAll('input[name="issues"]:checked')).map(i => i.value).join(", ");
-  const platforms = form.platforms.value;
-  const qa = form.querySelector('input[name="qa"]:checked')?.value || "";
-  const opt = form.querySelector('input[name="opt"]:checked')?.value || "";
 
- fetch("https://script.google.com/macros/s/AKfycbxg2eToj7DT34g9UeY5Z5jo5ECaeAKBUgzVkdckneBFdEx_VYzP1E7QWoy21NvkfqlJ/exec", {
-  method: "POST",
-  mode: "cors",
-  headers: {
-    "Content-Type": "application/json"
-  },
-  body: JSON.stringify({
+  // ✅ Step 1: Build the data object
+  const data = {
     timestamp: new Date().toISOString(),
     fullName: form.fullName.value.trim(),
     email: form.email.value.trim(),
@@ -171,22 +158,35 @@ document.getElementById("quizForm").addEventListener("submit", (e) => {
     platforms: form.platforms.value,
     qa: form.querySelector('input[name="qa"]:checked')?.value || "",
     opt: form.querySelector('input[name="opt"]:checked')?.value || ""
-  })
-})
-.then(response => {
-  if (!response.ok) throw new Error("Network response was not ok");
-  return response.json();
-})
-.then(data => {
-  alert("Thanks! Your response has been submitted.");
-  document.getElementById("quizModal").style.display = "none";
-  form.reset();
-})
-.catch(err => {
-  console.error("Submission failed:", err);
-  alert("Something went wrong. Please try again.");
-});
+  };
 
+  // ✅ Step 2: Log it (optional but helpful for debugging)
+  console.log("Submitting data:", data);
+
+  // ✅ Step 3: Send the fetch request
+  fetch("https://script.google.com/macros/s/AKfycbxg2eToj7DT34g9UeY5Z5jo5ECaeAKBUgzVkdckneBFdEx_VYzP1E7QWoy21NvkfqlJ/exec", {
+    method: "POST",
+    mode: "cors",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(data)
+  })
+  .then(response => {
+    if (!response.ok) throw new Error("Network response was not ok");
+    return response.json();
+  })
+  .then(result => {
+    console.log("Response from server:", result);
+    alert("Thanks! Your response has been submitted.");
+    quizModal.style.display = "none";
+    form.reset();
+  })
+  .catch(err => {
+    console.error("Submission failed:", err);
+    alert("Something went wrong. Please try again.");
+  });
+});
 
 
 
