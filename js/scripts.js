@@ -156,7 +156,7 @@ document.getElementById("quizForm").addEventListener("submit", (e) => {
   const qa = form.qaProcess.value;
   const opt = form.optSpeed.value;
 
-  fetch("https://script.google.com/macros/s/AKfycbymEaM7hMV2WBG4qYRWaLiG45dp17giB_MSTO6ivEI/dev", {
+  fetch("https://script.google.com/macros/s/AKfycbxg2eToj7DT34g9UeY5Z5jo5ECaeAKBUgzVkdckneBFdEx_VYzP1E7QWoy21NvkfqlJ/exec", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
