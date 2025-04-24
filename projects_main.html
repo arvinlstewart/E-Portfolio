@@ -102,15 +102,24 @@
     <span id="closeQuiz" class="close-button">&times;</span>
 
     <form id="quizForm">
-      <div class="quiz-step active">
-        <h3>What ad ops challenges are you facing?</h3>
-        <label><input type="checkbox" name="issues" value="Inconsistent naming"> Inconsistent naming</label><br>
-        <label><input type="checkbox" name="issues" value="QA errors"> QA errors</label><br>
-        <label><input type="checkbox" name="issues" value="Slow optimizations"> Slow optimizations</label><br>
-        <label><input type="checkbox" name="issues" value="Clunky platform workflows"> Clunky platform workflows</label><br>
-        <label><input type="checkbox" name="issues" value="Lack of automation"> Lack of automation</label><br>
-        <button type="button" class="next-btn">Next</button>
-      </div>
+    <div class="quiz-step active">
+      <h3>What’s your name?</h3>
+      <input type="text" name="fullName" id="fullName" required>
+  <button type="button" class="next-btn">Next</button>
+    </div>
+
+
+<div class="quiz-step">
+  <h3>What ad ops challenges are you facing?</h3>
+  <label><input type="checkbox" name="issues" value="Inconsistent naming"> Inconsistent naming</label><br>
+  <label><input type="checkbox" name="issues" value="QA errors"> QA errors</label><br>
+  <label><input type="checkbox" name="issues" value="Slow optimizations"> Slow optimizations</label><br>
+  <label><input type="checkbox" name="issues" value="Clunky platform workflows"> Clunky platform workflows</label><br>
+  <label><input type="checkbox" name="issues" value="Lack of automation"> Lack of automation</label><br>
+  <button type="button" class="next-btn">Next</button>
+</div>
+
+        
 
       <div class="quiz-step">
         <h3>How many ad platforms or DSPs are you actively using?</h3>
@@ -139,11 +148,9 @@
       </div>
 
       <div class="quiz-step">
-        <h3>Ready to solve these challenges?</h3>
-        <p>Share your name and email so I can follow up with a few tailored ideas:</p>
-      
-        <label for="fullName">Your Name:</label><br>
-        <input type="text" id="fullName" name="fullName" required><br><br>
+  <h3>Ready to solve these challenges?</h3>
+  <p>Thanks, <span id="displayName"></span>! Drop your email and job title below so I can follow up with a few tailored ideas:</p>
+
       
         <label for="email">Your Email:</label><br>
         <input type="email" id="email" name="email" required><br><br>
