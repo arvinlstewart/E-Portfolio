@@ -153,12 +153,15 @@ document.getElementById("quizForm").addEventListener("submit", (e) => {
   const jobtitle = form.jobtitle ? form.jobtitle.value.trim() : '';
   const issues = Array.from(form.querySelectorAll('input[name="issues"]:checked')).map(i => i.value).join(", ");
   const platforms = form.platforms.value;
-  const qa = form.qa.value;
-  const opt = form.opt.value;
+  const qa = form.querySelector('input[name="qa"]:checked')?.value || "";
+  const opt = form.querySelector('input[name="opt"]:checked')?.value || "";
 
   fetch("https://script.google.com/macros/s/AKfycbxg2eToj7DT34g9UeY5Z5jo5ECaeAKBUgzVkdckneBFdEx_VYzP1E7QWoy21NvkfqlJ/exec", {
     method: "POST",
-    headers: { "Content-Type": "application/json" },
+    mode: "cors", // <-- Important for CORS to work
+    headers: {
+      "Content-Type": "application/json"
+    },
     body: JSON.stringify({
       fullName: name,
       email,
@@ -169,7 +172,10 @@ document.getElementById("quizForm").addEventListener("submit", (e) => {
       opt
     })
   })
-  .then(response => response.json())
+  .then(response => {
+    if (!response.ok) throw new Error("Network response was not ok");
+    return response.json();
+  })
   .then(data => {
     alert("Thanks! Your response has been submitted.");
     document.getElementById("quizModal").style.display = "none";
