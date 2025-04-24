@@ -155,7 +155,7 @@ const platforms = form.platforms.value;
 const qa = form.qaProcess.value;
 const opt = form.optSpeed.value;
 
-fetch("https://script.google.com/macros/s/YOUR_DEPLOYMENT_ID/exec", {
+fetch("https://script.google.com/macros/s/AKfycbymEaM7hMV2WBG4qYRWaLiG45dp17giB_MSTO6ivEI/dev", {
   method: "POST",
   headers: { "Content-Type": "application/json" },
   body: JSON.stringify({
