@@ -147,44 +147,41 @@ closeQuiz.addEventListener("click", () => {
 document.getElementById("quizForm").addEventListener("submit", (e) => {
   e.preventDefault();
 
+  const form = e.target;
   const name = form.fullName.value.trim();
-const email = form.email.value.trim();
-const jobtitle = form.jobtitle ? form.jobtitle.value.trim() : '';
-const issues = Array.from(form.querySelectorAll('input[name="issues"]:checked')).map(i => i.value).join(", ");
-const platforms = form.platforms.value;
-const qa = form.qaProcess.value;
-const opt = form.optSpeed.value;
+  const email = form.email.value.trim();
+  const jobtitle = form.jobtitle ? form.jobtitle.value.trim() : '';
+  const issues = Array.from(form.querySelectorAll('input[name="issues"]:checked')).map(i => i.value).join(", ");
+  const platforms = form.platforms.value;
+  const qa = form.qaProcess.value;
+  const opt = form.optSpeed.value;
 
-fetch("https://script.google.com/macros/s/AKfycbymEaM7hMV2WBG4qYRWaLiG45dp17giB_MSTO6ivEI/dev", {
-  method: "POST",
-  headers: { "Content-Type": "application/json" },
-  body: JSON.stringify({
-    fullName: name,
-    email,
-    jobtitle,
-    issues,
-    platforms,
-    qa,
-    opt
-    // timestamp is handled in Apps Script
+  fetch("https://script.google.com/macros/s/AKfycbymEaM7hMV2WBG4qYRWaLiG45dp17giB_MSTO6ivEI/dev", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      fullName: name,
+      email,
+      jobtitle,
+      issues,
+      platforms,
+      qa,
+      opt
+    })
   })
-})
-
-
-document.querySelectorAll(".next-btn").forEach(btn => {
-  btn.addEventListener("click", () => {
-    if (currentStep === 0) {
-      // Capture the name and display it on final step
-      const nameInput = document.getElementById("fullName").value;
-      document.getElementById("displayName").textContent = nameInput || "there";
-    }
-
-    if (currentStep < quizSteps.length - 1) {
-      currentStep++;
-      showStep(currentStep);
-    }
+  .then(response => response.json())
+  .then(data => {
+    alert("Thanks! Your response has been submitted.");
+    document.getElementById("quizModal").style.display = "none";
+    form.reset();
+  })
+  .catch(err => {
+    console.error("Submission failed:", err);
+    alert("Something went wrong. Please try again.");
   });
 });
+
+
 
 
 document.querySelectorAll(".prev-btn").forEach(btn => {
