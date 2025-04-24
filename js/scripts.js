@@ -143,14 +143,6 @@ closeQuiz.addEventListener("click", () => {
   quizModal.style.display = "none";
 });
 
-document.querySelectorAll(".next-btn").forEach(btn => {
-  btn.addEventListener("click", () => {
-    if (currentStep < quizSteps.length - 1) {
-      currentStep++;
-      showStep(currentStep);
-    }
-  });
-});
 
 document.getElementById("quizForm").addEventListener("submit", (e) => {
   e.preventDefault();
