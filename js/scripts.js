@@ -143,7 +143,7 @@ closeQuiz.addEventListener("click", () => {
   quizModal.style.display = "none";
 });
 
-const form = document.getElementById("quizForm");
+
 document.getElementById("quizForm").addEventListener("submit", (e) => {
   e.preventDefault();
 
