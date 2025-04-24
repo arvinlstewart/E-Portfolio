@@ -153,8 +153,8 @@ document.getElementById("quizForm").addEventListener("submit", (e) => {
   const jobtitle = form.jobtitle ? form.jobtitle.value.trim() : '';
   const issues = Array.from(form.querySelectorAll('input[name="issues"]:checked')).map(i => i.value).join(", ");
   const platforms = form.platforms.value;
-  const qa = form.qaProcess.value;
-  const opt = form.optSpeed.value;
+  const qa = form.qa.value;
+  const opt = form.opt.value;
 
   fetch("https://script.google.com/macros/s/AKfycbxg2eToj7DT34g9UeY5Z5jo5ECaeAKBUgzVkdckneBFdEx_VYzP1E7QWoy21NvkfqlJ/exec", {
     method: "POST",
