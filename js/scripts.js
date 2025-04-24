@@ -156,7 +156,7 @@ document.getElementById("quizForm").addEventListener("submit", (e) => {
   const qa = form.querySelector('input[name="qa"]:checked')?.value || "";
   const opt = form.querySelector('input[name="opt"]:checked')?.value || "";
 
- fetch("https://script.google.com/macros/s/YOUR_DEPLOYMENT_ID/exec", {
+ fetch("https://script.google.com/macros/s/AKfycbxg2eToj7DT34g9UeY5Z5jo5ECaeAKBUgzVkdckneBFdEx_VYzP1E7QWoy21NvkfqlJ/exec", {
   method: "POST",
   mode: "cors",
   headers: {
