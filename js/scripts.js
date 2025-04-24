@@ -180,3 +180,18 @@ document.getElementById("quizForm").addEventListener("submit", (e) => {
   });
 });
 
+document.querySelectorAll(".next-btn").forEach(btn => {
+  btn.addEventListener("click", () => {
+    if (currentStep === 0) {
+      // Capture the name and display it on final step
+      const nameInput = document.getElementById("fullName").value;
+      document.getElementById("displayName").textContent = nameInput || "there";
+    }
+
+    if (currentStep < quizSteps.length - 1) {
+      currentStep++;
+      showStep(currentStep);
+    }
+  });
+});
+
