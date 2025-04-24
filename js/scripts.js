@@ -156,35 +156,35 @@ document.getElementById("quizForm").addEventListener("submit", (e) => {
   const qa = form.querySelector('input[name="qa"]:checked')?.value || "";
   const opt = form.querySelector('input[name="opt"]:checked')?.value || "";
 
-  fetch("https://script.google.com/macros/s/AKfycbxg2eToj7DT34g9UeY5Z5jo5ECaeAKBUgzVkdckneBFdEx_VYzP1E7QWoy21NvkfqlJ/exec", {
-    method: "POST",
-    mode: "cors", // <-- Important for CORS to work
-    headers: {
-      "Content-Type": "application/json"
-    },
-    body: JSON.stringify({
-      fullName: name,
-      email,
-      jobtitle,
-      issues,
-      platforms,
-      qa,
-      opt
-    })
+ fetch("https://script.google.com/macros/s/YOUR_DEPLOYMENT_ID/exec", {
+  method: "POST",
+  mode: "cors",
+  headers: {
+    "Content-Type": "application/json"
+  },
+  body: JSON.stringify({
+    timestamp: new Date().toISOString(),
+    fullName: form.fullName.value.trim(),
+    email: form.email.value.trim(),
+    jobtitle: form.jobtitle.value.trim(),
+    issues: Array.from(form.querySelectorAll('input[name="issues"]:checked')).map(i => i.value).join(", "),
+    platforms: form.platforms.value,
+    qa: form.querySelector('input[name="qa"]:checked')?.value || "",
+    opt: form.querySelector('input[name="opt"]:checked')?.value || ""
   })
-  .then(response => {
-    if (!response.ok) throw new Error("Network response was not ok");
-    return response.json();
-  })
-  .then(data => {
-    alert("Thanks! Your response has been submitted.");
-    document.getElementById("quizModal").style.display = "none";
-    form.reset();
-  })
-  .catch(err => {
-    console.error("Submission failed:", err);
-    alert("Something went wrong. Please try again.");
-  });
+})
+.then(response => {
+  if (!response.ok) throw new Error("Network response was not ok");
+  return response.json();
+})
+.then(data => {
+  alert("Thanks! Your response has been submitted.");
+  document.getElementById("quizModal").style.display = "none";
+  form.reset();
+})
+.catch(err => {
+  console.error("Submission failed:", err);
+  alert("Something went wrong. Please try again.");
 });
 
 
