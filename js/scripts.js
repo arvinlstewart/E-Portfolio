@@ -187,3 +187,33 @@ document.querySelectorAll(".next-btn").forEach(btn => {
   });
 });
 
+
+document.querySelectorAll(".prev-btn").forEach(btn => {
+  btn.addEventListener("click", () => {
+    if (currentStep > 0) {
+      currentStep--;
+      showStep(currentStep);
+      console.log("Moved back to step:", currentStep);
+    }
+  });
+});
+
+document.querySelectorAll(".next-btn").forEach(btn => {
+  btn.addEventListener("click", () => {
+    if (currentStep === 0) {
+      const nameInput = document.getElementById("fullName").value;
+      const displayName = document.getElementById("displayName");
+      if (displayName) {
+        displayName.textContent = nameInput || "friend";
+      }
+    }
+
+    if (currentStep < quizSteps.length - 1) {
+      currentStep++;
+      showStep(currentStep);
+      console.log("Moved forward to step:", currentStep);
+    }
+  });
+});
+
+
