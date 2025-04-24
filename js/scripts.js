@@ -147,30 +147,29 @@ closeQuiz.addEventListener("click", () => {
 document.getElementById("quizForm").addEventListener("submit", (e) => {
   e.preventDefault();
 
-  const form = e.target;
-  const issues = Array.from(form.querySelectorAll('input[name="issues"]:checked')).map(i => i.value).join(", ");
-  const platforms = form.platforms.value;
-  const qa = form.qaProcess.value;
-  const opt = form.optSpeed.value;
   const name = form.fullName.value.trim();
-  const email = form.email.value.trim();
+const email = form.email.value.trim();
+const jobtitle = form.jobtitle ? form.jobtitle.value.trim() : '';
+const issues = Array.from(form.querySelectorAll('input[name="issues"]:checked')).map(i => i.value).join(", ");
+const platforms = form.platforms.value;
+const qa = form.qaProcess.value;
+const opt = form.optSpeed.value;
 
-  fetch("https://script.google.com/macros/s/AKfycbyJT5JhJqvGjzvLewG1vB5R9Zc6fLVkJY9z4SGt4NUVoddkhOXsBOyAFwVN04o3re7m/exec", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ name, email, issues, platforms, qa, opt })
+fetch("https://script.google.com/macros/s/YOUR_DEPLOYMENT_ID/exec", {
+  method: "POST",
+  headers: { "Content-Type": "application/json" },
+  body: JSON.stringify({
+    fullName: name,
+    email,
+    jobtitle,
+    issues,
+    platforms,
+    qa,
+    opt
+    // timestamp is handled in Apps Script
   })
-  .then(res => res.json())
-  .then(data => {
-    alert("Thanks! Your response has been submitted.");
-    document.getElementById("quizModal").style.display = "none";
-    form.reset();
-  })
-  .catch(err => {
-    console.error("Submission failed", err);
-    alert("Something went wrong. Please try again.");
-  });
-});
+})
+
 
 document.querySelectorAll(".next-btn").forEach(btn => {
   btn.addEventListener("click", () => {
