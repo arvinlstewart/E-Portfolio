@@ -377,7 +377,7 @@ body.dark-mode .sticky-header {
   display: block;
 }
 
-.next-btn, .submit-btn, .cta-button {
+.next-btn, .prev-btn, .submit-btn, .cta-button {
   margin-top: 1rem;
   padding: 0.5rem 1.25rem;
   background-color: #003366;
@@ -387,7 +387,7 @@ body.dark-mode .sticky-header {
   cursor: pointer;
 }
 
-.next-btn:hover, .submit-btn:hover, .cta-button:hover {
+.next-btn:hover, .prev-btn:hover, .submit-btn:hover, .cta-button:hover {
   background-color: #005599;
 }
 
