@@ -1,0 +1,118 @@
+<!-- Blog Section -->
+<section class="scroll-reveal blog-section" id="blog">
+  <h2 class="section-title">Insights & Updates</h2>
+  <div class="blog-grid" id="blogContainer">
+    <!-- Blog cards will be injected here dynamically -->
+  </div>
+</section>
+
+<script>
+const blogData = [
+  {
+    title: "Programmatic Trends to Watch in 2025",
+    excerpt: "Explore key developments shaping the future of ad ops and how you can stay ahead in a rapidly evolving landscape.",
+    image: "images/blog1.jpg",
+    link: "#"
+  },
+  {
+    title: "Optimizing Naming Conventions with Excel Automation",
+    excerpt: "A deep dive into automating naming structures using formula-based logic to enhance campaign clarity and QA.",
+    image: "images/blog2.jpg",
+    link: "#"
+  },
+  {
+    title: "From Manual to Masterful: Scaling Ops with Systems",
+    excerpt: "Lessons learned while transforming workflows through streamlined tools and system-driven thinking.",
+    image: "images/blog3.jpg",
+    link: "#"
+  }
+];
+
+const blogContainer = document.getElementById("blogContainer");
+
+blogData.forEach(post => {
+  const card = document.createElement("article");
+  card.className = "blog-card";
+  card.innerHTML = `
+    <img src="${post.image}" alt="Blog Cover" class="blog-img">
+    <div class="blog-content">
+      <h3 class="blog-title">${post.title}</h3>
+      <p class="blog-excerpt">${post.excerpt}</p>
+      <a href="${post.link}" class="read-more">Read More →</a>
+    </div>
+  `;
+  blogContainer.appendChild(card);
+});
+</script>
+
+<!-- CSS styles (can go in your stylesheet) -->
+<style>
+.blog-section {
+  padding: 4rem 2rem;
+  background-color: #f9f9f9;
+  color: #333;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.section-title {
+  font-size: 2rem;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.blog-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.blog-card {
+  background: white;
+  border-radius: 1rem;
+  overflow: hidden;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s ease;
+}
+
+.blog-card:hover {
+  transform: translateY(-5px);
+}
+
+.blog-img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.blog-content {
+  padding: 1.5rem;
+}
+
+.blog-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.blog-excerpt {
+  font-size: 1rem;
+  color: #666;
+  line-height: 1.5;
+}
+
+.read-more {
+  margin-top: 1rem;
+  display: inline-block;
+  color: #0077cc;
+  font-weight: 600;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.read-more:hover {
+  color: #004a99;
+}
+</style>
