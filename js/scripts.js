@@ -112,26 +112,26 @@ document.getElementById("quizForm")?.addEventListener("submit", (e) => {
 
   console.log("Submitting data:", data);
 
-  fetch("https://arvin-proxy.onrender.com/submit", {  // <<< Updated to your Render Proxy URL
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(data)
-  })
-  .then(response => {
-    if (!response.ok) throw new Error("Network response was not ok");
-    return response.json();
-  })
-  .then(result => {
-    console.log("Response from server:", result);
-    alert("Thanks! Your response has been submitted.");
-    quizModal.style.display = "none";
-    form.reset();
-  })
-  .catch(err => {
-    console.error("Submission failed:", err);
-    alert("Something went wrong. Please try again.");
-  });
+ fetch('https://arvin-proxy.onrender.com/submit', {
+  method: "POST",
+  headers: {
+    "Content-Type": "application/json"
+  },
+  body: JSON.stringify(data)
+})
+.then(response => response.json())
+.then(result => {
+  if (result.status === 'success') {
+    alert("Thanks! Your response was recorded."); // 🎯 (we can make this a success modal later)
+  } else {
+    alert("Something went wrong: " + result.message);
+  }
+})
+.catch(error => {
+  console.error('Error:', error);
+  alert("Submission failed. Please try again later.");
 });
+
 
 document.querySelectorAll(".prev-btn").forEach(btn => {
   btn.addEventListener("click", () => {
