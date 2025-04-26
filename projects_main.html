@@ -1,187 +1,3 @@
-    <!DOCTYPE html>
-    <html lang="en">
-    <head>
-    <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-0228GZTYVZ"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-0228GZTYVZ');
-</script>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Arvin Stewart</title>
-
-    <!-- Link to external CSS file -->
-    <link rel="stylesheet" href="css/styles.css">
-
-    <!-- Favicon -->
-    <link rel="icon" href="images/favicon.png" type="image/x-icon">
-
-    <!-- Google Font -->
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
-    </head>
-    <body>
-   <!-- Sticky Header -->
-<div class="sticky-header">
-    <div class="logo">
-        <img src="images/portfolio.png" alt="Arvin Stewart" class="profile-img" id="siteLogo">
-       
-
-
-    </div>
-  
-  
-    <!-- Header Section -->
-    <header>
-      <div class="button-group">
-        <a href="mailto:arvinlstewart@gmail.com">Email</a>
-        <a href="https://www.linkedin.com/in/arvin-stew-ads" target="_blank">LinkedIn</a>
-        <a href="resume.pdf" download>Resume</a>
-      </div>
-    </header>
-
-     <!-- Dark Mode Toggle -->
-     <button id="darkModeToggle" aria-label="Toggle dark mode">🌙</button>
-  </div>
-
-  
-
-    <!-- Page Content Section -->
-    <main class="scroll-reveal">
-        <section>
-        <h2>Projects</h2>
-        <div class="card-grid">
-            <div class="card">
-            <img src="images/tagsheetsync.png" alt="Card 1" class="project-img">
-            <h3>Tag Sheet Sync & Custom Click Macro Integration</h3>
-            <p>Description for the first card. You can showcase a project, service, or testimonial here.</p>
-            </div>
-            <div class="card">
-            <img src="images/nameGenerator.png" alt="Card 2" class="project-img">
-            <h3>Dynamic Name Generator for Creative Naming</h3>
-            <p>Description for the second card. Highlight benefits or results from your work.</p>
-            </div>
-            <div class="card">
-            <img src="images/OptimizeWb2.png" alt="Card 3" class="project-img">
-            <h3>Optimization Workbook with Performance Rules</h3>
-            <p>Description for the third card. Link to a case study, blog post, or resource.</p>
-            </div>
-        </div>
-        </section>
-    </main>
-
-    <!-- Contact Section -->
-    <section class="scroll-reveal">
-        <h2>Let's Connect</h2>
-        <p>I'm open to full-time roles in Ad Tech and Media Operations. Let’s explore if I'm the right fit for your team.</p>
-        <a class="button-group" href="mailto:arvinlstewart@gmail.com">Send me a message</a>
-    </section>
-
-    <!-- JavaScript -->
-    
-<!-- Modal Structure -->
-<div id="projectModal" class="modal">
-    <div class="modal-content animated">
-      <span class="close-button" id="closeModal">&times;</span>
-      <img id="modalImage" class="modal-image" src="" alt="Project Demo GIF" />
-      <h3 id="modalTitle">Project Title</h3>
-      <div id="modalDescription"></div>
-      <div class="modal-nav">
-        <button id="prevModal">← Prev</button>
-        <button id="nextModal">Next →</button>
-      </div>
-    </div>
-  </div>
-    <!-- Trigger Button -->
-<button id="openQuizBtn" class="cta-button">Have Ad Ops Challenges?</button>
-
-<!-- Modal Questionnaire -->
-<div id="quizModal" class="modal">
-  <div class="modal-content">
-    <span id="closeQuiz" class="close-button">&times;</span>
-
-
-<!-- Ad Ops Needs Form -->
-      
-    <form id="quizForm">
-    <div class="quiz-step active">
-      <h3>What’s your name?</h3>
-      <input type="text" name="fullName" id="fullName" required>
-  <button type="button" class="next-btn">Next</button>
-    </div>
-
-
-<div class="quiz-step">
-  <h3>What ad ops challenges are you facing?</h3>
-  <label><input type="checkbox" name="issues" value="Inconsistent naming"> Inconsistent naming</label><br>
-  <label><input type="checkbox" name="issues" value="QA errors"> QA errors</label><br>
-  <label><input type="checkbox" name="issues" value="Slow optimizations"> Slow optimizations</label><br>
-  <label><input type="checkbox" name="issues" value="Clunky platform workflows"> Clunky platform workflows</label><br>
-  <label><input type="checkbox" name="issues" value="Lack of automation"> Lack of automation</label><br>
-  <div class="quiz-nav">
-    <button type="button" class="prev-btn">Previous</button>
-    <button type="button" class="next-btn">Next</button>
-  </div>
-</div>
-
-        
-
-      <div class="quiz-step">
-        <h3>How many ad platforms or DSPs are you actively using?</h3>
-        <select name="platforms">
-          <option value="1">1</option>
-          <option value="2-3">2–3</option>
-          <option value="4+">4 or more</option>
-        </select>
-         <div class="quiz-nav">
-    <button type="button" class="prev-btn">Previous</button>
-    <button type="button" class="next-btn">Next</button>
-  </div>
-      </div>
-
-      <div class="quiz-step">
-        <h3>Do you have a formal QA or trafficking process?</h3>
-        <label><input type="radio" name="qa" value="Yes"> Yes</label><br>
-        <label><input type="radio" name="qa" value="No"> No</label><br>
-         <div class="quiz-nav">
-    <button type="button" class="prev-btn">Previous</button>
-    <button type="button" class="next-btn">Next</button>
-  </div>
-      </div>
-
-      <div class="quiz-step">
-        <h3>How quickly are optimization insights acted on?</h3>
-        <label><input type="radio" name="opt" value="1 day"> Within 1 day</label><br>
-        <label><input type="radio" name="opt" value="2–3 days"> 2–3 days</label><br>
-        <label><input type="radio" name="opt" value="1 week"> 1 week</label><br>
-        <label><input type="radio" name="opt" value="No clear process"> No clear process</label><br>
-         <div class="quiz-nav">
-    <button type="button" class="prev-btn">Previous</button>
-    <button type="button" class="next-btn">Next</button>
-  </div>
-      </div>
-
-      <div class="quiz-step">
-  <h3>Ready to solve these challenges?</h3>
-  <p>Thanks, <span id="displayName"></span>! Drop your email and job title below so I can follow up with a few tailored ideas:</p>
-
-      
-        <label for="email">Your Email:</label><br>
-        <input type="email" id="email" name="email" required><br><br>
-
-        <label for="Job Title">Job Title:</label><br>
-        <input type="text" id="jobtitle" name="jobtitle" required><br><br>
-      
-        <button type="submit" class="submit-btn">Send My Responses</button>
-      </div>
-      
-    </form>
-  </div>
-</div>
-
 <script>
 document.getElementById("quizForm").addEventListener("submit", async function (e) {
   e.preventDefault();
@@ -190,7 +6,6 @@ document.getElementById("quizForm").addEventListener("submit", async function (e
   const data = {};
   formData.forEach((value, key) => {
     if (data[key]) {
-      // Handle multiple checkbox values
       if (Array.isArray(data[key])) {
         data[key].push(value);
       } else {
@@ -202,7 +17,7 @@ document.getElementById("quizForm").addEventListener("submit", async function (e
   });
 
   try {
-    const response = await fetch("https://script.google.com/macros/s/AKfycbxg2eToj7DT34g9UeY5Z5jo5ECaeAKBUgzVkdckneBFdEx_VYzP1E7QWoy21NvkfqlJ/exec", {
+    const response = await fetch("https://arvin-proxy.onrender.com/submit", {  <!-- ✅ Updated to your proxy server -->
       method: "POST",
       headers: {
         "Content-Type": "application/json"
@@ -213,7 +28,7 @@ document.getElementById("quizForm").addEventListener("submit", async function (e
     const result = await response.json();
     if (result.status === "success") {
       alert("Thanks! Your response was recorded.");
-      document.getElementById("quizForm").reset(); // optional reset
+      document.getElementById("quizForm").reset();
     } else {
       alert("Something went wrong: " + result.message);
     }
@@ -224,8 +39,3 @@ document.getElementById("quizForm").addEventListener("submit", async function (e
   }
 });
 </script>
-
-
-<script src="js/scripts.js"></script>
-</body>
-    </html>
