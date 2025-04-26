@@ -131,7 +131,7 @@ document.getElementById("quizForm")?.addEventListener("submit", (e) => {
   console.error('Error:', error);
   alert("Submission failed. Please try again later.");
 });
-
+}
 
 document.querySelectorAll(".prev-btn").forEach(btn => {
   btn.addEventListener("click", () => {
