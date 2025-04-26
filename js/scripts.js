@@ -112,9 +112,8 @@ document.getElementById("quizForm")?.addEventListener("submit", (e) => {
 
   console.log("Submitting data:", data);
 
-  fetch("https://script.google.com/macros/s/AKfycbxg2eToj7DT34g9UeY5Z5jo5ECaeAKBUgzVkdckneBFdEx_VYzP1E7QWoy21NvkfqlJ/exec", {
+  fetch("https://arvin-proxy.onrender.com/submit", {  // <<< Updated to your Render Proxy URL
     method: "POST",
-    mode: "cors",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(data)
   })
