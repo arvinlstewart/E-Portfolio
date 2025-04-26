@@ -201,7 +201,7 @@ document.getElementById("quizForm").addEventListener("submit", async function (e
   });
 
   try {
-    const response = await fetch("https://arvin-proxy.onrender.com/submit", {  <!-- ✅ Updated to your proxy server -->
+    const response = await fetch("https://arvin-proxy.onrender.com/submit", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
@@ -223,6 +223,7 @@ document.getElementById("quizForm").addEventListener("submit", async function (e
   }
 });
 </script>
+
 
 
 <script src="js/scripts.js"></script>
