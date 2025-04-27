@@ -1,6 +1,6 @@
 export default async function handler(req, res) {
   // Enable CORS
-  res.setHeader('Access-Control-Allow-Origin', 'https://arvinstewart.com'); // ⬅️ Use your exact domain
+  res.setHeader('Access-Control-Allow-Origin', '*'); // ⬅️ Use your exact domain
   res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
 
