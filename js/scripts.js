@@ -95,42 +95,60 @@ if (closeQuiz) {
   });
 }
 
-document.getElementById("quizForm")?.addEventListener("submit", (e) => {
-  e.preventDefault();
-  const form = e.target;
+const quizForm = document.getElementById("quizForm");
 
-  const data = {
-    fullName: form.fullName.value.trim(),
-    email: form.email.value.trim(),
-    jobtitle: form.jobtitle.value.trim(),
-    issues: Array.from(form.querySelectorAll('input[name="issues"]:checked')).map(i => i.value).join(", "),
-    platforms: form.platforms.value,
-    qa: form.querySelector('input[name="qa"]:checked')?.value || "",
-    opt: form.querySelector('input[name="opt"]:checked')?.value || ""
-  };
+if (quizForm) {
+  quizForm.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const form = e.target;
 
-  console.log("Submitting data:", data);
+    // Basic Validation
+    const email = form.email.value.trim();
+    const fullName = form.fullName.value.trim();
+    const jobtitle = form.jobtitle.value.trim();
 
- fetch("https://arvin-airtable-handler-zo36.vercel.app/api/submit", {
-  method: "POST",
-  headers: {
-    "Content-Type": "application/json"
-  },
-  body: JSON.stringify(data)
-})
-.then(response => response.json())
-.then(result => {
-  if (result.status === 'success') {
-    alert("Thanks! Your response was recorded."); // 🎯 (we can make this a success modal later)
-  } else {
-    alert("Something went wrong: " + result.message);
-  }
-})
-.catch(error => {
-  console.error('Error:', error);
-  alert("Submission failed. Please try again later.");
-});
-});
+    if (!email || !fullName || !jobtitle) {
+      alert("Please complete your Name, Email, and Job Title before submitting.");
+      return;
+    }
+
+    // Build the payload
+    const data = {
+      fullName,
+      email,
+      jobtitle,
+      issues: Array.from(form.querySelectorAll('input[name="issues"]:checked')).map(i => i.value).join(", "),
+      platforms: form.platforms.value,
+      qa: form.querySelector('input[name="qa"]:checked')?.value || "",
+      opt: form.querySelector('input[name="opt"]:checked')?.value || ""
+    };
+
+    console.log("Submitting data:", data); // (optional for debugging)
+
+    try {
+      const response = await fetch("https://arvin-airtable-handler-zo36.vercel.app/api/submit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(data)
+      });
+
+      const result = await response.json();
+
+      if (result.message === "Success") {
+        alert("Thanks! Your response was recorded.");
+        quizForm.reset(); // ✅ Clear the form after successful submission
+      } else {
+        alert("Something went wrong: " + (result.error || result.message));
+      }
+
+    } catch (error) {
+      console.error('Error:', error);
+      alert("Submission failed. Please try again later.");
+    }
+  });
+}
 
 document.querySelectorAll(".prev-btn").forEach(btn => {
   btn.addEventListener("click", () => {
