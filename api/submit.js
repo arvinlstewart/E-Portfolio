@@ -13,12 +13,12 @@ export default async function handler(req, res) {
     return res.status(405).json({ message: 'Only POST method allowed' });
   }
 
-  const { fullName, email, jobtitle, issues, platforms, qa, opt } = req.body;
-
   const AIRTABLE_BASE_ID = process.env.AIRTABLE_BASE_ID;
   const AIRTABLE_TABLE_NAME = process.env.AIRTABLE_TABLE_NAME;
   const AIRTABLE_API_KEY = process.env.AIRTABLE_API_KEY;
 
+  const { fullName, email, jobtitle, issues, platforms, qa, opt } = req.body;
+  
   const url = `https://api.airtable.com/v0/${AIRTABLE_BASE_ID}/${AIRTABLE_TABLE_NAME}`;
 
   const options = {
