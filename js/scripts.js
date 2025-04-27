@@ -111,7 +111,7 @@ document.getElementById("quizForm")?.addEventListener("submit", (e) => {
 
   console.log("Submitting data:", data);
 
- fetch("https://arvin-airtable-handler.vercel.app/api/submit", {
+ fetch("https://arvin-airtable-handler-zo36.vercel.app/api/submit", {
   method: "POST",
   headers: {
     "Content-Type": "application/json"
