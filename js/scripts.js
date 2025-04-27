@@ -112,7 +112,7 @@ document.getElementById("quizForm")?.addEventListener("submit", (e) => {
 
   console.log("Submitting data:", data);
 
- fetch('https://arvin-proxy.onrender.com/submit', {
+ fetch("/api/submit", {
   method: "POST",
   headers: {
     "Content-Type": "application/json"
