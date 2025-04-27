@@ -1,14 +1,16 @@
 export default async function handler(req, res) {
+  // Enable CORS
   res.setHeader('Access-Control-Allow-Origin', 'https://arvinstewart.com');
   res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
 
+  // Handle CORS preflight requests
   if (req.method === 'OPTIONS') {
-    return res.status(200).end();  // Respond OK to preflight OPTIONS requests
+    return res.status(200).end();
   }
 
   if (req.method !== 'POST') {
-    return res.status(405).json({ message: 'Only POST requests allowed' });
+    return res.status(405).json({ message: 'Only POST method allowed' });
   }
 
   const { fullName, email, jobtitle, issues, platforms, qa, opt } = req.body;
@@ -46,8 +48,8 @@ export default async function handler(req, res) {
       throw new Error(data.error?.message || 'Failed to save data to Airtable');
     }
 
-    res.status(200).json({ status: 'success', data });
+    res.status(200).json({ message: 'Success', data });
   } catch (error) {
-    res.status(500).json({ status: 'error', message: error.toString() });
+    res.status(500).json({ message: 'Error', error: error.toString() });
   }
 }
