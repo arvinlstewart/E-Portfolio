@@ -40,16 +40,19 @@ export default async function handler(req, res) {
     }),
   };
 
-  try {
-    const airtableRes = await fetch(url, options);
-    const data = await airtableRes.json();
+try {
+  const airtableRes = await fetch(url, options);
+  const data = await airtableRes.json();
 
-    if (!airtableRes.ok) {
-      throw new Error(data.error?.message || 'Failed to save data to Airtable');
-    }
-
-    res.status(200).json({ message: 'Success', data });
-  } catch (error) {
-    res.status(500).json({ message: 'Error', error: error.toString() });
+  console.log("✅ Airtable Response:", data); // 🔥 Added for debug
+  
+  if (!airtableRes.ok) {
+    console.error("❌ Airtable Error Details:", data); // 🔥 Added for debug
+    throw new Error(data.error?.message || 'Failed to save data to Airtable');
   }
+
+  res.status(200).json({ message: 'Success', data });
+} catch (error) {
+  console.error("❌ Server Error:", error); // 🔥 Added for debug
+  res.status(500).json({ message: 'Error', error: error.toString() });
 }
