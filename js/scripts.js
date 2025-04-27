@@ -100,7 +100,6 @@ document.getElementById("quizForm")?.addEventListener("submit", (e) => {
   const form = e.target;
 
   const data = {
-    timestamp: new Date().toISOString(),
     fullName: form.fullName.value.trim(),
     email: form.email.value.trim(),
     jobtitle: form.jobtitle.value.trim(),
