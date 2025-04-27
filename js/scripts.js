@@ -123,7 +123,7 @@ if (quizForm) {
       opt: form.querySelector('input[name="opt"]:checked')?.value || ""
     };
 
-    console.log("Submitting data:", data); // (optional for debugging)
+    //console.log("Submitting data:", data); // (optional for debugging)
 
     try {
       const response = await fetch("https://arvin-airtable-handler-zo36.vercel.app/api/submit", {
@@ -144,7 +144,7 @@ if (quizForm) {
       }
 
     } catch (error) {
-      console.error('Error:', error);
+      // console.error('Error:', error);
       alert("Submission failed. Please try again later.");
     }
   });
