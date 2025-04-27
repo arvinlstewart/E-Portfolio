@@ -15,8 +15,10 @@ export default async function handler(req, res) {
 
   const { fullName, email, jobtitle, issues, platforms, qa, opt } = req.body;
 
-  const AIRTABLE_BASE_ID = 'appioblrblEFkppAF';
-  const AIRTABLE_TABLE_NAME = 'Ad_Ops_Lead';
+  const AIRTABLE_BASE_ID = process.env.AIRTABLE_BASE_ID;
+  const AIRTABLE_TABLE_NAME = process.env.AIRTABLE_TABLE_NAME;
+  const AIRTABLE_API_KEY = process.env.AIRTABLE_API_KEY;
+
   const AIRTABLE_API_KEY = 'patk7uHom7IqgUgXE'; // 📢 Later move this to Vercel env vars
 
   const url = `https://api.airtable.com/v0/${AIRTABLE_BASE_ID}/${AIRTABLE_TABLE_NAME}`;
