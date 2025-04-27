@@ -19,8 +19,6 @@ export default async function handler(req, res) {
   const AIRTABLE_TABLE_NAME = process.env.AIRTABLE_TABLE_NAME;
   const AIRTABLE_API_KEY = process.env.AIRTABLE_API_KEY;
 
-  const AIRTABLE_API_KEY = 'patk7uHom7IqgUgXE'; // 📢 Later move this to Vercel env vars
-
   const url = `https://api.airtable.com/v0/${AIRTABLE_BASE_ID}/${AIRTABLE_TABLE_NAME}`;
 
   const options = {
