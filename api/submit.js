@@ -1,18 +1,24 @@
-
 export default async function handler(req, res) {
+  res.setHeader('Access-Control-Allow-Origin', 'https://arvinstewart.com');
+  res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+
+  if (req.method === 'OPTIONS') {
+    return res.status(200).end();  // Respond OK to preflight OPTIONS requests
+  }
+
   if (req.method !== 'POST') {
-    return res.status(405).json({ message: 'Only POST allowed' });
+    return res.status(405).json({ message: 'Only POST requests allowed' });
   }
 
   const { fullName, email, jobtitle, issues, platforms, qa, opt } = req.body;
 
-  // Airtable settings — hardcoded based on what you shared
   const AIRTABLE_BASE_ID = 'appioblrblEFkppAF';
   const AIRTABLE_TABLE_NAME = 'Ad_Ops_Lead';
   const AIRTABLE_API_KEY = 'patk7uHom7IqgUgXE';
 
   const url = `https://api.airtable.com/v0/${AIRTABLE_BASE_ID}/${AIRTABLE_TABLE_NAME}`;
-  
+
   const options = {
     method: 'POST',
     headers: {
@@ -40,8 +46,8 @@ export default async function handler(req, res) {
       throw new Error(data.error?.message || 'Failed to save data to Airtable');
     }
 
-    res.status(200).json({ message: 'Success', data });
+    res.status(200).json({ status: 'success', data });
   } catch (error) {
-    res.status(500).json({ message: 'Error', error: error.toString() });
+    res.status(500).json({ status: 'error', message: error.toString() });
   }
 }
