@@ -1,15 +1,6 @@
-<!DOCTYPE html>
+    <!DOCTYPE html>
     <html lang="en">
     <head>
-    <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-0228GZTYVZ"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-0228GZTYVZ');
-</script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Arvin Stewart</title>
@@ -73,7 +64,21 @@
         </section>
     </main>
 
+    <!-- Contact Section -->
+    <section class="scroll-reveal">
+        <h2>Let's Connect</h2>
+        <p>I'm open to freelance consulting, workflow design, or full-time roles in Ad Tech and Media Operations. Let’s explore how we can work together.</p>
+        <a class="button-group" href="mailto:arvinlstewart@gmail.com">Send me a message</a>
+    </section>
+
     <!-- JavaScript -->
+    <div id="projectModal" class="modal">
+        <div class="modal-content">
+        <span class="close-button" id="closeModal">&times;</span>
+        <h3 id="modalTitle">Project Title</h3>
+        <p id="modalDescription">Full project description will go here.</p>
+        </div>
+    </div>
     
 <!-- Modal Structure -->
 <div id="projectModal" class="modal">
@@ -96,93 +101,63 @@
   <div class="modal-content">
     <span id="closeQuiz" class="close-button">&times;</span>
 
-
-<!-- Ad Ops Needs Form -->
-      
-    <form id="quizForm">
-    <div class="quiz-step active">
-      <h3>What’s your name?</h3>
-      <input type="text" name="fullName" id="fullName" required>
-  <button type="button" class="next-btn">Next</button>
-    </div>
-
-
-<div class="quiz-step">
-  <h3>What ad ops challenges are you facing?</h3>
-  <label><input type="checkbox" name="issues" value="Inconsistent naming"> Inconsistent naming</label><br>
-  <label><input type="checkbox" name="issues" value="QA errors"> QA errors</label><br>
-  <label><input type="checkbox" name="issues" value="Slow optimizations"> Slow optimizations</label><br>
-  <label><input type="checkbox" name="issues" value="Clunky platform workflows"> Clunky platform workflows</label><br>
-  <label><input type="checkbox" name="issues" value="Lack of automation"> Lack of automation</label><br>
-  <div class="quiz-nav">
-    <button type="button" class="prev-btn">Previous</button>
+<form id="quizForm" action="https://hooks.airtable.com/workflows/v1/genericWebhook/appioblrblEFkppAF/wflMwxhgeR4vuNigi/wtr5XjZAY5pgr4lkp" method="POST">
+  <div class="quiz-step active">
+    <h3>What ad ops challenges are you facing?</h3>
+    <label><input type="checkbox" name="issues" value="Inconsistent naming"> Inconsistent naming</label><br>
+    <label><input type="checkbox" name="issues" value="QA errors"> QA errors</label><br>
+    <label><input type="checkbox" name="issues" value="Slow optimizations"> Slow optimizations</label><br>
+    <label><input type="checkbox" name="issues" value="Clunky platform workflows"> Clunky platform workflows</label><br>
+    <label><input type="checkbox" name="issues" value="Lack of automation"> Lack of automation</label><br>
     <button type="button" class="next-btn">Next</button>
+  </div>
+
+  <div class="quiz-step">
+    <h3>How many ad platforms or DSPs are you actively using?</h3>
+    <select name="platforms" required>
+      <option value="1">1</option>
+      <option value="2-3">2–3</option>
+      <option value="4+">4 or more</option>
+    </select>
+    <button type="button" class="next-btn">Next</button>
+  </div>
+
+  <div class="quiz-step">
+    <h3>Do you have a formal QA or trafficking process?</h3>
+    <label><input type="radio" name="qa" value="Yes" required> Yes</label><br>
+    <label><input type="radio" name="qa" value="No" required> No</label><br>
+    <button type="button" class="next-btn">Next</button>
+  </div>
+
+  <div class="quiz-step">
+    <h3>How quickly are optimization insights acted on?</h3>
+    <label><input type="radio" name="opt" value="1 day" required> Within 1 day</label><br>
+    <label><input type="radio" name="opt" value="2–3 days" required> 2–3 days</label><br>
+    <label><input type="radio" name="opt" value="1 week" required> 1 week</label><br>
+    <label><input type="radio" name="opt" value="No clear process" required> No clear process</label><br>
+    <button type="button" class="next-btn">Next</button>
+  </div>
+
+  <div class="quiz-step">
+    <h3>Ready to solve these challenges?</h3>
+    <p>Share your name and email so I can follow up with a few tailored ideas:</p>
+
+    <label for="fullName">Your Name:</label><br>
+    <input type="text" id="fullName" name="fullName" required><br><br>
+
+    <label for="email">Your Email:</label><br>
+    <input type="email" id="email" name="email" required><br><br>
+
+    <label for="jobtitle">Job Title:</label><br>
+    <input type="text" id="jobtitle" name="jobtitle" required><br><br>
+
+    <button type="submit" class="submit-btn">Send My Responses</button>
+  </div>
+</form>
+
   </div>
 </div>
 
-        
-
-      <div class="quiz-step">
-        <h3>How many ad platforms or DSPs are you actively using?</h3>
-        <select name="platforms">
-          <option value="1">1</option>
-          <option value="2-3">2–3</option>
-          <option value="4+">4 or more</option>
-        </select>
-         <div class="quiz-nav">
-    <button type="button" class="prev-btn">Previous</button>
-    <button type="button" class="next-btn">Next</button>
-  </div>
-      </div>
-
-      <div class="quiz-step">
-        <h3>Do you have a formal QA or trafficking process?</h3>
-        <label><input type="radio" name="qa" value="Yes"> Yes</label><br>
-        <label><input type="radio" name="qa" value="No"> No</label><br>
-         <div class="quiz-nav">
-    <button type="button" class="prev-btn">Previous</button>
-    <button type="button" class="next-btn">Next</button>
-  </div>
-      </div>
-
-      <div class="quiz-step">
-        <h3>How quickly are optimization insights acted on?</h3>
-        <label><input type="radio" name="opt" value="1 day"> Within 1 day</label><br>
-        <label><input type="radio" name="opt" value="2–3 days"> 2–3 days</label><br>
-        <label><input type="radio" name="opt" value="1 week"> 1 week</label><br>
-        <label><input type="radio" name="opt" value="No clear process"> No clear process</label><br>
-         <div class="quiz-nav">
-    <button type="button" class="prev-btn">Previous</button>
-    <button type="button" class="next-btn">Next</button>
-  </div>
-      </div>
-
-      <div class="quiz-step">
-  <h3>Ready to solve these challenges?</h3>
-  <p>Thanks, <span id="displayName"></span>! Drop your email and job title below so I can follow up with a few tailored ideas:</p>
-
-      
-        <label for="email">Your Email:</label><br>
-        <input type="email" id="email" name="email" required><br><br>
-
-        <label for="jobtitle">Job Title:</label><br>
-        <input type="text" id="jobtitle" name="jobtitle" required><br><br>
-      
-        <button type="submit" class="submit-btn">Send My Responses</button>
-      </div>
-      
-    </form>
-  </div>
-</div>
-
-
-
-<!-- Contact Section -->
-    <section class="scroll-reveal">
-        <h2>Let's Connect</h2>
-        <p>I'm open to full-time roles in Ad Tech and Media Operations. Let’s explore if I'm the right fit for your team.</p>
-        <a class="button-group" href="mailto:arvinlstewart@gmail.com">Send me a message</a>
-    </section>
 
 <script src="js/scripts.js"></script>
 </body>
