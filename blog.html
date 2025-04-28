@@ -5,145 +5,87 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Blog | Arvin Stewart</title>
 
-  <!-- Link to existing site CSS -->
   <link rel="stylesheet" href="css/styles.css">
-<link rel="stylesheet" href="css/blog.css">
-
-
-  <!-- Google Fonts already loaded in main site -->
+  <link rel="stylesheet" href="css/blog.css">
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
 
-  <!-- Favicon -->
   <link rel="icon" href="images/favicon.png" type="image/x-icon">
 </head>
 <body>
 
-<!-- Sticky Header with Logo and Leaderboard Ad -->
+<!-- Sticky Header -->
 <div class="sticky-header">
   <div class="logo">
-    <img src="images/portfolio.png" alt="Arvin Stewart Logo" class="profile-img" id="siteLogo">
+    <img src="images/portfolio.png" alt="Arvin Stewart" class="profile-img" id="siteLogo">
   </div>
   <div class="ad-leaderboard">
     <img src="https://via.placeholder.com/728x90?text=728x90+Leaderboard+Ad" alt="Leaderboard Ad">
   </div>
 </div>
 
-<!-- Hero Section (Carousel) -->
-<section class="hero-section scroll-reveal">
-  <h2>Featured Stories</h2>
-  <div class="carousel">
-    <div class="carousel-track">
-      <div class="carousel-item active">Featured Story 1</div>
-      <div class="carousel-item">Featured Story 2</div>
-      <div class="carousel-item">Featured Story 3</div>
-    </div>
-    <div class="carousel-buttons">
-      <button class="prev">&#10094;</button>
-      <button class="next">&#10095;</button>
-    </div>
-  </div>
-  <div class="carousel-dots"></div>
-</section>
-
-<!-- Main Blog Content -->
+<!-- Main Content -->
 <main class="container main-content scroll-reveal">
-  <div class="content-grid">
-    <!-- Main Articles -->
-    <section class="articles">
-      <h2>News</h2>
-      <div class="card-grid">
-        <div class="card">News Article 1</div>
-        <div class="card">News Article 2</div>
-        <div class="card">News Article 3</div>
-      </div>
 
-      <h2>Features</h2>
-      <div class="card-grid">
-        <div class="card">Feature 1</div>
-        <div class="card">Feature 2</div>
-        <div class="card">Feature 3</div>
-      </div>
+  <!-- Top Story Feature Area -->
+  <section class="top-story">
+    <img src="https://via.placeholder.com/800x400?text=Top+Story+Image" alt="Top Story" class="top-story-img">
+    <h1 class="top-story-title">Breaking Through Excel Automation: New Methods for 2025</h1>
+    <p class="top-story-excerpt">Learn how new Excel techniques are reshaping how businesses automate workflows and reporting processes, driving more efficiency at scale...</p>
+  </section>
 
-      <h2>Opinions</h2>
-      <div class="card-grid">
-        <div class="card">Opinion 1</div>
-        <div class="card">Opinion 2</div>
-        <div class="card">Opinion 3</div>
-      </div>
-    </section>
+  <!-- 2-Column News Section -->
+  <section class="news-grid">
+    <article class="news-item">
+      <h2><a href="#">How to Build Scalable Ad Ops Systems</a></h2>
+      <p>Discover proven frameworks for scaling your campaign management processes without scaling your mistakes...</p>
+    </article>
 
-    <!-- Sidebar -->
-    <aside class="sidebar">
-      <div class="ad-rectangle">
-        <img src="images/blog/300x250ad.png" alt="Sidebar Ad">
-      </div>
-    
-      <!-- Trending Articles Section -->
-      <div class="sidebar-section trending-articles">
-        <h3>Trending Now</h3>
-        <ul>
-          <li>
-            <a href="#">
-              <img src="https://via.placeholder.com/60" alt="Trending 1">
-              <span>How Automation is Changing Ad Ops</span>
-            </a>
-          </li>
-          <li>
-            <a href="#">
-              <img src="https://via.placeholder.com/60" alt="Trending 2">
-              <span>Top 5 Excel Tricks for Marketers</span>
-            </a>
-          </li>
-          <li>
-            <a href="#">
-              <img src="https://via.placeholder.com/60" alt="Trending 3">
-              <span>Optimizing CTV Campaigns in 2025</span>
-            </a>
-          </li>
-          <li>
-            <a href="#">
-              <img src="https://via.placeholder.com/60" alt="Trending 4">
-              <span>Workflow Tools Every Strategist Needs</span>
-            </a>
-          </li>
-        </ul>
-      </div>
-    
-      <!-- Editor's Picks Section -->
-      <div class="sidebar-section editors-picks">
-        <h3>Editor's Picks</h3>
-        <ul>
-          <li>
-            <a href="#">
-              <img src="https://via.placeholder.com/60" alt="Editor's Pick 1">
-              <span>The Future of Programmatic Buying</span>
-            </a>
-          </li>
-          <li>
-            <a href="#">
-              <img src="https://via.placeholder.com/60" alt="Editor's Pick 2">
-              <span>Building Scalable Ad Ops Workflows</span>
-            </a>
-          </li>
-          <li>
-            <a href="#">
-              <img src="https://via.placeholder.com/60" alt="Editor's Pick 3">
-              <span>Essential Reporting Metrics for 2025</span>
-            </a>
-          </li>
-          <li>
-            <a href="#">
-              <img src="https://via.placeholder.com/60" alt="Editor's Pick 4">
-              <span>Excel Automation: Myths vs Reality</span>
-            </a>
-          </li>
-        </ul>
-      </div>
-    </aside>    
-  </div>
+    <article class="news-item">
+      <h2><a href="#">The Rise of First-Party Data Strategies</a></h2>
+      <p>With third-party cookies on the decline, B2B and B2C companies are rapidly shifting toward first-party data dominance...</p>
+    </article>
+
+    <article class="news-item">
+      <h2><a href="#">From Static Reports to Dynamic Dashboards</a></h2>
+      <p>Moving from static spreadsheets to interactive reporting dashboards transforms decision-making speed across organizations...</p>
+    </article>
+
+    <article class="news-item">
+      <h2><a href="#">Creative Automation vs Personalization: Striking a Balance</a></h2>
+      <p>Explore strategies for maximizing efficiency without losing the human touch in your digital campaigns...</p>
+    </article>
+  </section>
+
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <div class="ad-rectangle">
+      <img src="https://via.placeholder.com/300x250?text=300x250+Sidebar+Ad" alt="Sidebar Ad">
+    </div>
+
+    <div class="sidebar-section trending-articles">
+      <h3>Trending Now</h3>
+      <ul>
+        <li><a href="#">Top 5 Excel Shortcuts You Didn't Know</a></li>
+        <li><a href="#">AI in Programmatic Buying</a></li>
+        <li><a href="#">Workflow Automation Myths</a></li>
+        <li><a href="#">Secrets to Better CTRs</a></li>
+      </ul>
+    </div>
+
+    <div class="sidebar-section editors-picks">
+      <h3>Editor's Picks</h3>
+      <ul>
+        <li><a href="#">Unlocking Excel for Real-Time QA</a></li>
+        <li><a href="#">Why Ad Ops Will Dominate 2025</a></li>
+        <li><a href="#">How to Build Modular Dashboards</a></li>
+        <li><a href="#">Campaign Automation Best Practices</a></li>
+      </ul>
+    </div>
+  </aside>
+
 </main>
 
-<!-- Footer Section with Bottom Ad -->
+<!-- Footer Section -->
 <footer class="site-footer">
   <div class="container">
     <div class="ad-footer">
@@ -152,10 +94,6 @@
   </div>
 </footer>
 
-<!-- Existing dark mode toggle button -->
-<button id="darkModeToggle" aria-label="Toggle dark mode">🌙</button>
-
-<!-- Link to carousel and main JavaScript -->
 <script src="js/scripts.js"></script>
 
 </body>
