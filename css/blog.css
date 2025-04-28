@@ -97,7 +97,7 @@
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   }
   
-  /* Sidebar Ads */
+  /* Sidebar */
   .sidebar {
     flex: 1;
     position: sticky;
@@ -110,34 +110,8 @@
     height: auto;
   }
   
-  /* Footer */
-  .site-footer {
-    background: #eeeeee;
-    padding: 30px 20px;
-    margin-top: 50px;
-    text-align: center;
-  }
-  
-  .ad-footer img {
-    max-width: 728px;
-    width: 100%;
-    height: auto;
-  }
-  
-  /* Scroll Reveal Animation */
-  .scroll-reveal {
-    opacity: 0;
-    transform: translateY(30px);
-    transition: opacity 0.6s ease, transform 0.6s ease;
-  }
-  
-  .scroll-reveal.reveal-visible {
-    opacity: 1;
-    transform: translateY(0);
-  }
-  
-  /* Sidebar trending articles */
-.sidebar-section {
+  /* Sidebar Sections */
+  .sidebar-section {
     margin-top: 40px;
     padding: 20px;
     background: #f9f9f9;
@@ -150,27 +124,8 @@
     font-weight: bold;
   }
   
-  .sidebar-section ul {
-    list-style: none;
-  }
-  
-  .sidebar-section ul li {
-    margin-bottom: 10px;
-  }
-  
-  .sidebar-section ul li a {
-    text-decoration: none;
-    color: #333;
-    font-size: 16px;
-    transition: color 0.3s;
-  }
-  
-  .sidebar-section ul li a:hover {
-    color: #007BFF; /* Accent color on hover */
-  }
-  
   /* Sidebar with Thumbnails */
-.sidebar-section ul {
+  .sidebar-section ul {
     list-style: none;
     padding: 0;
   }
@@ -199,10 +154,36 @@
   }
   
   .sidebar-section ul li a:hover span {
-    color: #007BFF; /* Accent color on text hover */
+    color: #007BFF;
   }
   
   .sidebar-section ul li a span {
     display: inline-block;
+  }
+  
+  /* Footer */
+  .site-footer {
+    background: #eeeeee;
+    padding: 30px 20px;
+    margin-top: 50px;
+    text-align: center;
+  }
+  
+  .ad-footer img {
+    max-width: 728px;
+    width: 100%;
+    height: auto;
+  }
+  
+  /* Scroll Reveal Animation */
+  .scroll-reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  
+  .scroll-reveal.reveal-visible {
+    opacity: 1;
+    transform: translateY(0);
   }
   
