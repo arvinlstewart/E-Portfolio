@@ -333,7 +333,7 @@ if (searchInput) {
   
 }
 
-<script>
+
 const aboutContainer = document.getElementById('aboutContainer');
 const toggleAbout = document.getElementById('toggleAbout');
 
@@ -348,4 +348,4 @@ if (aboutContainer && toggleAbout) {
     }
   });
 }
-</script>
+
