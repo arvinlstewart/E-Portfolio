@@ -187,3 +187,26 @@
     transform: translateY(0);
   }
   
+  /* Mobile Responsive Layout Sidebar*/
+@media (max-width: 768px) {
+    .content-grid {
+      flex-direction: column;
+    }
+  
+    .articles, .sidebar {
+      flex: 1 1 100%;
+    }
+  
+    .sidebar {
+      position: static; /* Remove sticky on mobile */
+      top: auto;
+      margin-top: 30px;
+    }
+  
+    .ad-leaderboard img,
+    .ad-footer img {
+      width: 100%;
+      height: auto;
+    }
+  }
+  
