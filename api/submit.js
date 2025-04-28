@@ -1,10 +1,9 @@
 export default async function handler(req, res) {
   // Enable CORS
-  res.setHeader('Access-Control-Allow-Origin', '*'); // ⬅️ Use your exact domain
+  res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
 
-  // Handle CORS preflight
   if (req.method === 'OPTIONS') {
     return res.status(200).end();
   }
@@ -13,47 +12,54 @@ export default async function handler(req, res) {
     return res.status(405).json({ message: 'Only POST method allowed' });
   }
 
+  const AIRTABLE_API_KEY = process.env.AIRTABLE_API_KEY;
   const AIRTABLE_BASE_ID = process.env.AIRTABLE_BASE_ID;
   const AIRTABLE_TABLE_NAME = process.env.AIRTABLE_TABLE_NAME;
-  const AIRTABLE_API_KEY = process.env.AIRTABLE_API_KEY;
 
   const { fullName, email, jobtitle, issues, platforms, qa, opt } = req.body;
-  
+
+  if (!fullName || !email || !jobtitle) {
+    return res.status(400).json({ message: "Missing required fields." });
+  }
+
   const url = `https://api.airtable.com/v0/${AIRTABLE_BASE_ID}/${AIRTABLE_TABLE_NAME}`;
 
-  const options = {
-    method: 'POST',
-    headers: {
-      Authorization: `Bearer ${AIRTABLE_API_KEY}`,
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({
-      fields: {
-        fullName,
-        email,
-        jobtitle,
-        issues,
-        platforms,
-        qa,
-        opt,
-      },
-    }),
-  };
-
   try {
-    const airtableRes = await fetch(url, options);
-    const data = await airtableRes.json();
+    const airtableResponse = await fetch(url, {
+      method: 'POST',
+      headers: {
+        Authorization: `Bearer ${AIRTABLE_API_KEY}`,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        records: [
+          {
+            fields: {
+              fullName: fullName,
+              email: email,
+              jobtitle: jobtitle,
+              issues: issues || "",
+              platforms: platforms ? JSON.parse(platforms) : [],
+              qa: qa || "",
+              opt: opt || ""
+              // timestamp field is automatically handled by Airtable
+            }
+          }
+        ]
+      })
+    });
 
-    console.log("✅ Airtable Response:", data);
+    const result = await airtableResponse.json();
 
-    if (!airtableRes.ok) {
-      console.error("❌ Airtable Error Details:", data);
-      throw new Error(data.error?.message || 'Failed to save data to Airtable');
+    if (airtableResponse.ok) {
+      return res.status(200).json({ message: "Success", data: result });
+    } else {
+      console.error("Airtable error:", result);
+      return res.status(airtableResponse.status).json({ message: result.error.message, error: result.error });
     }
 
-    res.status(200).json({ message: 'Success', data });
   } catch (error) {
-    console.error("❌ Server Error:", error);
-    res.status(500).json({ message: 'Error', error: error.toString() });
+    console.error('Server error:', error);
+    return res.status(500).json({ message: 'Internal Server Error', error: error.message });
   }
 }
