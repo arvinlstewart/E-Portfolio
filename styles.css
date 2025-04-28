@@ -1,13 +1,18 @@
-/* General Page Styles */
-body {
-  font-family: Arial, sans-serif;
-  background: #fff;
-  color: #000;
-  margin: 0;
-  padding: 0;
+* {
+  box-sizing: border-box;
 }
 
-/* Sections and Headings */
+
+/* Base Styles */
+body {
+  font-family: 'Montserrat', sans-serif;
+  background: #f9f9f9;
+  color: #333;
+  margin: 0;
+  padding: 0;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
 header, section {
   padding: 2rem;
   text-align: center;
@@ -16,53 +21,36 @@ header, section {
 h1 {
   font-size: 2.5rem;
   margin-bottom: 0.5rem;
+  color: #003366;
 }
 
 h2 {
   font-size: 1.75rem;
   margin-top: 2rem;
+  color: #005599;
 }
 
-/* Button Links */
+a {
+  text-decoration: none;
+}
+
+/* Button Group Styles */
 .button-group {
   margin-top: 1rem;
 }
 
 .button-group a {
-  display: inline-block;
-  margin: 0 0.5rem;
+  background-color: #003366;
+  color: white;
+  border: none;
   padding: 0.5rem 1rem;
-  text-decoration: none;
-  border: 1px solid #000;
+  margin: 0 0.5rem;
   border-radius: 5px;
-  transition: background 0.3s;
+  transition: background 0.3s ease;
 }
 
 .button-group a:hover {
-  background: #000;
-  color: #fff;
-}
-
-/* Portfolio Card Layout */
-.card-grid {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 1rem;
-  padding: 1rem;
-}
-
-.card {
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  padding: 1rem;
-  max-width: 300px;
-  text-align: left;
-}
-
-.card h3 {
-  font-size: 1.25rem;
-  margin-bottom: 0.5rem;
+  background-color: #005599;
 }
 
 /* Profile Image */
@@ -75,7 +63,35 @@ h2 {
   margin-bottom: 1rem;
 }
 
-/* Project Thumbnails */
+/* Card Layout */
+.card-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+  padding: 1rem;
+}
+
+.card {
+  border: 2px solid #ddd;
+  background: white;
+  border-radius: 8px;
+  padding: 1rem;
+  max-width: 300px;
+  cursor: pointer;
+  transition: transform 0.3s ease, border-color 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  border-color: #005599;
+}
+
+.card.active {
+  border-color: #003366;
+  background-color: #eef6ff;
+}
+
 .project-img {
   width: 100%;
   height: auto;
@@ -83,4 +99,300 @@ h2 {
   object-fit: cover;
   border-radius: 6px;
   margin-bottom: 0.5rem;
+}
+
+/* Card Hover Overlay */
+.card-hover {
+  position: relative;
+  overflow: hidden;
+}
+
+.card-hover-content {
+  position: absolute;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.85);
+  color: white;
+  width: 100%;
+  padding: 1rem;
+  transform: translateY(100%);
+  transition: transform 0.3s ease-in-out;
+  box-sizing: border-box;
+}
+
+.card-hover:hover .card-hover-content {
+  transform: translateY(0);
+}
+
+/* Dark Mode */
+body.dark-mode {
+  background-color: #121212;
+  color: #f0f0f0;
+}
+
+body.dark-mode .card {
+  background-color: #1e1e1e;
+  border-color: #444;
+}
+
+body.dark-mode .button-group a {
+  background-color: #444;
+  color: #fff;
+}
+
+body.dark-mode h1,
+body.dark-mode h2 {
+  color: #99ccff;
+}
+
+/* Dark Mode Toggle */
+#darkModeToggle {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  z-index: 1000;
+}
+
+/* Scroll Reveal */
+.scroll-reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.6s ease-out;
+}
+
+.scroll-reveal.reveal-visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* Hero Section */
+.hero-section {
+  width: 100%;
+  overflow: hidden;
+}
+
+.hero-section picture,
+.hero-gif {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+}
+
+/* Modal Styles */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 999;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+.modal-content {
+  background-color: #fff;
+  margin: 5% auto;
+  padding: 2rem;
+  border-radius: 8px;
+  width: 90%;
+  max-width: 700px;
+  position: relative;
+  animation: slideUp 0.3s ease-out;
+  color: #333;
+}
+
+/* Dark Mode Adjustments */
+body.dark-mode .modal-content {
+  background-color: #1e1e1e;
+  color: #f0f0f0;
+}
+
+body.dark-mode .close-button {
+  color: #f0f0f0;
+}
+
+body.dark-mode .modal-nav button {
+  background-color: #444;
+  color: #fff;
+}
+
+body.dark-mode .modal-nav button:hover {
+  background-color: #666;
+}
+
+/* Modal Slide Animation */
+@keyframes slideUp {
+  from {
+    transform: translateY(40px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+
+.modal-image {
+  width: 100%;
+  max-height: 250px;
+  object-fit: cover;
+  border-radius: 6px;
+  margin-bottom: 1rem;
+}
+
+.close-button {
+  color: #aaa;
+  position: absolute;
+  top: 1rem;
+  right: 1.5rem;
+  font-size: 1.5rem;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.close-button:hover {
+  color: #333;
+}
+
+/* Modal Navigation Buttons */
+.modal-nav {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 2rem;
+}
+
+.modal-nav button {
+  background-color: #003366;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.modal-nav button:hover {
+  background-color: #005599;
+}
+
+.sticky-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background-color: #f9f9f9;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  border-bottom: 1px solid #ddd;
+  flex-wrap: wrap;
+
+  /* NEW FIXES */
+  width: 100vw;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+
+
+/* Equal spacing using flex-basis */
+.sticky-header .logo,
+.sticky-header header,
+.sticky-header #darkModeToggle {
+  flex: 1 1 0;
+  text-align: center;
+}
+
+/* Logo stays aligned left */
+.sticky-header .logo {
+  text-align: left;
+}
+
+/* Toggle stays aligned right */
+.sticky-header #darkModeToggle {
+  text-align: right;
+  font-size: 1.5rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  position: relative;
+  top: 0;
+}
+
+/* Header links */
+.sticky-header header .button-group {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+
+body.dark-mode .sticky-header {
+  background-color: #1e1e1e;
+  border-bottom: 1px solid #333;
+}
+
+/* Modal Styles */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 999;
+  left: 0; top: 0;
+  width: 100%; height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  overflow: auto;
+}
+
+.modal-content {
+  background: #fff;
+  margin: 5% auto;
+  padding: 2rem;
+  width: 90%;
+  max-width: 600px;
+  border-radius: 10px;
+  position: relative;
+  animation: slideUp 0.4s ease;
+}
+
+.close-button {
+  position: absolute;
+  top: 1rem;
+  right: 1.5rem;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.quiz-step {
+  display: none;
+}
+
+.quiz-step.active {
+  display: block;
+}
+
+.next-btn, .submit-btn, .cta-button {
+  margin-top: 1rem;
+  padding: 0.5rem 1.25rem;
+  background-color: #003366;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.next-btn:hover, .submit-btn:hover, .cta-button:hover {
+  background-color: #005599;
+}
+
+/* Animation */
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(40px); }
+  to { opacity: 1; transform: translateY(0); }
 }
