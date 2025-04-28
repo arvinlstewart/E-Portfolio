@@ -128,15 +128,6 @@ if (quizForm) {
     try {
      const AIRTABLE_WEBHOOK_URL = "https://hooks.airtable.com/workflows/v1/genericWebhook/appioblrblEFkppAF/wflMwxhgeR4vuNigi/wtr5XjZAY5pgr4lkp"; // <-- YOUR real webhook URL here
 
-try {
-  const response = await fetch(AIRTABLE_WEBHOOK_URL, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json"
-    },
-    body: JSON.stringify(data)
-  });
-
   if (response.ok) {
     alert("Thanks! Your response was recorded.");
     quizForm.reset();
@@ -147,9 +138,6 @@ try {
   console.error('Error:', error);
   alert("Submission failed. Please try again later.");
 }
-
-
-      const result = await response.json();
 
       if (result.message === "Success") {
         alert("Thanks! Your response was recorded.");
