@@ -195,11 +195,14 @@
   
     
 
-      .sidebar {
+    .sidebar {
+        flex: 1 1 100%;
+        position: static;
+        top: auto;
+        margin-top: 30px;
         display: flex;
         flex-direction: column;
         align-items: center;
-        margin-top: 30px;
       }
       
       .ad-rectangle {
@@ -216,11 +219,7 @@
       flex: 1 1 100%;
     }
   
-    .sidebar {
-      position: static; /* Remove sticky on mobile */
-      top: auto;
-      margin-top: 30px;
-    }
+
   
     .ad-leaderboard img,
     .ad-footer img {
@@ -235,10 +234,7 @@
     margin: 20px 0;
   }
   
-  .ad-leaderboard img {
-    max-width: 100%;
-    height: auto;
-  }
+
 
   /* Responsive Carousel Text */
 @media (max-width: 768px) {
