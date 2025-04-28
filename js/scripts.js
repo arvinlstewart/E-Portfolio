@@ -94,10 +94,45 @@ if (modal && closeModal && modalTitle && modalDescription) {
 
 
 
-    2: { title: "Dynamic Name Generator for Creative Naming", description: "<p>Full description for project 2.</p>" },
+    2: { title: "Dynamic Name Generator for Creative Naming", description:
+      `
+      <p>A smart Excel-based tool that auto-generates structured naming conventions based on campaign type, platform, and placement logic. Built using nested formulas, character limits, and dropdown menus, the Name Generator ensures consistency across ad platforms.</p>
+      <p><strong>Key Features:</strong></p>
+      <ul>
+        <li>Dynamic dropdowns and logic-driven name construction</li>
+        <li>Character limit enforcement for platform compliance</li>
+        <li>Real-time error detection and formatting validation</li>
+      </ul>
+      <p><strong>Impact:</strong></p>
+      <ul>
+        <li>Reduced setup time for new creatives</li>
+        <li>Ensured naming compliance across systems</li>
+        <li>Scaled efficiently for large campaign launches</li>
+        <li>Adopted widely as a shared QA tool for new hires</li>
+      </ul>
+    `  
+     
+    },
     
     
-    3: { title: "Optimization Workbook with Performance Rules", description: "<p>Full description for project 3.</p>" }
+    3: { title: "Optimization Workbook with Performance Rules", description: 
+      
+    `
+      <p>An Excel-based optimization system that flags underperforming campaigns based on metrics like CTR, CPC, and CVR. It uses conditional formatting and logic-based rules to guide tactical recommendations.</p>
+      <p><strong>Core Capabilities:</strong></p>
+      <ul>
+        <li>Performance thresholds for campaign health tracking</li>
+        <li>Color-coded flags for underperforming placements</li>
+        <li>Suggested actions (pause, bid up, reallocate budget)</li>
+      </ul>
+      <p><strong>Impact:</strong></p>
+      <ul>
+        <li>Streamlined optimization cycles</li>
+        <li>Empowered non-technical users to take action</li>
+        <li>Reduced reliance on manual reports and ad hoc analysis</li>
+      </ul>
+      `  
+     }
   };
 
   document.querySelectorAll('.card').forEach((card, index) => {
