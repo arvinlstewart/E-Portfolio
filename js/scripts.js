@@ -126,13 +126,28 @@ if (quizForm) {
     //console.log("Submitting data:", data); // (optional for debugging)
 
     try {
-      const response = await fetch("https://arvin-airtable-handler-zo36.vercel.app/api/submit", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify(data)
-      });
+     const AIRTABLE_WEBHOOK_URL = "https://hooks.airtable.com/workflows/v1/genericWebhook/appXXXXXXXXXXXXXX"; // <-- YOUR real webhook URL here
+
+try {
+  const response = await fetch(AIRTABLE_WEBHOOK_URL, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(data)
+  });
+
+  if (response.ok) {
+    alert("Thanks! Your response was recorded.");
+    quizForm.reset();
+  } else {
+    alert("Something went wrong. Please try again.");
+  }
+} catch (error) {
+  console.error('Error:', error);
+  alert("Submission failed. Please try again later.");
+}
+
 
       const result = await response.json();
 
