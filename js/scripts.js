@@ -1,10 +1,36 @@
 const articlesIndex = [
-  { title: "Unlocking First-Party Data for AdOps Growth", url: "articles/unlocking-first-party-data.html" },
-  { title: "New Standards in Campaign QA Workflows", url: "articles/campaign-qa-workflows.html" },
-  { title: "What the Future of Ad Ops Management Looks Like", url: "articles/future-of-adops.html" },
-  { title: "Top Excel Shortcuts You Didn't Know", url: "articles/excel-shortcuts.html" },
-  { title: "Breaking Through Excel Automation", url: "articles/excel-automation-2025.html" }
+  {
+    title: "Unlocking First-Party Data for AdOps Growth",
+    url: "articles/unlocking-first-party-data.html",
+    excerpt: "Explore how first-party data strategies are driving higher performance and deeper audience insights in 2025...",
+    keywords: ["first-party data", "privacy", "segmentation", "B2B", "audience targeting"]
+  },
+  {
+    title: "New Standards in Campaign QA Workflows",
+    url: "articles/campaign-qa-workflows.html",
+    excerpt: "Discover the frameworks and automation tools reshaping the QA processes for digital advertising campaigns...",
+    keywords: ["QA", "workflow", "campaign setup", "automation", "ad ops"]
+  },
+  {
+    title: "What the Future of Ad Ops Management Looks Like",
+    url: "articles/future-of-adops.html",
+    excerpt: "A deep dive into the evolving role of Ad Ops leaders in an era of machine learning, automation, and analytics...",
+    keywords: ["ad ops", "future trends", "programmatic advertising", "automation", "leadership"]
+  },
+  {
+    title: "Top Excel Shortcuts You Didn't Know",
+    url: "articles/excel-shortcuts.html",
+    excerpt: "Master the hidden Excel shortcuts that can shave hours off your weekly ad ops reporting and optimizations...",
+    keywords: ["Excel", "shortcuts", "productivity", "ad ops reporting"]
+  },
+  {
+    title: "Breaking Through Excel Automation",
+    url: "articles/excel-automation-2025.html",
+    excerpt: "Learn how new Excel formulas and logical workflows are streamlining campaign optimization and data handling...",
+    keywords: ["Excel", "automation", "campaign optimization", "workflow design", "ad ops"]
+  }
 ];
+
 
 // ===== Highlight clicked card =====
 const cards = document.querySelectorAll('.card');
