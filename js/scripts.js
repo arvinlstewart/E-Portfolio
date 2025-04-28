@@ -75,21 +75,27 @@ const modalDescription = document.getElementById('modalDescription');
 
 if (modal && closeModal && modalTitle && modalDescription) {
   const cardData = {
-    1: { title: "Tag Sheet Sync & Custom Click Macro Integration", description:  <p>This tool was designed to bridge the gap between third-party vendor tag sheets and internal campaign operations by using Power Query and structured lookup logic. It enables seamless syncing of tag sheet data with live campaign setups, dynamically matching creatives to their proper placements.</p>
-      <p>What began as a tagging solution evolved into a comprehensive QA and compliance system with the ability to:</p>
-      <ul>
-        <li>Auto-inject custom click macros based on ad type and destination</li>
-        <li>Flag mismatches in naming conventions</li>
-        <li>Detect and notify when client-provided ad copy or creative dimensions are out of spec</li>
-      </ul>
-      <p><strong>Impact:</strong></p>
-      <ul>
+    1: { title: "Tag Sheet Sync & Custom Click Macro Integration", description:
+      
+      "
+       <p>This tool was designed to bridge the gap between third-party vendor tag sheets and internal campaign operations by using Power Query and structured lookup logic. It enables seamless syncing of tag sheet data with live campaign setups, dynamically matching creatives to their proper placements.</p>
+      <><p>What began as a tagging solution evolved into a comprehensive QA and compliance system with the ability to:</p><ul>
+      <li>Auto-inject custom click macros based on ad type and destination</li>
+      <li>Flag mismatches in naming conventions</li>
+      <li>Detect and notify when client-provided ad copy or creative dimensions are out of spec</li>
+    </ul><p><strong>Impact:</strong></p><ul>
         <li>Reduced manual errors in tag handling</li>
         <li>Enforced naming consistency</li>
         <li>Automated QA alerts to prevent launch delays</li>
         <li>Improved collaboration between trafficking and creative teams</li>
-      </ul> },
+      </ul></>
+      " },
+
+
+
     2: { title: "Dynamic Name Generator for Creative Naming", description: "<p>Full description for project 2.</p>" },
+    
+    
     3: { title: "Optimization Workbook with Performance Rules", description: "<p>Full description for project 3.</p>" }
   };
 
