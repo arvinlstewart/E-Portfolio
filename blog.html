@@ -1,118 +1,97 @@
-<!-- Blog Section -->
-<section class="scroll-reveal blog-section" id="blog">
-  <h2 class="section-title">Insights & Updates</h2>
-  <div class="blog-grid" id="blogContainer">
-    <!-- Blog cards will be injected here dynamically -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Blog | Arvin Stewart</title>
+
+  <!-- Link to existing site CSS -->
+  <link rel="stylesheet" href="css/styles.css">
+
+  <!-- Google Fonts already loaded in main site -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+
+  <!-- Favicon -->
+  <link rel="icon" href="images/favicon.png" type="image/x-icon">
+</head>
+<body>
+
+<!-- Sticky Header with Logo and Leaderboard Ad -->
+<div class="sticky-header">
+  <div class="logo">
+    <img src="images/portfolio.png" alt="Arvin Stewart Logo" class="profile-img" id="siteLogo">
+  </div>
+  <div class="ad-leaderboard">
+    <img src="https://via.placeholder.com/728x90?text=728x90+Leaderboard+Ad" alt="Leaderboard Ad">
+  </div>
+</div>
+
+<!-- Hero Section (Carousel) -->
+<section class="hero-section scroll-reveal">
+  <h2>Featured Stories</h2>
+  <div class="carousel">
+    <div class="carousel-track">
+      <div class="carousel-item active">Featured Story 1</div>
+      <div class="carousel-item">Featured Story 2</div>
+      <div class="carousel-item">Featured Story 3</div>
+    </div>
+    <div class="carousel-buttons">
+      <button class="prev">&#10094;</button>
+      <button class="next">&#10095;</button>
+    </div>
   </div>
 </section>
 
-<script>
-const blogData = [
-  {
-    title: "Programmatic Trends to Watch in 2025",
-    excerpt: "Explore key developments shaping the future of ad ops and how you can stay ahead in a rapidly evolving landscape.",
-    image: "images/blog1.jpg",
-    link: "#"
-  },
-  {
-    title: "Optimizing Naming Conventions with Excel Automation",
-    excerpt: "A deep dive into automating naming structures using formula-based logic to enhance campaign clarity and QA.",
-    image: "images/blog2.jpg",
-    link: "#"
-  },
-  {
-    title: "From Manual to Masterful: Scaling Ops with Systems",
-    excerpt: "Lessons learned while transforming workflows through streamlined tools and system-driven thinking.",
-    image: "images/blog3.jpg",
-    link: "#"
-  }
-];
+<!-- Main Blog Content -->
+<main class="container main-content scroll-reveal">
+  <div class="content-grid">
+    <!-- Main Articles -->
+    <section class="articles">
+      <h2>News</h2>
+      <div class="card-grid">
+        <div class="card">News Article 1</div>
+        <div class="card">News Article 2</div>
+        <div class="card">News Article 3</div>
+      </div>
 
-const blogContainer = document.getElementById("blogContainer");
+      <h2>Features</h2>
+      <div class="card-grid">
+        <div class="card">Feature 1</div>
+        <div class="card">Feature 2</div>
+        <div class="card">Feature 3</div>
+      </div>
 
-blogData.forEach(post => {
-  const card = document.createElement("article");
-  card.className = "blog-card";
-  card.innerHTML = `
-    <img src="${post.image}" alt="Blog Cover" class="blog-img">
-    <div class="blog-content">
-      <h3 class="blog-title">${post.title}</h3>
-      <p class="blog-excerpt">${post.excerpt}</p>
-      <a href="${post.link}" class="read-more">Read More →</a>
+      <h2>Opinions</h2>
+      <div class="card-grid">
+        <div class="card">Opinion 1</div>
+        <div class="card">Opinion 2</div>
+        <div class="card">Opinion 3</div>
+      </div>
+    </section>
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="ad-rectangle">
+        <img src="https://via.placeholder.com/300x250?text=300x250+Sidebar+Ad" alt="Sidebar Ad">
+      </div>
+    </aside>
+  </div>
+</main>
+
+<!-- Footer Section with Bottom Ad -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="ad-footer">
+      <img src="https://via.placeholder.com/728x90?text=Bottom+Ad+Space" alt="Footer Ad">
     </div>
-  `;
-  blogContainer.appendChild(card);
-});
-</script>
+  </div>
+</footer>
 
-<!-- CSS styles (can go in your stylesheet) -->
-<style>
-.blog-section {
-  padding: 4rem 2rem;
-  background-color: #f9f9f9;
-  color: #333;
-  font-family: 'Montserrat', sans-serif;
-}
+<!-- Existing dark mode toggle button -->
+<button id="darkModeToggle" aria-label="Toggle dark mode">🌙</button>
 
-.section-title {
-  font-size: 2rem;
-  font-weight: 700;
-  text-align: center;
-  margin-bottom: 2rem;
-}
+<!-- Link to carousel and main JavaScript -->
+<script src="js/scripts.js"></script>
 
-.blog-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 2rem;
-}
-
-.blog-card {
-  background: white;
-  border-radius: 1rem;
-  overflow: hidden;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
-  display: flex;
-  flex-direction: column;
-  transition: transform 0.3s ease;
-}
-
-.blog-card:hover {
-  transform: translateY(-5px);
-}
-
-.blog-img {
-  width: 100%;
-  height: auto;
-  display: block;
-}
-
-.blog-content {
-  padding: 1.5rem;
-}
-
-.blog-title {
-  font-size: 1.25rem;
-  font-weight: 700;
-  margin-bottom: 0.5rem;
-}
-
-.blog-excerpt {
-  font-size: 1rem;
-  color: #666;
-  line-height: 1.5;
-}
-
-.read-more {
-  margin-top: 1rem;
-  display: inline-block;
-  color: #0077cc;
-  font-weight: 600;
-  text-decoration: none;
-  transition: color 0.3s ease;
-}
-
-.read-more:hover {
-  color: #004a99;
-}
-</style>
+</body>
+</html>
