@@ -181,11 +181,14 @@ document.getElementById("quizForm").addEventListener("submit", (e) => {
 });
 
 // ====== Carousel functionality ======
+// ====== Carousel Setup ======
 const track = document.querySelector('.carousel-track');
 const items = document.querySelectorAll('.carousel-item');
 const prevButton = document.querySelector('.prev');
 const nextButton = document.querySelector('.next');
+const dotsContainer = document.querySelector('.carousel-dots');
 let index = 0;
+
 
 function showSlide(idx) {
   const slideWidth = items[0].clientWidth;
