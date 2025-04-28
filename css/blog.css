@@ -299,3 +299,88 @@
   
   /* Sidebar already styled earlier — no big change needed */
   
+  /* Main Feature */
+.main-feature {
+    margin-bottom: 40px;
+  }
+  
+  .main-feature img {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+    margin-bottom: 15px;
+  }
+  
+  .main-feature h2 {
+    font-size: 30px;
+    margin-bottom: 10px;
+    color: #111;
+  }
+  
+  .main-feature p {
+    font-size: 18px;
+    color: #555;
+  }
+  
+  /* Secondary Grid */
+  .secondary-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-bottom: 40px;
+  }
+  
+  .secondary-article img {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+    margin-bottom: 10px;
+  }
+  
+  .secondary-article h3 {
+    font-size: 20px;
+    margin-bottom: 5px;
+  }
+  
+  .secondary-article h3 a {
+    text-decoration: none;
+    color: #111;
+  }
+  
+  .secondary-article h3 a:hover {
+    color: #007BFF;
+  }
+  
+  /* Small Articles (lower section) */
+  .small-articles {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+  }
+  
+  .small-article {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .small-article img {
+    width: 80px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 5px;
+  }
+  
+  .small-article h4 {
+    font-size: 16px;
+  }
+  
+  .small-article h4 a {
+    text-decoration: none;
+    color: #333;
+  }
+  
+  .small-article h4 a:hover {
+    color: #007BFF;
+  }
+  
