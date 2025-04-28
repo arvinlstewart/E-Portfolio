@@ -210,3 +210,17 @@
     }
   }
   
+
+  /* Responsive Carousel Text */
+@media (max-width: 768px) {
+    .carousel-item {
+      padding: 50px 15px;
+      font-size: 18px;
+    }
+  
+    .carousel-buttons button {
+      font-size: 18px;
+      padding: 8px 12px;
+    }
+  }
+  
