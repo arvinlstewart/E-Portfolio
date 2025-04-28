@@ -1,28 +1,21 @@
-// Highlight the clicked card
+// ===== Highlight clicked card =====
 function highlightCard(cardElement) {
   const cards = document.querySelectorAll('.card');
   cards.forEach(card => card.classList.remove('active'));
   cardElement.classList.add('active');
 }
 
-// Toggle dark mode
+// ===== Dark Mode Toggle =====
 document.getElementById('darkModeToggle').addEventListener('click', function () {
   document.body.classList.toggle('dark-mode');
-
   const logo = document.getElementById('siteLogo');
   const isDark = document.body.classList.contains('dark-mode');
-
-  // Debug log
-  console.log('Dark mode toggled:', isDark);
-
   if (logo) {
     logo.src = isDark ? 'images/portfoliolight.png' : 'images/portfolio.png';
   }
 });
 
-
-
-// Scroll reveal functionality
+// ===== Scroll Reveal Functionality =====
 function handleScrollReveal() {
   const reveals = document.querySelectorAll('.scroll-reveal');
   reveals.forEach(section => {
@@ -32,98 +25,40 @@ function handleScrollReveal() {
     }
   });
 }
-
 window.addEventListener('scroll', handleScrollReveal);
 window.addEventListener('load', handleScrollReveal);
 
+// ===== Modal for Project Details =====
 const modal = document.getElementById("projectModal");
 const closeModal = document.getElementById("closeModal");
 const modalTitle = document.getElementById("modalTitle");
 const modalDescription = document.getElementById("modalDescription");
 
 const cardData = {
-  1: {
-    title: "Tag Sheet Sync & Custom Click Macro Integration",
-    description: `
-      <p>This tool was designed to bridge the gap between third-party vendor tag sheets and internal campaign operations by using Power Query and structured lookup logic. It enables seamless syncing of tag sheet data with live campaign setups, dynamically matching creatives to their proper placements.</p>
-      <p>What began as a tagging solution evolved into a comprehensive QA and compliance system with the ability to:</p>
-      <ul>
-        <li>Auto-inject custom click macros based on ad type and destination</li>
-        <li>Flag mismatches in naming conventions</li>
-        <li>Detect and notify when client-provided ad copy or creative dimensions are out of spec</li>
-      </ul>
-      <p><strong>Impact:</strong></p>
-      <ul>
-        <li>Reduced manual errors in tag handling</li>
-        <li>Enforced naming consistency</li>
-        <li>Automated QA alerts to prevent launch delays</li>
-        <li>Improved collaboration between trafficking and creative teams</li>
-      </ul>
-    `
-  },
-  2: {
-    title: "Dynamic Name Generator for Creative Naming",
-    description: `
-      <p>A smart Excel-based tool that auto-generates structured naming conventions based on campaign type, platform, and placement logic. Built using nested formulas, character limits, and dropdown menus, the Name Generator ensures consistency across ad platforms.</p>
-      <p><strong>Key Features:</strong></p>
-      <ul>
-        <li>Dynamic dropdowns and logic-driven name construction</li>
-        <li>Character limit enforcement for platform compliance</li>
-        <li>Real-time error detection and formatting validation</li>
-      </ul>
-      <p><strong>Impact:</strong></p>
-      <ul>
-        <li>Reduced setup time for new creatives</li>
-        <li>Ensured naming compliance across systems</li>
-        <li>Scaled efficiently for large campaign launches</li>
-        <li>Adopted widely as a shared QA tool for new hires</li>
-      </ul>
-    `
-  },
-  3: {
-    title: "Optimization Workbook with Performance Rules",
-    description: `
-      <p>An Excel-based optimization system that flags underperforming campaigns based on metrics like CTR, CPC, and CVR. It uses conditional formatting and logic-based rules to guide tactical recommendations.</p>
-      <p><strong>Core Capabilities:</strong></p>
-      <ul>
-        <li>Performance thresholds for campaign health tracking</li>
-        <li>Color-coded flags for underperforming placements</li>
-        <li>Suggested actions (pause, bid up, reallocate budget)</li>
-      </ul>
-      <p><strong>Impact:</strong></p>
-      <ul>
-        <li>Streamlined optimization cycles</li>
-        <li>Empowered non-technical users to take action</li>
-        <li>Reduced reliance on manual reports and ad hoc analysis</li>
-      </ul>
-    `
-  }
+  1: { title: "Tag Sheet Sync & Custom Click Macro Integration", description: "<p>Full description for project 1.</p>" },
+  2: { title: "Dynamic Name Generator for Creative Naming", description: "<p>Full description for project 2.</p>" },
+  3: { title: "Optimization Workbook with Performance Rules", description: "<p>Full description for project 3.</p>" }
 };
 
-
-// Open modal on card click
 document.querySelectorAll(".card").forEach((card, index) => {
   card.addEventListener("click", () => {
     const id = index + 1;
     modalTitle.textContent = cardData[id]?.title || "Project";
     modalDescription.innerHTML = cardData[id]?.description || "<p>More details coming soon.</p>";
-
     modal.style.display = "block";
   });
 });
 
-// Close modal
 closeModal.addEventListener("click", () => {
   modal.style.display = "none";
 });
-
-// Close when clicking outside the modal content
 window.addEventListener("click", (event) => {
   if (event.target === modal) {
     modal.style.display = "none";
   }
 });
 
+// ===== Quiz Modal Form =====
 const quizModal = document.getElementById("quizModal");
 const openQuizBtn = document.getElementById("openQuizBtn");
 const closeQuiz = document.getElementById("closeQuiz");
@@ -152,6 +87,7 @@ document.querySelectorAll(".next-btn").forEach(btn => {
   });
 });
 
+// ===== Quiz Form Submission =====
 document.getElementById("quizForm").addEventListener("submit", (e) => {
   e.preventDefault();
 
@@ -159,7 +95,7 @@ document.getElementById("quizForm").addEventListener("submit", (e) => {
   const issues = Array.from(form.querySelectorAll('input[name="issues"]:checked')).map(i => i.value).join(", ");
   const platforms = form.platforms.value;
   const qa = form.qa.value;
-  const opt = form.opt.value; // ✅ Corrected this line!
+  const opt = form.opt.value;
   const name = form.fullName.value.trim();
   const email = form.email.value.trim();
 
@@ -171,7 +107,7 @@ document.getElementById("quizForm").addEventListener("submit", (e) => {
   .then(res => res.json())
   .then(data => {
     alert("Thanks! Your response has been submitted.");
-    document.getElementById("quizModal").style.display = "none";
+    quizModal.style.display = "none";
     form.reset();
   })
   .catch(err => {
@@ -180,8 +116,7 @@ document.getElementById("quizForm").addEventListener("submit", (e) => {
   });
 });
 
-// ====== Carousel functionality ======
-// ====== Carousel Setup ======
+// ===== Carousel Functionality =====
 const track = document.querySelector('.carousel-track');
 const items = document.querySelectorAll('.carousel-item');
 const prevButton = document.querySelector('.prev');
@@ -189,13 +124,29 @@ const nextButton = document.querySelector('.next');
 const dotsContainer = document.querySelector('.carousel-dots');
 let index = 0;
 
+// Create dots dynamically
+items.forEach((_, idx) => {
+  const dot = document.createElement('span');
+  dot.classList.add('dot');
+  if (idx === 0) dot.classList.add('active');
+  dot.addEventListener('click', () => {
+    index = idx;
+    showSlide(index);
+  });
+  dotsContainer.appendChild(dot);
+});
 
+// Show specific slide and highlight dot
 function showSlide(idx) {
   const slideWidth = items[0].clientWidth;
   track.style.transform = `translateX(-${idx * slideWidth}px)`;
+
+  const allDots = document.querySelectorAll('.dot');
+  allDots.forEach(dot => dot.classList.remove('active'));
+  allDots[idx].classList.add('active');
 }
 
-// Move slide on button click
+// Carousel Button Events
 prevButton.addEventListener('click', () => {
   index = (index - 1 + items.length) % items.length;
   showSlide(index);
@@ -212,7 +163,7 @@ setInterval(() => {
   showSlide(index);
 }, 5000);
 
-// ====== Swipe support ======
+// Swipe Support
 let touchStartX = 0;
 let touchEndX = 0;
 
