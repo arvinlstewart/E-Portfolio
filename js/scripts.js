@@ -244,23 +244,36 @@ if (searchInput) {
   searchInput.addEventListener('input', function() {
     const query = this.value.toLowerCase();
     searchResults.innerHTML = "";
-
+  
     if (query.length > 1) {
       const matchedArticles = articlesIndex.filter(article => 
-        article.title.toLowerCase().includes(query)
+        article.title.toLowerCase().includes(query) ||
+        article.excerpt.toLowerCase().includes(query) ||
+        article.keywords.some(keyword => keyword.toLowerCase().includes(query))
       );
-
+  
       matchedArticles.forEach(article => {
+        const wrapper = document.createElement('div');
+        wrapper.classList.add('search-result-wrapper');
+  
         const link = document.createElement('a');
         link.href = article.url;
-        link.textContent = article.title;
         link.classList.add('search-result-item');
-        searchResults.appendChild(link);
+        link.textContent = article.title;
+  
+        const excerpt = document.createElement('p');
+        excerpt.classList.add('search-result-excerpt');
+        excerpt.textContent = article.excerpt;
+  
+        wrapper.appendChild(link);
+        wrapper.appendChild(excerpt);
+        searchResults.appendChild(wrapper);
       });
-
+  
       if (matchedArticles.length === 0) {
         searchResults.innerHTML = "<div class='no-results'>No matching articles found.</div>";
       }
     }
   });
+  
 }
