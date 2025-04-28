@@ -1,3 +1,11 @@
+const articlesIndex = [
+  { title: "Unlocking First-Party Data for AdOps Growth", url: "articles/unlocking-first-party-data.html" },
+  { title: "New Standards in Campaign QA Workflows", url: "articles/campaign-qa-workflows.html" },
+  { title: "What the Future of Ad Ops Management Looks Like", url: "articles/future-of-adops.html" },
+  { title: "Top Excel Shortcuts You Didn't Know", url: "articles/excel-shortcuts.html" },
+  { title: "Breaking Through Excel Automation", url: "articles/excel-automation-2025.html" }
+];
+
 // ===== Highlight clicked card =====
 const cards = document.querySelectorAll('.card');
 if (cards.length > 0) {
@@ -201,4 +209,32 @@ if (track && items.length > 0 && prevButton && nextButton && dotsContainer) {
       showSlide(index);
     }
   }
+}
+
+const searchInput = document.getElementById('searchInput');
+const searchResults = document.getElementById('searchResults');
+
+if (searchInput) {
+  searchInput.addEventListener('input', function() {
+    const query = this.value.toLowerCase();
+    searchResults.innerHTML = "";
+
+    if (query.length > 1) {
+      const matchedArticles = articlesIndex.filter(article => 
+        article.title.toLowerCase().includes(query)
+      );
+
+      matchedArticles.forEach(article => {
+        const link = document.createElement('a');
+        link.href = article.url;
+        link.textContent = article.title;
+        link.classList.add('search-result-item');
+        searchResults.appendChild(link);
+      });
+
+      if (matchedArticles.length === 0) {
+        searchResults.innerHTML = "<div class='no-results'>No matching articles found.</div>";
+      }
+    }
+  });
 }
