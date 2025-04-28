@@ -126,7 +126,7 @@ if (quizForm) {
     //console.log("Submitting data:", data); // (optional for debugging)
 
     try {
-     const AIRTABLE_WEBHOOK_URL = "https://hooks.airtable.com/workflows/v1/genericWebhook/appXXXXXXXXXXXXXX"; // <-- YOUR real webhook URL here
+     const AIRTABLE_WEBHOOK_URL = "https://hooks.airtable.com/workflows/v1/genericWebhook/appioblrblEFkppAF/wflMwxhgeR4vuNigi/wtr5XjZAY5pgr4lkp"; // <-- YOUR real webhook URL here
 
 try {
   const response = await fetch(AIRTABLE_WEBHOOK_URL, {
