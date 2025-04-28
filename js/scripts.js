@@ -180,3 +180,55 @@ document.getElementById("quizForm").addEventListener("submit", (e) => {
   });
 });
 
+// ====== Carousel functionality ======
+const track = document.querySelector('.carousel-track');
+const items = document.querySelectorAll('.carousel-item');
+const prevButton = document.querySelector('.prev');
+const nextButton = document.querySelector('.next');
+let index = 0;
+
+function showSlide(idx) {
+  const slideWidth = items[0].clientWidth;
+  track.style.transform = `translateX(-${idx * slideWidth}px)`;
+}
+
+// Move slide on button click
+prevButton.addEventListener('click', () => {
+  index = (index - 1 + items.length) % items.length;
+  showSlide(index);
+});
+
+nextButton.addEventListener('click', () => {
+  index = (index + 1) % items.length;
+  showSlide(index);
+});
+
+// Auto-slide every 5 seconds
+setInterval(() => {
+  index = (index + 1) % items.length;
+  showSlide(index);
+}, 5000);
+
+// ====== Swipe support ======
+let touchStartX = 0;
+let touchEndX = 0;
+
+track.addEventListener('touchstart', (e) => {
+  touchStartX = e.changedTouches[0].screenX;
+}, false);
+
+track.addEventListener('touchend', (e) => {
+  touchEndX = e.changedTouches[0].screenX;
+  handleGesture();
+}, false);
+
+function handleGesture() {
+  if (touchEndX < touchStartX - 50) {
+    index = (index + 1) % items.length;
+    showSlide(index);
+  }
+  if (touchEndX > touchStartX + 50) {
+    index = (index - 1 + items.length) % items.length;
+    showSlide(index);
+  }
+}
