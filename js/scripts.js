@@ -332,3 +332,20 @@ if (searchInput) {
   });
   
 }
+
+<script>
+const aboutContainer = document.getElementById('aboutContainer');
+const toggleAbout = document.getElementById('toggleAbout');
+
+if (aboutContainer && toggleAbout) {
+  toggleAbout.addEventListener('click', () => {
+    aboutContainer.classList.toggle('expanded');
+
+    if (aboutContainer.classList.contains('expanded')) {
+      toggleAbout.textContent = '➖ Show Less';
+    } else {
+      toggleAbout.textContent = '➕ Read More';
+    }
+  });
+}
+</script>
