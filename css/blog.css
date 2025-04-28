@@ -193,17 +193,7 @@
       flex-direction: column;
     }
   
-    .ad-leaderboard {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        margin: 20px 0;
-      }
-      
-      .ad-leaderboard img {
-        max-width: 100%;
-        height: auto;
-      }
+    
 
       .sidebar {
         display: flex;
@@ -238,7 +228,17 @@
       height: auto;
     }
   }
+  .ad-leaderboard {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 0;
+  }
   
+  .ad-leaderboard img {
+    max-width: 100%;
+    height: auto;
+  }
 
   /* Responsive Carousel Text */
 @media (max-width: 768px) {
