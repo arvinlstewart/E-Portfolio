@@ -204,7 +204,24 @@
         max-width: 100%;
         height: auto;
       }
+
+      .sidebar {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 30px;
+      }
       
+      .ad-rectangle {
+        margin-bottom: 30px;
+      }
+      
+      .ad-rectangle img {
+        max-width: 100%;
+        height: auto;
+      }
+        
+
     .articles, .sidebar {
       flex: 1 1 100%;
     }
