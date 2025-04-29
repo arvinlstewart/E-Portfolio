@@ -333,6 +333,15 @@ if (searchInput) {
   
 }
 
+const clearSearch = document.getElementById('clearSearch');
+
+if (clearSearch) {
+  clearSearch.addEventListener('click', () => {
+    searchInput.value = '';
+    searchResults.innerHTML = '';
+    searchInput.focus();
+  });
+}
 
 const aboutContainer = document.getElementById('aboutContainer');
 const toggleAbout = document.getElementById('toggleAbout');
