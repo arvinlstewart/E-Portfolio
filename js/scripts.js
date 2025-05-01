@@ -188,7 +188,7 @@ if (quizModal && openQuizBtn && closeQuiz && quizSteps.length > 0) {
 }
 
 // ===== Quiz Form Submission =====
-const quizForm = document.getElementById('quizForm');
+*/*const quizForm = document.getElementById('quizForm');
 if (quizForm) {
   quizForm.addEventListener('submit', (e) => {
     e.preventDefault();
@@ -218,7 +218,7 @@ if (quizForm) {
     });
   });
 }
-
+*/*
 // ===== Carousel Functionality =====
 const track = document.querySelector('.carousel-track');
 const items = document.querySelectorAll('.carousel-item');
