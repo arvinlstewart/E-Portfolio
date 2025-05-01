@@ -154,7 +154,7 @@ if (modal && closeModal && modalTitle && modalDescription) {
     }
   });
 }
-*/*
+
 // ===== Quiz Modal Form =====
 const quizModal = document.getElementById('quizModal');
 const openQuizBtn = document.getElementById('openQuizBtn');
@@ -218,7 +218,7 @@ if (quizForm) {
     });
   });
 }
-*/*
+
 // ===== Carousel Functionality =====
 const track = document.querySelector('.carousel-track');
 const items = document.querySelectorAll('.carousel-item');
