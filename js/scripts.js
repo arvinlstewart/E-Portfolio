@@ -198,13 +198,13 @@ if (quizForm) {
     const platforms = form.platforms.value;
     const qa = form.qa.value;
     const opt = form.opt.value;
-    const name = form.fullName.value.trim();
+    const fullName = form.fullName.value.trim();
     const email = form.email.value.trim();
 
     fetch("https://hooks.airtable.com/workflows/v1/genericWebhook/appioblrblEFkppAF/wflMwxhgeR4vuNigi/wtr5XjZAY5pgr4lkp", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ name, email, issues, platforms, qa, opt })
+      body: JSON.stringify({ fullName, email, issues, platforms, qa, opt })
     })
     .then(res => res.json())
     .then(data => {
