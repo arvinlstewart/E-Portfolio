@@ -187,35 +187,10 @@ if (quizModal && openQuizBtn && closeQuiz && quizSteps.length > 0) {
   });
 }
 
-// ===== Quiz Form Submission =====
 const quizForm = document.getElementById('quizForm');
 if (quizForm) {
-  quizForm.addEventListener('submit', (e) => {
-    e.preventDefault();
-
-    const form = e.target;
-    const issues = Array.from(form.querySelectorAll('input[name="issues"]:checked')).map(i => i.value).join(", ");
-    const platforms = form.platforms.value;
-    const qa = form.qa.value;
-    const opt = form.opt.value;
-    const fullName = form.fullName.value.trim();
-    const email = form.email.value.trim();
-
-    fetch("https://hooks.airtable.com/workflows/v1/genericWebhook/appioblrblEFkppAF/wflMwxhgeR4vuNigi/wtr5XjZAY5pgr4lkp", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ fullName, email, issues, platforms, qa, opt })
-    })
-    .then(res => res.json())
-    .then(data => {
-      alert("Thanks! Your response has been submitted.");
-      quizModal.style.display = "none";
-      form.reset();
-    })
-    .catch(err => {
-      console.error("Submission failed", err);
-      alert("Something went wrong. Please try again.");
-    });
+  quizForm.addEventListener('submit', () => {
+    quizModal.style.display = "none"; // Optional: hide the modal after submission
   });
 }
 

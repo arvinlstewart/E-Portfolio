@@ -109,60 +109,59 @@
   <div class="modal-content">
     <span id="closeQuiz" class="close-button">&times;</span>
 
-   <form id="quizForm">
-  <div class="quiz-step active">
-    <h3>What ad ops challenges are you facing?</h3>
-    <label><input type="checkbox" name="issues" value="Inconsistent naming"> Inconsistent naming</label><br>
-    <label><input type="checkbox" name="issues" value="QA errors"> QA errors</label><br>
-    <label><input type="checkbox" name="issues" value="Slow optimizations"> Slow optimizations</label><br>
-    <label><input type="checkbox" name="issues" value="Clunky platform workflows"> Clunky platform workflows</label><br>
-    <label><input type="checkbox" name="issues" value="Lack of automation"> Lack of automation</label><br>
-    <button type="button" class="next-btn">Next</button>
-  </div>
+    <form id="quizForm" action="https://hooks.airtable.com/workflows/v1/genericWebhook/YOUR_AIRTABLE_WEBHOOK_URL" method="post">
+      <div class="quiz-step active">
+        <h3>What ad ops challenges are you facing?</h3>
+        <label><input type="checkbox" name="issues" value="Inconsistent naming"> Inconsistent naming</label><br>
+        <label><input type="checkbox" name="issues" value="QA errors"> QA errors</label><br>
+        <label><input type="checkbox" name="issues" value="Slow optimizations"> Slow optimizations</label><br>
+        <label><input type="checkbox" name="issues" value="Clunky platform workflows"> Clunky platform workflows</label><br>
+        <label><input type="checkbox" name="issues" value="Lack of automation"> Lack of automation</label><br>
+        <button type="button" class="next-btn">Next</button>
+      </div>
 
-  <div class="quiz-step">
-    <h3>How many ad platforms or DSPs are you actively using?</h3>
-    <select name="platforms" required>
-      <option value="1">1</option>
-      <option value="2-3">2–3</option>
-      <option value="4+">4 or more</option>
-    </select>
-    <button type="button" class="next-btn">Next</button>
-  </div>
+      <div class="quiz-step">
+        <h3>How many ad platforms or DSPs are you actively using?</h3>
+        <select name="platforms" required>
+          <option value="1">1</option>
+          <option value="2-3">2–3</option>
+          <option value="4+">4 or more</option>
+        </select>
+        <button type="button" class="next-btn">Next</button>
+      </div>
 
-  <div class="quiz-step">
-    <h3>Do you have a formal QA or trafficking process?</h3>
-    <label><input type="radio" name="qa" value="Yes" required> Yes</label><br>
-    <label><input type="radio" name="qa" value="No" required> No</label><br>
-    <button type="button" class="next-btn">Next</button>
-  </div>
+      <div class="quiz-step">
+        <h3>Do you have a formal QA or trafficking process?</h3>
+        <label><input type="radio" name="qa" value="Yes" required> Yes</label><br>
+        <label><input type="radio" name="qa" value="No" required> No</label><br>
+        <button type="button" class="next-btn">Next</button>
+      </div>
 
-  <div class="quiz-step">
-    <h3>How quickly are optimization insights acted on?</h3>
-    <label><input type="radio" name="opt" value="1 day" required> Within 1 day</label><br>
-    <label><input type="radio" name="opt" value="2–3 days" required> 2–3 days</label><br>
-    <label><input type="radio" name="opt" value="1 week" required> 1 week</label><br>
-    <label><input type="radio" name="opt" value="No clear process" required> No clear process</label><br>
-    <button type="button" class="next-btn">Next</button>
-  </div>
+      <div class="quiz-step">
+        <h3>How quickly are optimization insights acted on?</h3>
+        <label><input type="radio" name="opt" value="1 day" required> Within 1 day</label><br>
+        <label><input type="radio" name="opt" value="2–3 days" required> 2–3 days</label><br>
+        <label><input type="radio" name="opt" value="1 week" required> 1 week</label><br>
+        <label><input type="radio" name="opt" value="No clear process" required> No clear process</label><br>
+        <button type="button" class="next-btn">Next</button>
+      </div>
 
-  <div class="quiz-step">
-    <h3>Ready to solve these challenges?</h3>
-    <p>Share your name and email so I can follow up with a few tailored ideas:</p>
+      <div class="quiz-step">
+        <h3>Ready to solve these challenges?</h3>
+        <p>Share your name and email so I can follow up with a few tailored ideas:</p>
 
-    <label for="fullName">Your Name:</label><br>
-    <input type="text" id="fullName" name="fullName" required><br><br>
+        <label for="fullName">Your Name:</label><br>
+        <input type="text" id="fullName" name="fullName" required><br><br>
 
-    <label for="email">Your Email:</label><br>
-    <input type="email" id="email" name="email" required><br><br>
+        <label for="email">Your Email:</label><br>
+        <input type="email" id="email" name="email" required><br><br>
 
-    <label for="jobtitle">Job Title:</label><br>
-    <input type="text" id="jobtitle" name="jobtitle" required><br><br>
+        <label for="jobtitle">Job Title:</label><br>
+        <input type="text" id="jobtitle" name="jobtitle" required><br><br>
 
-    <button type="submit" class="submit-btn">Send My Responses</button>
-  </div>
-</form>
-
+        <button type="submit" class="submit-btn">Send My Responses</button>
+      </div>
+    </form>
   </div>
 </div>
 
