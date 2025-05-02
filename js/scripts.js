@@ -333,28 +333,3 @@ if (aboutContainer && toggleAbout) {
   });
 }
 
-<script>
-document.getElementById('openQuizModal').addEventListener('click', function () {
-  document.getElementById('quizModal').style.display = 'block';
-});
-document.getElementById('closeQuiz').addEventListener('click', function () {
-  document.getElementById('quizModal').style.display = 'none';
-});
-window.addEventListener('click', function (e) {
-  if (e.target === document.getElementById('quizModal')) {
-    document.getElementById('quizModal').style.display = 'none';
-  }
-});
-document.getElementById('quizForm').addEventListener('submit', function (e) {
-  e.preventDefault();
-  const q1 = document.querySelector('input[name="q1"]:checked')?.value;
-  const q2 = document.querySelector('input[name="q2"]:checked')?.value;
-  let result = 'You are a versatile marketer!';
-  if (q1 === 'data' && q2 === 'spreadsheet') result = 'You are a Data-Driven Marketer!';
-  else if (q1 === 'creative' && q2 === 'graphic') result = 'You are a Creative Marketer!';
-  else if (q1 === 'strategy' && q2 === 'crm') result = 'You are a Strategic Planner!';
-  else if (q1 === 'tech' && q2 === 'dsp') result = 'You are a Programmatic Specialist!';
-  document.getElementById('quizResult').textContent = result;
-  document.getElementById('quizResult').style.display = 'block';
-});
-</script>
