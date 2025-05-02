@@ -1,117 +1,145 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta charset="UTF-8">
   <title>What Kind of Marketer Are You?</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
-    body {
-      font-family: 'Segoe UI', sans-serif;
-      background: #f4f4f4;
-      padding: 20px;
-      text-align: center;
-    }
-    .quiz-container {
-      background: #fff;
-      padding: 30px;
-      max-width: 600px;
-      margin: auto;
-      border-radius: 10px;
-      box-shadow: 0 0 15px rgba(0,0,0,0.1);
-    }
-    h1 {
-      margin-bottom: 20px;
-    }
-    .question {
-      margin-bottom: 20px;
-    }
-    button {
-      padding: 10px 20px;
-      margin: 5px;
-      background-color: #007BFF;
-      color: #fff;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-    }
-    button:hover {
-      background-color: #0056b3;
-    }
-    #result {
-      margin-top: 30px;
-      font-size: 1.2em;
-    }
-    .hidden {
-      display: none;
-    }
-    img {
-      margin-top: 15px;
-      max-width: 100%;
-      height: auto;
-    }
+    body { font-family: Arial, sans-serif; background: #f4f4f4; margin: 0; padding: 20px; }
+    .quiz-container { max-width: 600px; margin: auto; background: #fff; padding: 20px; border-radius: 10px; }
+    .question { display: none; }
+    .question.active { display: block; }
+    .answers button { display: block; margin: 10px 0; padding: 10px; width: 100%; border: 1px solid #ccc; background: #f9f9f9; border-radius: 5px; cursor: pointer; }
+    .answers button:hover { background: #e0e0e0; }
+    .result { text-align: center; display: none; }
+    .result img { max-width: 100px; margin: 20px 0; }
+    .progress { text-align: center; margin-bottom: 20px; }
   </style>
 </head>
 <body>
-
 <div class="quiz-container">
   <h1>What Kind of Marketer Are You?</h1>
+  <div class="progress" id="progress"></div>
+
   <div id="quiz">
-    <div class="question" id="q1">
-      <p>1. What's your favorite part of a campaign?</p>
-      <button onclick="nextQuestion('data')">Analyzing data</button>
-      <button onclick="nextQuestion('creative')">Designing creatives</button>
-      <button onclick="nextQuestion('strategy')">Building strategy</button>
+    <div class="question active" data-type="strategist">
+      <p>What’s the first thing you do before launching a campaign?</p>
+      <div class="answers">
+        <button data-value="strategist">Create a detailed plan</button>
+        <button data-value="creative">Design eye-catching visuals</button>
+        <button data-value="analyst">Review past campaign data</button>
+        <button data-value="communicator">Call the client to align goals</button>
+      </div>
     </div>
-    <div class="question hidden" id="q2">
-      <p>2. Which tool would you rather master?</p>
-      <button onclick="nextQuestion('excel')">Excel</button>
-      <button onclick="nextQuestion('photoshop')">Photoshop</button>
-      <button onclick="nextQuestion('slides')">Google Slides</button>
+    <div class="question" data-type="creative">
+      <p>What excites you most about marketing?</p>
+      <div class="answers">
+        <button data-value="creative">Crafting new content</button>
+        <button data-value="strategist">Building funnel strategy</button>
+        <button data-value="analyst">Finding patterns in data</button>
+        <button data-value="communicator">Building client trust</button>
+      </div>
     </div>
-    <div class="question hidden" id="q3">
-      <p>3. How do you define success?</p>
-      <button onclick="showResult('analyst')">Meeting KPIs</button>
-      <button onclick="showResult('creator')">Audience engagement</button>
-      <button onclick="showResult('planner')">Project completion</button>
+    <div class="question" data-type="analyst">
+      <p>How do you measure success?</p>
+      <div class="answers">
+        <button data-value="analyst">KPI performance</button>
+        <button data-value="strategist">Conversion journey</button>
+        <button data-value="creative">Engagement with content</button>
+        <button data-value="communicator">Client satisfaction</button>
+      </div>
     </div>
-    <div id="result" class="hidden">
-      <p id="resultText"></p>
-      <img id="resultImg" src="" alt="" />
+    <div class="question" data-type="communicator">
+      <p>Your team is blocked. What’s your move?</p>
+      <div class="answers">
+        <button data-value="communicator">Facilitate a brainstorm</button>
+        <button data-value="strategist">Adjust the plan</button>
+        <button data-value="creative">Sketch a solution</button>
+        <button data-value="analyst">Re-evaluate the data</button>
+      </div>
     </div>
+  </div>
+
+  <div class="result" id="result">
+    <h2 id="result-title"></h2>
+    <img id="result-image" src="" alt="Result image">
+    <p id="result-description"></p>
+    <div>
+      <a id="share-linkedin" target="_blank">Share on LinkedIn</a> |
+      <a id="share-twitter" target="_blank">Share on Twitter</a>
+    </div>
+    <button onclick="restartQuiz()">Try Again</button>
   </div>
 </div>
 
 <script>
-  function nextQuestion(type) {
-    if (!document.getElementById('q1').classList.contains('hidden')) {
-      document.getElementById('q1').classList.add('hidden');
-      document.getElementById('q2').classList.remove('hidden');
-    } else if (!document.getElementById('q2').classList.contains('hidden')) {
-      document.getElementById('q2').classList.add('hidden');
-      document.getElementById('q3').classList.remove('hidden');
-    }
+  const questions = document.querySelectorAll(".question");
+  const resultContainer = document.getElementById("result");
+  const resultTitle = document.getElementById("result-title");
+  const resultImage = document.getElementById("result-image");
+  const resultDescription = document.getElementById("result-description");
+  const shareLinkedIn = document.getElementById("share-linkedin");
+  const shareTwitter = document.getElementById("share-twitter");
+  const progress = document.getElementById("progress");
+
+  let current = 0;
+  const score = { strategist: 0, creative: 0, analyst: 0, communicator: 0 };
+
+  function updateProgress() {
+    progress.textContent = `Question ${current + 1} of ${questions.length}`;
   }
 
-  function showResult(type) {
-    document.getElementById('q3').classList.add('hidden');
-    let text = "", img = "";
-
-    if (type === 'analyst') {
-      text = "You're a Data-Driven Marketer! 📊 You thrive on numbers, dashboards, and campaign insights.";
-      img = "https://via.placeholder.com/400x200?text=Data+Marketer";
-    } else if (type === 'creator') {
-      text = "You're a Creative Marketer! 🎨 Your strengths lie in visuals, messaging, and storytelling.";
-      img = "https://via.placeholder.com/400x200?text=Creative+Marketer";
+  function showNextQuestion() {
+    questions[current].classList.remove("active");
+    current++;
+    if (current < questions.length) {
+      questions[current].classList.add("active");
+      updateProgress();
     } else {
-      text = "You're a Strategic Marketer! 🧠 You love big-picture planning, coordination, and guiding vision.";
-      img = "https://via.placeholder.com/400x200?text=Strategic+Marketer";
+      showResult();
     }
-
-    document.getElementById('resultText').innerText = text;
-    document.getElementById('resultImg').src = img;
-    document.getElementById('result').classList.remove('hidden');
   }
-</script>
 
+  function showResult() {
+    const top = Object.entries(score).sort((a, b) => b[1] - a[1])[0][0];
+    const descriptions = {
+      strategist: "You’re a strategist! You see the big picture and plan with purpose.",
+      creative: "You’re a creative! Your ideas and visuals bring campaigns to life.",
+      analyst: "You’re an analyst! Data is your superpower for optimization.",
+      communicator: "You’re a communicator! Building trust and alignment is your forte."
+    };
+    const images = {
+      strategist: "images/strategist.png",
+      creative: "images/creative.png",
+      analyst: "images/analyst.png",
+      communicator: "images/communicator.png"
+    };
+
+    resultTitle.textContent = descriptions[top].split("!")[0] + "!";
+    resultDescription.textContent = descriptions[top];
+    resultImage.src = images[top];
+
+    shareLinkedIn.href = `https://www.linkedin.com/shareArticle?mini=true&url=https://arvinstewart.com&title=${encodeURIComponent(resultTitle.textContent)}&summary=${encodeURIComponent(resultDescription.textContent)}`;
+    shareTwitter.href = `https://twitter.com/intent/tweet?text=${encodeURIComponent(resultTitle.textContent + ' ' + resultDescription.textContent)}&url=https://arvinstewart.com`;
+
+    resultContainer.style.display = "block";
+    progress.style.display = "none";
+  }
+
+  function restartQuiz() {
+    location.reload();
+  }
+
+  document.querySelectorAll(".answers button").forEach(btn => {
+    btn.addEventListener("click", function () {
+      const type = this.dataset.value;
+      score[type]++;
+      showNextQuestion();
+    });
+  });
+
+  updateProgress();
+</script>
 </body>
 </html>
