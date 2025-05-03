@@ -1,4 +1,3 @@
-// ===== "What Kind of Marketer Are You?" Quiz Modal =====
 document.addEventListener('DOMContentLoaded', function () {
     const marketerQuizModal = document.getElementById('quizModal');
     const openMarketerQuiz = document.getElementById('openQuizModal');
