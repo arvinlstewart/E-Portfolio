@@ -37,4 +37,69 @@ document.addEventListener('DOMContentLoaded', function () {
       });
     }
   });
+
   
+
+// ===== Dark Mode Toggle =====
+const darkModeToggle = document.getElementById('darkModeToggle');
+if (darkModeToggle) {
+  darkModeToggle.addEventListener('click', function () {
+    document.body.classList.toggle('dark-mode');
+    const logo = document.getElementById('siteLogo');
+    const isDark = document.body.classList.contains('dark-mode');
+    if (logo) {
+      logo.src = isDark ? 'images/portfoliolight.png' : 'images/portfolio.png';
+    }
+  });
+}
+
+const searchInput = document.getElementById('searchInput');
+const searchResults = document.getElementById('searchResults');
+
+if (searchInput) {
+  searchInput.addEventListener('input', function() {
+    const query = this.value.toLowerCase();
+    searchResults.innerHTML = "";
+  
+    if (query.length > 1) {
+      const matchedArticles = articlesIndex.filter(article => 
+        article.title.toLowerCase().includes(query) ||
+        article.excerpt.toLowerCase().includes(query) ||
+        article.keywords.some(keyword => keyword.toLowerCase().includes(query))
+      );
+  
+      matchedArticles.forEach(article => {
+        const wrapper = document.createElement('div');
+        wrapper.classList.add('search-result-wrapper');
+  
+        const link = document.createElement('a');
+        link.href = article.url;
+        link.classList.add('search-result-item');
+        link.textContent = article.title;
+  
+        const excerpt = document.createElement('p');
+        excerpt.classList.add('search-result-excerpt');
+        excerpt.textContent = article.excerpt;
+  
+        wrapper.appendChild(link);
+        wrapper.appendChild(excerpt);
+        searchResults.appendChild(wrapper);
+      });
+  
+      if (matchedArticles.length === 0) {
+        searchResults.innerHTML = "<div class='no-results'>No matching articles found.</div>";
+      }
+    }
+  });
+  
+}
+
+const clearSearch = document.getElementById('clearSearch');
+
+if (clearSearch) {
+  clearSearch.addEventListener('click', () => {
+    searchInput.value = '';
+    searchResults.innerHTML = '';
+    searchInput.focus();
+  });
+}
