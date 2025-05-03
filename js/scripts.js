@@ -155,7 +155,7 @@ if (modal && closeModal && modalTitle && modalDescription) {
   });
 }
 
-// ===== Quiz Modal Form =====
+// ===== Quiz Modal Form - HAVE AD OPS CHALLENGES?=====
 const quizModal = document.getElementById('quizModal');
 const openQuizBtn = document.getElementById('openQuizBtn');
 const closeQuiz = document.getElementById('closeQuiz');
