@@ -74,6 +74,10 @@
   
         <p>I’ve been in rooms where KPIs were celebrated, knowing silently that it was my behind-the-scenes troubleshooting that helped pull things back on track. And I’ve fielded frantic messages after-hours when performance dipped, knowing the fix was likely a misplaced character in a tag string.</p>
   
+        <!-- Quiz Button -What Kind of Marketer Are You? -->
+        <button id="openQuizModal" class="quiz-button">What Kind of Marketer Are You?</button>
+        <div id="quizContainer"></div>
+       
         <p>This job isn’t glamorous. It’s not about awards or headlines. But it’s precise, tactical, and critical.</p>
   
         <p>We are the campaign’s quiet guardians. The buffer zone between “strategy” and “results.” The ones who know that success isn’t just about what gets promised — it’s about what actually gets delivered.</p>
@@ -120,32 +124,30 @@
   </div>
 </footer>
 
-
-<!-- Quiz Modal -->
-<div id="quizModal" class="modal">
-  <div class="modal-content">
-    <span class="close-button" id="closeQuiz">&times;</span>
-    <h3>What Kind of Marketer Are You?</h3>
-    <form id="quizForm">
-      <p>1. What do you enjoy most about marketing?</p>
-      <label><input type="radio" name="q1" value="data"> Analyzing data</label><br>
-      <label><input type="radio" name="q1" value="creative"> Creating campaigns</label><br>
-      <label><input type="radio" name="q1" value="strategy"> Planning strategy</label><br>
-      <label><input type="radio" name="q1" value="tech"> Exploring tools</label><br>
-
-      <p>2. Which tool do you prefer?</p>
-      <label><input type="radio" name="q2" value="spreadsheet"> Excel/Sheets</label><br>
-      <label><input type="radio" name="q2" value="graphic"> Photoshop</label><br>
-      <label><input type="radio" name="q2" value="crm"> CRM platforms</label><br>
-      <label><input type="radio" name="q2" value="dsp"> DSPs</label><br>
-
-      <button type="submit">Find Out</button>
-    </form>
-    <div id="quizResult" style="display:none; margin-top:1em;"></div>
-  </div>
-
   <script src="js/scripts.js"></script> 
 <script src="js/marketer-quiz.js"></script>
+
+<script>
+  document.getElementById('openQuizModal').addEventListener('click', function () {
+    if (!document.getElementById('quizModal')) {
+      fetch('../interactive/quiz/marketer-quiz-content.html')
+        .then(res => res.text())
+        .then(html => {
+          document.getElementById('quizContainer').innerHTML = html;
+          const script = document.createElement('script');
+          script.src = '../js/marketer-quiz.js';
+          script.onload = () => {
+            initMarketerQuiz(); // ✅ Call this AFTER the JS loads
+          };
+          document.body.appendChild(script);
+        })
+        .catch(err => console.error("Failed to load quiz:", err));
+    } else {
+      document.getElementById('quizModal').style.display = 'block';
+    }
+  });
+</script>
+
 
 </body>
 </html>
