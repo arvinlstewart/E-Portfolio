@@ -130,7 +130,7 @@
 <script>
   document.getElementById('openQuizModal').addEventListener('click', function () {
     if (!document.getElementById('quizModal')) {
-      fetch('../interactive/quiz/marketer-quiz-content.html')
+      fetch('../interactive/marketer-quiz-content.html')
         .then(res => res.text())
         .then(html => {
           document.getElementById('quizContainer').innerHTML = html;
