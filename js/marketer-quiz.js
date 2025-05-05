@@ -1,3 +1,4 @@
+console.log("Marketer quiz JS loaded!");
 document.addEventListener('DOMContentLoaded', function () {
     const marketerQuizModal = document.getElementById('quizModal');
     const openMarketerQuiz = document.getElementById('openQuizModal');
