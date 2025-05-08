@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="A detailed look at the strategic, operational, and technical mindset behind high-performing programmatic traffickers." />
+  <meta name="keywords" content="programmatic trafficking, digital advertising, ad operations, DSPs, QA workflows, campaign execution, Arvin Stewart" />
+  <meta name="author" content="Arvin Stewart" />
+  <meta property="og:title" content="The Hidden Architect Behind Every Campaign" />
+  <meta property="og:description" content="Discover the traits and thinking that elevate programmatic trafficking from execution to strategy." />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://arvinstewart.com/articles/hidden-architect-trafficker.html" />
+  <meta property="og:image" content="https://arvinstewart.com/images/portfolio.png" />
+  <title>The Hidden Architect Behind Every Campaign | Arvin Stewart</title>
+  <link rel="stylesheet" href="../css/styles.css" />
+  <link rel="stylesheet" href="../css/blog.css" />
+  <link rel="icon" href="../images/favicon.png" type="image/x-icon" />
+</head>
+<body>
+
+<div class="sticky-header">
+  <div class="logo">
+    <img src="../images/portfolio.png" alt="Arvin Stewart" class="profile-img" id="siteLogo" />
+  </div>
+  <div class="button-group">
+    <a href="../index.html">Home</a>
+    <a href="../projects_main.html">Projects</a>
+    <a href="../blogs.html">Blogs</a>
+  </div>
+</div>
+
+<main class="article-layout">
+  <aside class="sidebar left">
+    <div class="ad-rectangle">
+      <img src="../images/blog/ad-left.png" alt="Ad Left" />
+    </div>
+    <div class="suggestions">
+      <h4>Recommended Reads</h4>
+      <ul>
+        <li><a href="#">Excel Automation Myths</a></li>
+        <li><a href="#">QA for Programmatic Teams</a></li>
+        <li><a href="#">Creative Specs Checklist</a></li>
+      </ul>
+    </div>
+  </aside>
+
+  <article class="blog-article">
+    <header>
+      <h1>The Hidden Architect Behind Every Campaign: How Programmatic Traffickers Power Precision and Performance</h1>
+      <p class="meta">By Arvin Stewart | Published on <time datetime="2025-05-01">May 1, 2025</time></p>
+    </header>
+
+    <section class="blog-content">
+      <!-- INSERT FULL ARTICLE BODY HERE -->
+      <div class="ad-native">
+        <img src="../images/blog/native-ad-center.jpg" alt="Native Ad" />
+      </div>
+      <button id="openQuizBtnMain" class="quiz-button">What Kind of Marketer Are You?</button>
+      <div id="quizContainer"></div>
+
+      <footer class="blog-footer">
+        <hr />
+        <p><em>This article was drafted with the assistance of AI and edited by Arvin Stewart to ensure clarity and accuracy.</em></p>
+      </footer>
+    </section>
+  </article>
+
+  <aside class="sidebar right">
+    <div class="ad-rectangle">
+      <img src="../images/blog/300x250-ad.png" alt="Sponsored Ad" />
+    </div>
+    <div class="sidebar quiz">
+      <button id="openQuizBtnSidebar" class="quiz-button">What Kind of Marketer Are You?</button>
+    </div>
+    <div class="suggestions">
+      <h4>Related Insights</h4>
+      <ul>
+        <li><a href="#">Real-Time Monitoring Tips</a></li>
+        <li><a href="#">Mastering Campaign QA</a></li>
+        <li><a href="#">Client Reporting Templates</a></li>
+      </ul>
+    </div>
+  </aside>
+</main>
+
+<div class="search-bar">
+  <input type="text" id="searchInput" placeholder="Search articles..." />
+  <div id="searchResults" class="search-results"></div>
+</div>
+<button id="clearSearch" class="cta-button">Clear Search</button>
+
+<footer class="site-footer">
+  <div class="container">
+    <p>&copy; 2025 Arvin Stewart. All rights reserved.</p>
+  </div>
+</footer>
+
+<script src="js/scripts.js"></script>
+<script>
+  function attachQuizListeners() {
+    const quizButtons = [
+      document.getElementById('openQuizBtnMain'),
+      document.getElementById('openQuizBtnSidebar')
+    ];
+
+    quizButtons.forEach(button => {
+      if (button) {
+        button.addEventListener('click', () => {
+          if (!document.getElementById('quizModal')) {
+            fetch('../interactive/marketer-quiz-content.html')
+              .then(res => res.text())
+              .then(html => {
+                document.getElementById('quizContainer').innerHTML = html;
+                const script = document.createElement('script');
+                script.src = '../js/marketer-quiz.js';
+                script.onload = () => {
+                  if (typeof initMarketerQuiz === 'function') {
+                    initMarketerQuiz();
+                  }
+                };
+                document.body.appendChild(script);
+              })
+              .catch(err => console.error("Failed to load quiz:", err));
+          } else {
+            document.getElementById('quizModal').style.display = 'block';
+          }
+        });
+      }
+    });
+  }
+  document.addEventListener('DOMContentLoaded', attachQuizListeners);
+</script>
+</body>
+</html>
