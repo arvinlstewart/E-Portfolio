@@ -10,34 +10,6 @@
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
 
   <link rel="icon" href="/images/favicon.png" type="image/x-icon">
-
-  <style>
-    .content-grid {
-      display: grid;
-      grid-template-columns: 1fr 3fr 1fr;
-      gap: 2rem;
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 2rem;
-    }
-
-    @media (max-width: 768px) {
-      .content-grid {
-        grid-template-columns: 1fr;
-      }
-      aside.sidebar {
-        order: 2;
-      }
-    }
-
-    .main-content {
-      background-color: #fff;
-    }
-
-    .articles h2, .articles h3, .articles h4 {
-      font-weight: 700;
-    }
-  </style>
 </head>
 <body>
 
@@ -50,6 +22,7 @@
         <img src="images/portfolio.png" alt="Arvin Stewart" class="profile-img" id="siteLogo">
       </a>
     </div>
+    
   </div>
   <div class="button-group">
     <a href="index.html">Home</a>
@@ -57,35 +30,40 @@
     <a href="blogs.html">Blogs</a>
     <a href="mailto:arvinlstewart@gmail.com">Contact</a>
   </div>
+  
 </div>
 
 <div class="ad-leaderboard">
   <img src="/images/blog/leaderboard2.gif" alt="Leaderboard Ad">
 </div>
 
+
 <!-- Main Content -->
 <main class="container main-content scroll-reveal">
 
   <!-- Top Story Feature Area -->
   <section class="top-story">
+  
     <img src="images/hiddenarchitect.png" alt="Top Story" class="top-story-img">
+    
     <div class="meta-info">
       <span class="category">News</span>
       <span class="date">May 1, 2025</span>
       <span class="author">By Arvin Stewart</span>
     </div>
-    <a href="articles/hidden-architect-trafficker.html">
-      <h1 class="top-story-title">The Hidden Architect Behind Every Campaign: How Programmatic Traffickers Power Precision and Performance</h1>
-      <p class="top-story-excerpt">If you’re building media teams or managing campaigns, give your traffickers access to context early. Loop them into strategy meetings. Let them advise on structure, not just tags. Because when trafficking is proactive—not reactive—you gain clarity, accuracy, and a true partner in performance.</p>
-    </a>
+   <a href="articles/hidden-architect-trafficker.html"> <h1 class="top-story-title">The Hidden Architect Behind Every Campaign: How Programmatic Traffickers Power Precision and Performance</h1>
+    <p class="top-story-excerpt">If you’re building media teams or managing campaigns, give your traffickers access to context early. Loop them into strategy meetings. Let them advise on structure, not just tags. Because when trafficking is proactive—not reactive—you gain clarity, accuracy, and a true partner in performance.</p>
+ </a>
   </section>
 
   <div class="content-grid">
+
     <section class="articles">
+
       <div class="main-feature">
-        <a href="https://arvinstewart.com/articles/strategize-before-setup.html">
-          <img src="images/thought.png" alt="Main Feature">
-        </a>
+       <a href="https://arvinstewart.com/articles/strategize-before-setup.html">
+        <img src="images/thought.png" alt="Main Feature">
+      </a>
         <div class="meta-info">
           <span class="category">Tutorial</span>
           <span class="date">May 1, 2025</span>
@@ -96,6 +74,7 @@
       </div>
 
       <div class="secondary-grid">
+
         <article class="secondary-article">
           <img src="images/blog/lastlineofdefense.png" alt="Story 1">
           <div class="meta-info">
@@ -122,9 +101,11 @@
           </div>
           <h3><a href="#">What the Future of Ad Ops Management Looks Like</a></h3>
         </article>
+
       </div>
 
       <div class="small-articles">
+
         <article class="small-article">
           <img src="https://via.placeholder.com/150x100?text=Small+1" alt="Small 1">
           <h4><a href="#">Top Excel Shortcuts You Didn't Know</a></h4>
@@ -144,10 +125,13 @@
           <img src="https://via.placeholder.com/150x100?text=Small+4" alt="Small 4">
           <h4><a href="#">The Next Evolution of Programmatic Ads</a></h4>
         </article>
+
       </div>
+
     </section>
 
     <aside class="sidebar">
+
       <div class="ad-rectangle">
         <img src="/images/blog/300x250ad.png" alt="Sidebar Ad">
       </div>
@@ -171,15 +155,19 @@
           <li><a href="#"><img src="https://via.placeholder.com/60x60" alt="Pick 4"> <span>Campaign Automation Best Practices</span></a></li>
         </ul>
       </div>
+
     </aside>
+
   </div> <!-- End content-grid -->
+
 </main>
 
 <div class="search-bar">
-  <input type="text" id="searchInput" placeholder="Search articles...">
+  <input type="text" id="searchInput" placeholder="Search articles..." />
   <div id="searchResults" class="search-results"></div>
 </div>
 <button id="clearSearch" class="cta-button">Clear Search</button>
+
 
 <!-- Footer Section -->
 <footer class="site-footer">
@@ -191,5 +179,6 @@
 </footer>
 
 <script src="js/scripts.js"></script>
+
 </body>
 </html>
