@@ -77,6 +77,26 @@
             font-weight: bold;
             margin-top: 20px;
         }
+        #email-container {
+            margin-bottom: 20px;
+        }
+        #email-input {
+            padding: 10px;
+            width: 80%;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        #submit-email {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        #submit-email:hover {
+            background-color: #0056b3;
+        }
     </style>
 </head>
 <body>
@@ -86,7 +106,12 @@
     <!-- Quiz Modal -->
     <div id="quiz-modal">
         <div id="quiz-container">
-            <div id="question-container">
+            <div id="email-container">
+                <p>Enter your email to start:</p>
+                <input type="email" id="email-input" placeholder="Your email">
+                <button id="submit-email">Start Quiz</button>
+            </div>
+            <div id="question-container" style="display: none;">
                 <p class="question"></p>
                 <div class="options"></div>
             </div>
@@ -125,18 +150,27 @@
 
         let currentQuestionIndex = 0;
         let scores = { Analytical: 0, Creative: 0, Technical: 0 };
+        let userEmail = "";
+        let responses = [];
 
         document.getElementById("start-btn").addEventListener("click", function() {
             document.getElementById("quiz-modal").style.display = "flex";
+        });
+
+        document.getElementById("submit-email").addEventListener("click", function() {
+            userEmail = document.getElementById("email-input").value.trim();
+            if (userEmail === "") {
+                alert("Please enter a valid email.");
+                return;
+            }
+            document.getElementById("email-container").style.display = "none";
+            document.getElementById("question-container").style.display = "block";
             showQuestion();
         });
 
         document.getElementById("close-btn").addEventListener("click", function() {
             document.getElementById("quiz-modal").style.display = "none";
-            currentQuestionIndex = 0;
-            scores = { Analytical: 0, Creative: 0, Technical: 0 };
-            document.getElementById("question-container").style.display = "block";
-            document.getElementById("result").textContent = "";
+            resetQuiz();
         });
 
         function showQuestion() {
@@ -155,6 +189,7 @@
                 button.textContent = optionText;
                 button.addEventListener("click", function() {
                     scores[category]++;
+                    responses.push({ question: questionData.question, answer: optionText });
                     currentQuestionIndex++;
                     showQuestion();
                 });
@@ -177,13 +212,24 @@
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({
+                    email: userEmail,
                     traffickerType: result,
+                    responses: responses,
                     timestamp: new Date().toISOString()
                 })
             })
             .then(response => response.json())
             .then(data => console.log("Data sent to Airtable:", data))
             .catch(error => console.error("Error sending data:", error));
+        }
+
+        function resetQuiz() {
+            currentQuestionIndex = 0;
+            scores = { Analytical: 0, Creative: 0, Technical: 0 };
+            responses = [];
+            document.getElementById("email-container").style.display = "block";
+            document.getElementById("question-container").style.display = "none";
+            document.getElementById("result").textContent = "";
         }
     </script>
 
