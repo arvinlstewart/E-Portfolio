@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Programmatic Trafficker Quiz</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 50px;
+        }
+        #start-btn {
+            padding: 15px 30px;
+            font-size: 18px;
+            cursor: pointer;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+        #start-btn:hover {
+            background-color: #218838;
+        }
+        /* Modal Styles */
+        #quiz-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            justify-content: center;
+            align-items: center;
+        }
+        #quiz-container {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            text-align: center;
+        }
+        .question {
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+        .options button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0;
+            cursor: pointer;
+            border: none;
+            background-color: #007bff;
+            color: white;
+            border-radius: 5px;
+        }
+        .options button:hover {
+            background-color: #0056b3;
+        }
+        #close-btn {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #dc3545;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        #close-btn:hover {
+            background-color: #c82333;
+        }
+        #result {
+            font-size: 20px;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <button id="start-btn">What Kind of Trafficker Are You?</button>
+
+    <!-- Quiz Modal -->
+    <div id="quiz-modal">
+        <div id="quiz-container">
+            <div id="question-container">
+                <p class="question"></p>
+                <div class="options"></div>
+            </div>
+            <p id="result"></p>
+            <button id="close-btn">Close</button>
+        </div>
+    </div>
+
+    <script>
+        const questions = [
+            { 
+                question: "How do you approach ad campaign optimization?", 
+                options: { "Data-driven analysis": "Analytical", "Creative adjustments": "Creative", "Automation & AI": "Technical" } 
+            },
+            { 
+                question: "What excites you most about programmatic advertising?", 
+                options: { "Finding patterns in data": "Analytical", "Designing engaging creatives": "Creative", "Building automation workflows": "Technical" } 
+            },
+            { 
+                question: "How do you solve problems in ad trafficking?", 
+                options: { "Using logic and numbers": "Analytical", "Thinking outside the box": "Creative", "Coding or scripting solutions": "Technical" } 
+            },
+            { 
+                question: "Which tool do you rely on most?", 
+                options: { "Excel & analytics dashboards": "Analytical", "Creative design software": "Creative", "Ad servers & APIs": "Technical" } 
+            },
+            { 
+                question: "What’s your biggest strength?", 
+                options: { "Interpreting data": "Analytical", "Innovative thinking": "Creative", "Technical problem-solving": "Technical" } 
+            },
+            { 
+                question: "How do you measure success?", 
+                options: { "Performance metrics": "Analytical", "User engagement": "Creative", "Automation efficiency": "Technical" } 
+            }
+        ];
+
+        let currentQuestionIndex = 0;
+        let scores = { Analytical: 0, Creative: 0, Technical: 0 };
+
+        document.getElementById("start-btn").addEventListener("click", function() {
+            document.getElementById("quiz-modal").style.display = "flex";
+            showQuestion();
+        });
+
+        document.getElementById("close-btn").addEventListener("click", function() {
+            document.getElementById("quiz-modal").style.display = "none";
+            currentQuestionIndex = 0;
+            scores = { Analytical: 0, Creative: 0, Technical: 0 };
+            document.getElementById("question-container").style.display = "block";
+            document.getElementById("result").textContent = "";
+        });
+
+        function showQuestion() {
+            if (currentQuestionIndex >= questions.length) {
+                showResult();
+                return;
+            }
+
+            const questionData = questions[currentQuestionIndex];
+            document.querySelector(".question").textContent = questionData.question;
+            const optionsContainer = document.querySelector(".options");
+            optionsContainer.innerHTML = "";
+
+            for (const [optionText, category] of Object.entries(questionData.options)) {
+                const button = document.createElement("button");
+                button.textContent = optionText;
+                button.addEventListener("click", function() {
+                    scores[category]++;
+                    currentQuestionIndex++;
+                    showQuestion();
+                });
+                optionsContainer.appendChild(button);
+            }
+        }
+
+        function showResult() {
+            let highestCategory = Object.keys(scores).reduce((a, b) => scores[a] > scores[b] ? a : b);
+            document.getElementById("question-container").style.display = "none";
+            document.getElementById("result").textContent = `You are a ${highestCategory} Trafficker!`;
+
+            sendToAirtable(highestCategory);
+        }
+
+        function sendToAirtable(result) {
+            const webhookUrl = "YOUR_AIRTABLE_WEBHOOK_URL"; // Replace with Airtable webhook URL
+
+            fetch(webhookUrl, {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                    traffickerType: result,
+                    timestamp: new Date().toISOString()
+                })
+            })
+            .then(response => response.json())
+            .then(data => console.log("Data sent to Airtable:", data))
+            .catch(error => console.error("Error sending data:", error));
+        }
+    </script>
+
+</body>
+</html>
