@@ -3,11 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Blog | Arvin Stewart</title>
+  <title>Backup Blog | Arvin Stewart</title>
   <link rel="stylesheet" href="css/styles.css">
   <link rel="stylesheet" href="css/blog.css">
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
-  <link rel="icon" href="/images/favicon.png" type="image/x-icon">
   <style>
     body {
       margin: 0;
@@ -182,6 +181,56 @@
 
     <div class="content-grid">
       <section class="left-column">
+  <div id="featured-articles" style="display: grid; grid-template-columns: 2fr 1fr; gap: 1.5rem; margin-bottom: 2rem; padding-bottom: 1rem; border-bottom: 2px solid #ccc;"></div>
+  <script>
+    const featuredData = [
+      {
+        title: "Mastering Campaign Setup",
+        author: "Arvin Stewart",
+        time: "4 min",
+        excerpt: "Strategic setup can dramatically reduce the need for mid-flight optimizations. Here's how I plan every build...",
+        image: "https://via.placeholder.com/300x250?text=Setup+Planning"
+      },
+      {
+        title: "The Hidden Architect of Every Campaign",
+        author: "Arvin Stewart",
+        time: "5 min",
+        excerpt: "Most teams overlook their trafficker’s impact. I’ll show how structure and sequencing affect performance outcomes.",
+        image: "https://via.placeholder.com/300x250?text=Architect"
+      }
+    ];
+
+    const leftCol = document.createElement('div');
+    leftCol.style.display = 'flex';
+    leftCol.style.flexDirection = 'column';
+    leftCol.style.gap = '1.5rem';
+    featuredData.forEach(article => {
+      const block = document.createElement('div');
+      block.innerHTML = `
+        <h3>${article.title}</h3>
+        <p><strong>By ${article.author}</strong> · Est. read time: ${article.time}</p>
+        <p>${article.excerpt}</p>
+      `;
+      leftCol.appendChild(block);
+    });
+
+    const rightCol = document.createElement('div');
+    rightCol.innerHTML = `<img src="${featuredData[0].image}" alt="Related Articles" style="width: 100%; height: auto;">`;
+
+    const container = document.getElementById('featured-articles');
+    container.appendChild(leftCol);
+    container.appendChild(rightCol);
+  </script>
+            <div>
+              <h3>The Hidden Architect of Every Campaign</h3>
+              <p><strong>By Arvin Stewart</strong> · Est. read time: 5 min</p>
+              <p>Most teams overlook their trafficker’s impact. I’ll show how structure and sequencing affect performance outcomes.</p>
+            </div>
+          </div>
+          <div>
+            <img src="https://via.placeholder.com/300x250?text=Related+Image" alt="Related Articles" style="width: 100%; height: auto;">
+          </div>
+        </div>
         <h2>Welcome to the Backup Blog Layout</h2>
         <p>This is where your latest articles, featured posts, and updates will appear in a clean, readable format.</p>
       </section>
@@ -212,7 +261,6 @@
       </aside>
     </div>
   </div>
-<script src="js/scripts.js"></script>
 
 </body>
 </html>
