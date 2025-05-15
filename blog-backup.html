@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Blog | Arvin Stewart</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/blog.css">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="icon" href="/images/favicon.png" type="image/x-icon">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Montserrat', sans-serif;
+      background-color: #f9f9f9;
+    }
+    .fullwidth-ad {
+      width: 100%;
+      padding: 10px;
+      background: #fff;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+    .main-container {
+      width: 80%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px 0;
+    }
+    .header-section {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      padding-bottom: 10px;
+    }
+    .header-section .center-logo {
+      flex: 1 1 100%;
+      text-align: center;
+      margin: 10px 0;
+    }
+    .header-section .left-date,
+    .header-section .right-links {
+      flex: 1;
+    }
+    .header-section .left-date {
+      text-align: left;
+    }
+    .header-section .right-links {
+      text-align: right;
+    }
+    .nav-bar {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      padding: 10px 0;
+      border-top: 2px double #ccc;
+      border-bottom: 2px double #ccc;
+      margin-bottom: 20px;
+    }
+    .nav-bar .nav-item {
+      position: relative;
+      cursor: pointer;
+    }
+    .nav-bar .dropdown {
+      display: none;
+      position: absolute;
+      top: 30px;
+      left: 0;
+      background-color: #fff;
+      border: 1px solid #ddd;
+      padding: 10px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+      z-index: 10;
+    }
+    .nav-bar .nav-item:hover .dropdown {
+      display: block;
+    }
+    .content-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 2rem;
+    }
+    .left-column {
+      background-color: #fff;
+      padding: 20px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    }
+    .right-column {
+      background-color: #fff;
+      padding: 20px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    }
+    .right-widget {
+      padding: 10px 0;
+      border-bottom: 1px solid #ddd;
+    }
+    .right-widget:last-child {
+      border-bottom: none;
+    }
+    .right-widget img {
+      width: 100%;
+      height: auto;
+    }
+    .right-widget h4 {
+      margin: 0.5rem 0 0;
+      font-size: 1rem;
+    }
+    .dual-links {
+      display: flex;
+      gap: 1rem;
+    }
+    .dual-links a {
+      flex: 1;
+      text-decoration: none;
+      font-size: 0.9rem;
+      color: #333;
+    }
+    .article-list ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .article-list li {
+      margin: 0.3rem 0;
+      font-size: 0.95rem;
+    }
+    .article-list li::before {
+      content: "\2022 ";
+      color: #555;
+      margin-right: 0.5rem;
+    }
+    @media (max-width: 768px) {
+      .content-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="fullwidth-ad">
+    <img src="https://via.placeholder.com/1200x150?text=Leaderboard+Ad" alt="Top Ad">
+  </div>
+
+  <div class="main-container">
+    <div class="header-section">
+      <div class="left-date">
+        <span id="currentDate">May 14, 2025</span>
+      </div>
+      <div class="center-logo">
+        <img src="images/portfolio.png" alt="Arvin Stewart" style="height: 60px;">
+      </div>
+      <div class="right-links">
+        <a href="projects_main.html">Projects</a> | <a href="blogs.html">Blogs</a>
+      </div>
+    </div>
+
+    <nav class="nav-bar">
+      <div class="nav-item">
+        Strategy ▾
+        <div class="dropdown">
+          <a href="#">Campaign Planning</a><br>
+          <a href="#">Data-Driven Media</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        Tutorials ▾
+        <div class="dropdown">
+          <a href="#">Excel Automation</a><br>
+          <a href="#">DSP Workflows</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        Tools ▾
+        <div class="dropdown">
+          <a href="#">Optimization Sheet</a><br>
+          <a href="#">Naming Generator</a>
+        </div>
+      </div>
+    </nav>
+
+    <div class="content-grid">
+      <section class="left-column">
+        <h2>Welcome to the Backup Blog Layout</h2>
+        <p>This is where your latest articles, featured posts, and updates will appear in a clean, readable format.</p>
+      </section>
+
+      <aside class="right-column">
+        <div class="right-widget">
+          <img src="https://via.placeholder.com/300x180?text=Featured+Article" alt="Featured">
+          <h4>Precision Trafficking: Why Setup Matters</h4>
+          <p>Explore how pre-launch planning sets the tone for smarter optimizations.</p>
+        </div>
+        <div class="right-widget">
+          <div class="dual-links">
+            <a href="#">AI in Programmatic</a>
+            <a href="#">Scaling Campaign QA</a>
+          </div>
+        </div>
+        <div class="right-widget">
+          <img src="https://via.placeholder.com/300x250?text=Ad+Slot" alt="Ad Placeholder">
+        </div>
+        <div class="right-widget article-list">
+          <ul>
+            <li><a href="#">Campaign Metrics That Matter</a></li>
+            <li><a href="#">Creative Naming Best Practices</a></li>
+            <li><a href="#">Budget Pacing Insights</a></li>
+            <li><a href="#">Audience Layering Tactics</a></li>
+          </ul>
+        </div>
+      </aside>
+    </div>
+  </div>
+<script src="js/scripts.js"></script>
+
+</body>
+</html>
