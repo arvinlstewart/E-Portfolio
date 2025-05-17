@@ -227,7 +227,7 @@
       from {bottom: 30px; opacity: 1;}
       to {bottom: 0; opacity: 0;}
     }
-    
+
     @media (max-width: 768px) {
       .main-container {
         max-width: 95%;
@@ -309,33 +309,35 @@
 
 <hr>
 <div class="section">
-  <h3>Interactive Content</h3>
+     <h3>Interactive Content</h3>
     <p class="article-meta">Tools & Utilities</p>
     <div class="interactive-icons">
       <div>
-        <img src="images/coordinaatesiconpng.png" alt="Find Coordinates" onclick="showTool('geocoder')">
+        <img src="images/coordinaatesiconpng.png" alt="Find Coordinates" onclick="toggleTool('geocoder')">
         <p>Find Coordinates</p>
       </div>
       <div>
-        <img src="https://via.placeholder.com/64?text=🌍" alt="Reverse Geocode" onclick="showTool('reverseGeocode')">
+        <img src="https://via.placeholder.com/64?text=🌍" alt="Reverse Geocode" onclick="toggleTool('reverseGeocode')">
         <p>Reverse Geocode</p>
       </div>
       <div>
-        <img src="https://via.placeholder.com/64?text=📆" alt="Day Counter" onclick="showTool('dayCounter')">
+        <img src="https://via.placeholder.com/64?text=📆" alt="Day Counter" onclick="toggleTool('dayCounter')">
         <p>Day Counter</p>
       </div>
       <div>
-        <img src="https://via.placeholder.com/64?text=⏳" alt="Countdown Timer" onclick="showTool('countdown')">
+        <img src="https://via.placeholder.com/64?text=⏳" alt="Countdown Timer" onclick="toggleTool('countdown')">
         <p>Countdown Timer</p>
       </div>
       <div>
-        <img src="https://via.placeholder.com/64?text=🔧" alt="More Tools" onclick="showTool('comingSoon')">
+        <img src="https://via.placeholder.com/64?text=🔧" alt="More Tools" onclick="toggleTool('comingSoon')">
         <p>More Tools</p>
       </div>
     </div>
 
     <div id="toolDisplayArea"></div>
-</div>
+  </div>
+
+  <div id="toast" class="toast">Copied to clipboard</div>
 
 
   <hr>
