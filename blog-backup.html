@@ -246,45 +246,31 @@ html {
 <hr>
 <div class="section">
   <h3>Interactive Content</h3>
-  <p class="article-meta">Tools & Utilities</p>
-  <div class="interactive-icons" style="display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 1rem;">
-    
-    <!-- Find Coordinates -->
-    <div style="text-align: center;" id="geocoderTool">
-      <img src="images/coordinaatesiconpng.png" alt="Get Coordinates" style="cursor: pointer;" onclick="showTool('dayCounter')">
-      <p style="font-size: 0.75rem;">Find Coordinates</p>
+    <p class="article-meta">Tools & Utilities</p>
+    <div class="interactive-icons">
+      <div>
+        <img src="images/coordinaatesiconpng.png" alt="Find Coordinates" onclick="showTool('geocoder')">
+        <p>Find Coordinates</p>
+      </div>
+      <div>
+        <img src="https://via.placeholder.com/64?text=🌍" alt="Reverse Geocode" onclick="showTool('reverseGeocode')">
+        <p>Reverse Geocode</p>
+      </div>
+      <div>
+        <img src="https://via.placeholder.com/64?text=📆" alt="Day Counter" onclick="showTool('dayCounter')">
+        <p>Day Counter</p>
+      </div>
+      <div>
+        <img src="https://via.placeholder.com/64?text=⏳" alt="Countdown Timer" onclick="showTool('countdown')">
+        <p>Countdown Timer</p>
+      </div>
+      <div>
+        <img src="https://via.placeholder.com/64?text=🔧" alt="More Tools" onclick="showTool('comingSoon')">
+        <p>More Tools</p>
+      </div>
     </div>
-<div id="toolDisplayArea" style="margin-top: 2rem;"></div>
 
-    <!-- Reverse Geocode -->
-    <div style="text-align: center;" id="reverseGeocodeTool">
-      <img src="https://via.placeholder.com/64?text=🗺️" alt="Reverse Geocode" style="cursor: pointer;" onclick="showTool('dayCounter')">
-      <p style="font-size: 0.75rem;">Reverse Geocode</p>
-    </div>
-<div id="toolDisplayArea" style="margin-top: 2rem;"></div>
-
-    <!-- Day Counter -->
-    <div style="text-align: center;" id="dayCounterTool">
-      <img src="https://via.placeholder.com/64?text=📆" alt="Day Counter" style="cursor: pointer;" onclick="showTool('dayCounter')">
-      <p style="font-size: 0.75rem;">Day Counter</p>
-    </div>
-<div id="toolDisplayArea" style="margin-top: 2rem;"></div>
-
-    <!-- Countdown Timer -->
-    <div style="text-align: center;">
-      <img src="https://via.placeholder.com/64?text=⏳" alt="Countdown Timer" style="cursor: pointer;" onclick="showTool('dayCounter')">
-      <p style="font-size: 0.75rem;">Countdown Timer</p>
-    </div>
-<div id="toolDisplayArea" style="margin-top: 2rem;"></div>
-
-    <!-- Coming Soon -->
-    <div style="text-align: center;">
-      <img src="https://via.placeholder.com/64?text=🔧" alt="Coming Soon" style="cursor: default; opacity: 0.5;" onclick="showTool('dayCounter')">
-      <p style="font-size: 0.75rem;">More Tools</p>
-    </div>
-<div id="toolDisplayArea" style="margin-top: 2rem;"></div>
-
-  </div>
+    <div id="toolDisplayArea"></div>
 </div>
 
 
@@ -423,51 +409,89 @@ html {
   </div>
 
 <!--JS -->
-<script>
-  function showTool(tool) {
-    const container = document.getElementById('toolDisplayArea');
-    let content = "";
+ <script>
+    function showTool(tool) {
+      const container = document.getElementById('toolDisplayArea');
+      let content = "";
 
-    if (tool === 'dayCounter') {
-      content = `
-        <h4>📆 Day Counter</h4>
-        <input type="date" id="startDateInput" style="padding: 0.5rem; width: 100%;">
-        <button onclick="countDays()" style="margin-top: 0.5rem;">Calculate Days Since</button>
-        <p id="daysSinceOutput" class="tool-output"></p>
-      `;
+      if (tool === 'geocoder') {
+        content = `
+          <h4>📍 Find Coordinates</h4>
+          <input type="text" id="addressInput" placeholder="Enter address" style="width: 100%; padding: 0.5rem;">
+          <button onclick="geocodeAddress()" style="margin-top: 0.5rem;">Get Coordinates</button>
+          <p id="geoOutput"></p>
+        `;
+      } else if (tool === 'reverseGeocode') {
+        content = `
+          <h4>🌍 Reverse Geocode</h4>
+          <input type="text" id="latInput" placeholder="Latitude" style="width: 48%; margin-right: 4%; padding: 0.5rem;">
+          <input type="text" id="lngInput" placeholder="Longitude" style="width: 48%; padding: 0.5rem;">
+          <button onclick="reverseGeocode()" style="margin-top: 0.5rem;">Find Address</button>
+          <p id="reverseOutput"></p>
+        `;
+      } else if (tool === 'dayCounter') {
+        content = `
+          <h4>📆 Day Counter</h4>
+          <input type="date" id="startDateInput" style="padding: 0.5rem; width: 100%;">
+          <button onclick="countDays()" style="margin-top: 0.5rem;">Calculate Days Since</button>
+          <p id="daysSinceOutput"></p>
+        `;
+      } else if (tool === 'countdown') {
+        content = `
+          <h4>⏳ Countdown Timer</h4>
+          <input type="date" id="futureDateInput" style="padding: 0.5rem; width: 100%;">
+          <button onclick="countDown()" style="margin-top: 0.5rem;">Days Until</button>
+          <p id="daysUntilOutput"></p>
+        `;
+      } else {
+        content = `<p>More tools coming soon. Stay tuned!</p>`;
+      }
+
+      container.innerHTML = `<div class="tool-container">${content}</div>`;
     }
-    else if (tool === 'geocoder') {
-      content = `
-        <h4>📍 Find Coordinates</h4>
-        <input type="text" id="addressInput" placeholder="Enter address" style="width: 100%; padding: 0.5rem;">
-        <button onclick="geocodeAddress()" style="margin-top: 0.5rem;">Get Coordinates</button>
-        <p id="geoOutput" class="tool-output"></p>
-      `;
+
+    function countDays() {
+      const start = new Date(document.getElementById("startDateInput").value);
+      const output = document.getElementById("daysSinceOutput");
+      if (isNaN(start)) return output.textContent = "Please select a valid date.";
+      const diff = Math.floor((new Date() - start) / (1000 * 60 * 60 * 24));
+      output.textContent = `${diff} day(s) since ${start.toDateString()}`;
     }
 
-    container.innerHTML = `<div style="border: 1px solid #ccc; padding: 1rem; border-radius: 8px; background: #f9f9f9;">${content}</div>`;
-  }
+    function countDown() {
+      const future = new Date(document.getElementById("futureDateInput").value);
+      const output = document.getElementById("daysUntilOutput");
+      if (isNaN(future)) return output.textContent = "Please select a valid future date.";
+      const diff = Math.ceil((future - new Date()) / (1000 * 60 * 60 * 24));
+      output.textContent = diff < 0 ? "That date has passed." : `${diff} day(s) left until ${future.toDateString()}`;
+    }
 
-  function countDays() {
-    const start = new Date(document.getElementById("startDateInput").value);
-    const output = document.getElementById("daysSinceOutput");
-    if (isNaN(start)) return output.textContent = "Please select a valid date.";
-    const diff = Math.floor((new Date() - start) / (1000 * 60 * 60 * 24));
-    output.textContent = `${diff} day(s) since ${start.toDateString()}`;
-  }
+    function geocodeAddress() {
+      const address = document.getElementById("addressInput").value;
+      const output = document.getElementById("geoOutput");
+      if (!address) return output.textContent = "Please enter an address.";
+      fetch(`https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(address)}`)
+        .then(res => res.json())
+        .then(data => {
+          if (!data.length) return output.textContent = "No results found.";
+          output.textContent = `Latitude: ${data[0].lat}, Longitude: ${data[0].lon}`;
+        })
+        .catch(() => output.textContent = "Error fetching coordinates.");
+    }
 
-  function geocodeAddress() {
-    const address = document.getElementById("addressInput").value;
-    const output = document.getElementById("geoOutput");
-    fetch(`https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(address)}`)
-      .then(res => res.json())
-      .then(data => {
-        if (!data.length) return output.textContent = "No results found.";
-        output.textContent = `Latitude: ${data[0].lat}, Longitude: ${data[0].lon}`;
-      })
-      .catch(() => output.textContent = "Error fetching coordinates.");
-  }
-</script>
+    function reverseGeocode() {
+      const lat = document.getElementById("latInput").value;
+      const lon = document.getElementById("lngInput").value;
+      const output = document.getElementById("reverseOutput");
+      if (!lat || !lon) return output.textContent = "Enter both latitude and longitude.";
+      fetch(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lon}`)
+        .then(res => res.json())
+        .then(data => {
+          output.textContent = data.display_name || "Address not found.";
+        })
+        .catch(() => output.textContent = "Error fetching address.");
+    }
+  </script>
 
 
 </body>
