@@ -224,43 +224,35 @@
 </div>
 
 <hr>
-<div class="section">
+<div class="section" style="margin-top: 2rem;">
   <h3>Interactive Content</h3>
-  <p class="article-meta">Tools & Utilities</p>
-  <div class="interactive-icons" style="display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 1rem;">
+  <p class="article-meta">Try out these interactive tools</p>
+
+  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 1.5rem;">
     
-    <!-- Find Coordinates -->
-    <div style="text-align: center;">
-      <img src="images/coordinaatesiconpng.png" alt="Get Coordinates" style="cursor: pointer;">
-      <p style="font-size: 0.75rem;">Find Coordinates</p>
+    <!-- 1. Geocoding Tool -->
+    <div style="border: 1px solid #ccc; padding: 1rem; border-radius: 8px; background: #fdfdfd;">
+      <h4>📍 Find Coordinates</h4>
+      <input type="text" id="addressInput" placeholder="Enter an address" style="width: 100%; padding: 0.5rem;">
+      <button onclick="geocodeAddress()" style="margin-top: 0.5rem;">Get Coordinates</button>
+      <p id="geoOutput" class="tool-output"></p>
     </div>
 
-    <!-- Reverse Geocode -->
-    <div style="text-align: center;">
-      <img src="https://via.placeholder.com/64?text=🗺️" alt="Reverse Geocode" style="cursor: pointer;">
-      <p style="font-size: 0.75rem;">Reverse Geocode</p>
+    <!-- 2. Reverse Geocoding Tool -->
+    <div style="border: 1px solid #ccc; padding: 1rem; border-radius: 8px; background: #fdfdfd;">
+      <h4>🗺️ Reverse Geocode</h4>
+      <div style="display: flex; gap: 1rem;">
+        <input type="text" id="latInput" placeholder="Latitude" style="flex: 1; padding: 0.5rem;">
+        <input type="text" id="lngInput" placeholder="Longitude" style="flex: 1; padding: 0.5rem;">
+      </div>
+      <button onclick="reverseGeocode()" style="margin-top: 0.5rem;">Find Address</button>
+      <p id="reverseOutput" class="tool-output"></p>
     </div>
 
-    <!-- Day Counter -->
-    <div style="text-align: center;">
-      <img src="https://via.placeholder.com/64?text=📆" alt="Day Counter" style="cursor: pointer;">
-      <p style="font-size: 0.75rem;">Day Counter</p>
-    </div>
+    <!-- 3. Day Counter -->
+    <div style="border: 1px solid #ccc; padding: 1rem; border-radius: 8px; background: #fdfdfd;">
+      <h4>📆
 
-    <!-- Countdown Timer -->
-    <div style="text-align: center;">
-      <img src="https://via.placeholder.com/64?text=⏳" alt="Countdown Timer" style="cursor: pointer;">
-      <p style="font-size: 0.75rem;">Countdown Timer</p>
-    </div>
-
-    <!-- Coming Soon -->
-    <div style="text-align: center;">
-      <img src="https://via.placeholder.com/64?text=🔧" alt="Coming Soon" style="cursor: default; opacity: 0.5;">
-      <p style="font-size: 0.75rem;">More Tools</p>
-    </div>
-
-  </div>
-</div>
 
 
   <hr>
