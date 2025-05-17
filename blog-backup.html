@@ -305,49 +305,79 @@
       }
     }
 
-    .interactive-icons-wrapper::after {
-  content: "\2192 Swipe";
-  position: absolute;
-  right: 1rem;
-  top: 0.5rem;
-  background: rgba(0,0,0,0.05);
-  padding: 0.25rem 0.5rem;
-  font-size: 0.7rem;
-  color: #333;
-  border-radius: 5px;
-}
-.interactive-icons-wrapper {
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
-  position: relative;
-}
-.interactive-icons {
-  display: flex;
-  align-items: flex-start;
-  gap: 2rem;
-  margin-top: 1rem;
-  width: max-content;
-}
-@media (max-width: 768px) {
-  .interactive-icons {
-    flex-wrap: nowrap;
-    gap: 1.2rem;
-  }
+   .interactive-icons-wrapper::after {
+      content: "\2192 Swipe";
+      position: absolute;
+      right: 1rem;
+      top: 0.5rem;
+      background: rgba(213, 195, 195, 0.05);
+      padding: 0.25rem 0.5rem;
+      font-size: 0.7rem;
+      color: #333;
+      border-radius: 5px;
+    }
 
-  .interactive-icons div {
-    width: 70px;
-  }
+    .interactive-icons-wrapper {
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      position: relative;
+      width: 100%;
+    }
 
-  .interactive-icons img {
-    width: 60px;
-    height: 60px;
-  }
+    .interactive-icons {
+      display: flex;
+      align-items: flex-start;
+      gap: 2rem;
+      margin-top: 1rem;
+      width: max-content;
+      flex-wrap: nowrap;
+    }
 
-  .interactive-icons p {
-    font-size: 0.7rem;
-  }
-}
+    .interactive-icons div {
+      text-align: center;
+      width: 100px;
+      flex: 0 0 auto;
+    }
 
+    .interactive-icons img {
+      width: 80px;
+      height: 80px;
+      transition: transform 0.2s ease;
+      cursor: pointer;
+    }
+
+    .interactive-icons img:hover {
+      transform: scale(1.1);
+    }
+
+    .interactive-icons p {
+      margin-top: 0.5rem;
+      color: #333;
+      font-size: 0.75rem;
+    }
+
+    @media (max-width: 768px) {
+      .interactive-icons-wrapper::after {
+        display: block;
+      }
+
+      .interactive-icons {
+        gap: 1.2rem;
+      }
+
+      .interactive-icons div {
+        width: 70px;
+      }
+
+      .interactive-icons img {
+        width: 60px;
+        height: 60px;
+      }
+
+      .interactive-icons p {
+        font-size: 0.7rem;
+      }
+    }
   </style>
   <script>
     let currentIndex = 0;
