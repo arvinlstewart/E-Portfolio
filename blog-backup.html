@@ -104,6 +104,26 @@
       margin-top: 0;
     }
 
+    .carousel {
+      display: flex;
+      overflow-x: auto;
+      gap: 1rem;
+      scroll-behavior: smooth;
+    }
+
+    .carousel .article {
+      min-width: 200px;
+      background: #fafafa;
+      padding: 0.5rem;
+      border: 1px solid #ddd;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+    }
+
+    .article-meta {
+      font-size: 0.8rem;
+      color: #777;
+    }
+
     @media (max-width: 768px) {
       .main-container {
         max-width: 95%;
@@ -163,15 +183,45 @@
 
       <div class="right-column">
         <!-- Sidebar widgets -->
-        <div class="widget"><h4>Trending Article</h4><p>How Ad Ops Teams Are Reshaping Digital Buying</p></div>
+        <div class="widget"><h4>Featured Article</h4>
+          <div class="article">
+            <strong>Why Traffickers Are the Backbone of Media</strong>
+            <div class="article-meta">6 min read · May 2025</div>
+            <p>A behind-the-scenes look at trafficking excellence and campaign reliability.</p>
+          </div>
+        </div>
+
+        <div class="widget"><h4>Article Carousel</h4>
+          <div class="carousel">
+            <div class="article">
+              <strong>Optimizing QA in 2025</strong>
+              <div class="article-meta">4 min read</div>
+            </div>
+            <div class="article">
+              <strong>Excel Hacks for Ad Ops</strong>
+              <div class="article-meta">3 min read</div>
+            </div>
+            <div class="article">
+              <strong>Campaign Setup Strategy</strong>
+              <div class="article-meta">5 min read</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="widget"><h4>Editor's Pick</h4>
+          <div class="article">
+            <strong>The Power of Modular Dashboards</strong>
+            <div class="article-meta">7 min read · April 2025</div>
+            <p>Learn how modularity helps media teams iterate and scale faster.</p>
+          </div>
+        </div>
+
         <div class="widget"><h4>Newsletter Signup</h4><input type="email" placeholder="Your email"><button>Subscribe</button></div>
         <div class="widget"><h4>Quote of the Week</h4><blockquote>"Strategy without tactics is the slowest route to victory."</blockquote></div>
         <div class="widget"><h4>Mini Poll</h4><p>Do you use automated QA tools?</p><button>Yes</button> <button>No</button></div>
         <div class="widget"><h4>Book Recommendation</h4><p>"Measure What Matters" by John Doerr</p></div>
         <div class="widget"><h4>Upcoming Webinar</h4><p>Next Thursday: Optimizing Programmatic in 2025</p></div>
         <div class="widget"><h4>Tool of the Week</h4><p>Check out our free Campaign Naming Tool.</p></div>
-        <div class="widget"><h4>Recent Comments</h4><ul><li>Jane on Campaign QA</li><li>Mike on First-Party Data</li></ul></div>
-        <div class="widget"><h4>Quick Tip</h4><p>Use `SUMIFS` instead of multiple `SUMIF`s for multi-criteria analysis.</p></div>
         <div class="widget"><h4>Follow Me</h4><p><a href="#">LinkedIn</a> | <a href="#">Twitter</a></p></div>
       </div>
     </div>
