@@ -146,11 +146,18 @@
       color: #777;
     }
 <!--INTERACTIVE SECTION-->
- .interactive-icons {
+  .interactive-icons {
       display: flex;
       gap: 1rem;
-      flex-wrap: wrap;
+      flex-wrap: nowrap;
+      justify-content: space-between;
+      overflow-x: auto;
       margin-top: 1rem;
+    }
+
+    .interactive-icons div {
+      flex: 0 0 auto;
+      text-align: center;
     }
 
     .interactive-icons img {
@@ -168,7 +175,6 @@
       margin-top: 0.5rem;
       color: #333;
       font-size: 0.75rem;
-      text-align: center;
     }
 
     html {
