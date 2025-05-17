@@ -159,6 +159,10 @@
   color: #333;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 
     @media (max-width: 768px) {
       .main-container {
@@ -247,33 +251,38 @@
     
     <!-- Find Coordinates -->
     <div style="text-align: center;" id="geocoderTool">
-      <img src="images/coordinaatesiconpng.png" alt="Get Coordinates" style="cursor: pointer;">
+      <img src="images/coordinaatesiconpng.png" alt="Get Coordinates" style="cursor: pointer;" onclick="showTool('dayCounter')">
       <p style="font-size: 0.75rem;">Find Coordinates</p>
     </div>
+<div id="toolDisplayArea" style="margin-top: 2rem;"></div>
 
     <!-- Reverse Geocode -->
     <div style="text-align: center;" id="reverseGeocodeTool">
-      <img src="https://via.placeholder.com/64?text=🗺️" alt="Reverse Geocode" style="cursor: pointer;">
+      <img src="https://via.placeholder.com/64?text=🗺️" alt="Reverse Geocode" style="cursor: pointer;" onclick="showTool('dayCounter')">
       <p style="font-size: 0.75rem;">Reverse Geocode</p>
     </div>
+<div id="toolDisplayArea" style="margin-top: 2rem;"></div>
 
     <!-- Day Counter -->
     <div style="text-align: center;" id="dayCounterTool">
-      <img src="https://via.placeholder.com/64?text=📆" alt="Day Counter" style="cursor: pointer;">
+      <img src="https://via.placeholder.com/64?text=📆" alt="Day Counter" style="cursor: pointer;" onclick="showTool('dayCounter')">
       <p style="font-size: 0.75rem;">Day Counter</p>
     </div>
+<div id="toolDisplayArea" style="margin-top: 2rem;"></div>
 
     <!-- Countdown Timer -->
     <div style="text-align: center;">
-      <img src="https://via.placeholder.com/64?text=⏳" alt="Countdown Timer" style="cursor: pointer;">
+      <img src="https://via.placeholder.com/64?text=⏳" alt="Countdown Timer" style="cursor: pointer;" onclick="showTool('dayCounter')">
       <p style="font-size: 0.75rem;">Countdown Timer</p>
     </div>
+<div id="toolDisplayArea" style="margin-top: 2rem;"></div>
 
     <!-- Coming Soon -->
     <div style="text-align: center;">
-      <img src="https://via.placeholder.com/64?text=🔧" alt="Coming Soon" style="cursor: default; opacity: 0.5;">
+      <img src="https://via.placeholder.com/64?text=🔧" alt="Coming Soon" style="cursor: default; opacity: 0.5;" onclick="showTool('dayCounter')">
       <p style="font-size: 0.75rem;">More Tools</p>
     </div>
+<div id="toolDisplayArea" style="margin-top: 2rem;"></div>
 
   </div>
 </div>
