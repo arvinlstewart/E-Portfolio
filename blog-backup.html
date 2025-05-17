@@ -146,6 +146,20 @@
       color: #777;
     }
 
+    .interactive-icons img {
+  width: 64px;
+  height: 64px;
+  transition: transform 0.2s ease;
+}
+.interactive-icons img:hover {
+  transform: scale(1.1);
+}
+.interactive-icons p {
+  margin-top: 0.5rem;
+  color: #333;
+}
+
+
     @media (max-width: 768px) {
       .main-container {
         max-width: 95%;
@@ -154,6 +168,8 @@
         grid-template-columns: 1fr;
       }
     }
+    
+    
   </style>
   <script>
     let currentIndex = 0;
