@@ -86,6 +86,9 @@
       gap: 1rem;
     }
 
+
+
+
     .left-column, .right-column {
       background-color: #ffffff;
       padding: 1rem;
@@ -244,6 +247,14 @@
       .right-column, .sidebar, .widgets, .ad-container {
         display: none !important;
       }
+
+@media (max-width: 768px) {
+      .grid-layout {
+      display: grid;
+      grid-template-columns: 100%;
+      gap: 1rem;
+      }
+
 
       .main-container {
         width: 100% !important;
