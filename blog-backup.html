@@ -156,14 +156,7 @@
       padding: 2rem;
     }
 
-    .interactive-icons {
-  display: flex;
-  align-items: flex-start;
-  gap: 2rem;
-  margin-top: 1rem;
-  width: max-content;
-  flex-wrap: nowrap; /* Ensure no wrapping */
-}
+    
 
     .interactive-icons {
       display: flex;
@@ -324,25 +317,19 @@
   font-size: 0.7rem;
   color: #333;
   border-radius: 5px;
-
+}
 .interactive-icons-wrapper {
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
   position: relative;
-  white-space: nowrap; /* Ensures icons stay on one line */
 }
-
 .interactive-icons {
   display: flex;
-  align-items: center;
-  gap: 1.5rem;
-  flex-wrap: nowrap; /* Prevent wrapping */
+  align-items: flex-start;
+  gap: 2rem;
+  margin-top: 1rem;
   width: max-content;
 }
-}
-
-
-
 @media (max-width: 1080px) {
   .interactive-icons {
     flex-wrap: nowrap;
