@@ -134,7 +134,17 @@
         grid-template-columns: 1fr;
       }
     }
-  </style>
+    .left-column .hover-article {
+    transition: all 0.3s ease;
+    padding: 0.5rem;
+    border-radius: 4px;
+  }
+  .left-column .hover-article:hover {
+    background-color: #f0f0f0;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    cursor: pointer;
+  }
+</style>
 </head>
 <body>
 
@@ -181,6 +191,24 @@
 
     <div class="content-grid">
       <section class="left-column">
+  <div style="display: grid; grid-template-columns: 1fr 2fr; gap: 1.5rem; margin-bottom: 2rem;">
+    <div style="display: flex; flex-direction: column; gap: 1.5rem;">
+      <div>
+        <h3>Mastering Campaign Setup</h3>
+        <p><strong>By Arvin Stewart</strong> · Est. read time: 4 min</p>
+        <p>Strategic setup can dramatically reduce the need for mid-flight optimizations. Here's how I plan every build...</p>
+      </div>
+      <div>
+        <h3>The Hidden Architect of Every Campaign</h3>
+        <p><strong>By Arvin Stewart</strong> · Est. read time: 5 min</p>
+        <p>Most teams overlook their trafficker’s impact. I’ll show how structure and sequencing affect performance outcomes.</p>
+      </div>
+    </div>
+    <div>
+      <img src="https://via.placeholder.com/600x400?text=Related+Image" alt="Related Articles" style="width: 100%; height: auto;">
+    </div>
+  </div>
+  <hr style="margin: 2rem 0;">
   <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 2rem;">
     <div style="display: flex; flex-direction: column; gap: 1.5rem;">
       <div>
