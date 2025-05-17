@@ -442,6 +442,19 @@
 
 <!--JS -->
 <script>
+    let currentTool = "";
+    const cachedValues = {};
+
+    function toggleTool(tool) {
+      if (currentTool === tool) {
+        document.getElementById('toolDisplayArea').innerHTML = "";
+        currentTool = "";
+        return;
+      }
+      currentTool = tool;
+      showTool(tool);
+    }
+
     function showTool(tool) {
       const container = document.getElementById('toolDisplayArea');
       let content = "";
@@ -449,31 +462,31 @@
       if (tool === 'geocoder') {
         content = `
           <h4>📍 Find Coordinates</h4>
-          <input type="text" id="addressInput" placeholder="Enter address" style="width: 100%; padding: 0.5rem;">
+          <input type="text" id="addressInput" value="${cachedValues.addressInput || ''}" placeholder="Enter address" style="width: 100%; padding: 0.5rem;">
           <button onclick="geocodeAddress()" style="margin-top: 0.5rem;">Get Coordinates</button>
-          <p id="geoOutput"></p>
+          <p id="geoOutput">${cachedValues.geoOutput || ''} <span class="copy-icon" onclick="copyText('geoOutput')">📋</span></p>
         `;
       } else if (tool === 'reverseGeocode') {
         content = `
           <h4>🌍 Reverse Geocode</h4>
-          <input type="text" id="latInput" placeholder="Latitude" style="width: 48%; margin-right: 4%; padding: 0.5rem;">
-          <input type="text" id="lngInput" placeholder="Longitude" style="width: 48%; padding: 0.5rem;">
+          <input type="text" id="latInput" value="${cachedValues.latInput || ''}" placeholder="Latitude" style="width: 48%; margin-right: 4%; padding: 0.5rem;">
+          <input type="text" id="lngInput" value="${cachedValues.lngInput || ''}" placeholder="Longitude" style="width: 48%; padding: 0.5rem;">
           <button onclick="reverseGeocode()" style="margin-top: 0.5rem;">Find Address</button>
-          <p id="reverseOutput"></p>
+          <p id="reverseOutput">${cachedValues.reverseOutput || ''} <span class="copy-icon" onclick="copyText('reverseOutput')">📋</span></p>
         `;
       } else if (tool === 'dayCounter') {
         content = `
           <h4>📆 Day Counter</h4>
-          <input type="date" id="startDateInput" style="padding: 0.5rem; width: 100%;">
+          <input type="date" id="startDateInput" value="${cachedValues.startDateInput || ''}" style="padding: 0.5rem; width: 100%;">
           <button onclick="countDays()" style="margin-top: 0.5rem;">Calculate Days Since</button>
-          <p id="daysSinceOutput"></p>
+          <p id="daysSinceOutput">${cachedValues.daysSinceOutput || ''} <span class="copy-icon" onclick="copyText('daysSinceOutput')">📋</span></p>
         `;
       } else if (tool === 'countdown') {
         content = `
           <h4>⏳ Countdown Timer</h4>
-          <input type="date" id="futureDateInput" style="padding: 0.5rem; width: 100%;">
+          <input type="date" id="futureDateInput" value="${cachedValues.futureDateInput || ''}" style="padding: 0.5rem; width: 100%;">
           <button onclick="countDown()" style="margin-top: 0.5rem;">Days Until</button>
-          <p id="daysUntilOutput"></p>
+          <p id="daysUntilOutput">${cachedValues.daysUntilOutput || ''} <span class="copy-icon" onclick="copyText('daysUntilOutput')">📋</span></p>
         `;
       } else {
         content = `<p>More tools coming soon. Stay tuned!</p>`;
@@ -482,24 +495,34 @@
       container.innerHTML = `<div class="tool-container">${content}</div>`;
     }
 
+    function copyText(id) {
+      const el = document.getElementById(id);
+      navigator.clipboard.writeText(el.textContent.trim());
+    }
+
     function countDays() {
       const start = new Date(document.getElementById("startDateInput").value);
+      cachedValues.startDateInput = document.getElementById("startDateInput").value;
       const output = document.getElementById("daysSinceOutput");
       if (isNaN(start)) return output.textContent = "Please select a valid date.";
       const diff = Math.floor((new Date() - start) / (1000 * 60 * 60 * 24));
       output.textContent = `${diff} day(s) since ${start.toDateString()}`;
+      cachedValues.daysSinceOutput = output.textContent;
     }
 
     function countDown() {
       const future = new Date(document.getElementById("futureDateInput").value);
+      cachedValues.futureDateInput = document.getElementById("futureDateInput").value;
       const output = document.getElementById("daysUntilOutput");
       if (isNaN(future)) return output.textContent = "Please select a valid future date.";
       const diff = Math.ceil((future - new Date()) / (1000 * 60 * 60 * 24));
       output.textContent = diff < 0 ? "That date has passed." : `${diff} day(s) left until ${future.toDateString()}`;
+      cachedValues.daysUntilOutput = output.textContent;
     }
 
     function geocodeAddress() {
       const address = document.getElementById("addressInput").value;
+      cachedValues.addressInput = address;
       const output = document.getElementById("geoOutput");
       if (!address) return output.textContent = "Please enter an address.";
       fetch(`https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(address)}`)
@@ -507,6 +530,7 @@
         .then(data => {
           if (!data.length) return output.textContent = "No results found.";
           output.textContent = `Latitude: ${data[0].lat}, Longitude: ${data[0].lon}`;
+          cachedValues.geoOutput = output.textContent;
         })
         .catch(() => output.textContent = "Error fetching coordinates.");
     }
@@ -514,12 +538,15 @@
     function reverseGeocode() {
       const lat = document.getElementById("latInput").value;
       const lon = document.getElementById("lngInput").value;
+      cachedValues.latInput = lat;
+      cachedValues.lngInput = lon;
       const output = document.getElementById("reverseOutput");
       if (!lat || !lon) return output.textContent = "Enter both latitude and longitude.";
       fetch(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lon}`)
         .then(res => res.json())
         .then(data => {
           output.textContent = data.display_name || "Address not found.";
+          cachedValues.reverseOutput = output.textContent;
         })
         .catch(() => output.textContent = "Error fetching address.");
     }
