@@ -333,3 +333,54 @@ if (aboutContainer && toggleAbout) {
   });
 }
 
+<script>
+  // Geocode: Address to Coordinates
+  const geocodeAddress = () => {
+    const address = document.getElementById("addressInput").value;
+    const output = document.getElementById("geoOutput");
+    if (!address) return output.textContent = "Please enter an address.";
+    fetch(`https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(address)}`)
+      .then(res => res.json())
+      .then(data => {
+        if (!data.length) return output.textContent = "No results found.";
+        output.textContent = `Latitude: ${data[0].lat}, Longitude: ${data[0].lon}`;
+      })
+      .catch(() => output.textContent = "Error fetching coordinates.");
+  };
+
+  // Reverse Geocode: Coordinates to Address
+  const reverseGeocode = () => {
+    const lat = document.getElementById("latInput").value;
+    const lon = document.getElementById("lngInput").value;
+    const output = document.getElementById("reverseOutput");
+    if (!lat || !lon) return output.textContent = "Enter both latitude and longitude.";
+    fetch(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lon}`)
+      .then(res => res.json())
+      .then(data => {
+        output.textContent = data.display_name || "Address not found.";
+      })
+      .catch(() => output.textContent = "Error fetching address.");
+  };
+
+  // Day Counter
+  const countDays = () => {
+    const startDate = new Date(document.getElementById("startDateInput").value);
+    const today = new Date();
+    const output = document.getElementById("daysSinceOutput");
+    if (isNaN(startDate)) return output.textContent = "Please select a valid start date.";
+    const diff = Math.floor((today - startDate) / (1000 * 60 * 60 * 24));
+    output.textContent = `${diff} day(s) since ${startDate.toDateString()}`;
+  };
+
+  // Countdown Timer
+  const countDown = () => {
+    const futureDate = new Date(document.getElementById("futureDateInput").value);
+    const today = new Date();
+    const output = document.getElementById("daysUntilOutput");
+    if (isNaN(futureDate)) return output.textContent = "Please select a valid future date.";
+    const diff = Math.ceil((futureDate - today) / (1000 * 60 * 60 * 24));
+    output.textContent = diff < 0
+      ? "That date has passed."
+      : `${diff} day(s) left until ${futureDate.toDateString()}`;
+  };
+</script>
