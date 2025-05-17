@@ -422,5 +422,53 @@ html {
     </div>
   </div>
 
+<!--JS -->
+<script>
+  function showTool(tool) {
+    const container = document.getElementById('toolDisplayArea');
+    let content = "";
+
+    if (tool === 'dayCounter') {
+      content = `
+        <h4>📆 Day Counter</h4>
+        <input type="date" id="startDateInput" style="padding: 0.5rem; width: 100%;">
+        <button onclick="countDays()" style="margin-top: 0.5rem;">Calculate Days Since</button>
+        <p id="daysSinceOutput" class="tool-output"></p>
+      `;
+    }
+    else if (tool === 'geocoder') {
+      content = `
+        <h4>📍 Find Coordinates</h4>
+        <input type="text" id="addressInput" placeholder="Enter address" style="width: 100%; padding: 0.5rem;">
+        <button onclick="geocodeAddress()" style="margin-top: 0.5rem;">Get Coordinates</button>
+        <p id="geoOutput" class="tool-output"></p>
+      `;
+    }
+
+    container.innerHTML = `<div style="border: 1px solid #ccc; padding: 1rem; border-radius: 8px; background: #f9f9f9;">${content}</div>`;
+  }
+
+  function countDays() {
+    const start = new Date(document.getElementById("startDateInput").value);
+    const output = document.getElementById("daysSinceOutput");
+    if (isNaN(start)) return output.textContent = "Please select a valid date.";
+    const diff = Math.floor((new Date() - start) / (1000 * 60 * 60 * 24));
+    output.textContent = `${diff} day(s) since ${start.toDateString()}`;
+  }
+
+  function geocodeAddress() {
+    const address = document.getElementById("addressInput").value;
+    const output = document.getElementById("geoOutput");
+    fetch(`https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(address)}`)
+      .then(res => res.json())
+      .then(data => {
+        if (!data.length) return output.textContent = "No results found.";
+        output.textContent = `Latitude: ${data[0].lat}, Longitude: ${data[0].lon}`;
+      })
+      .catch(() => output.textContent = "Error fetching coordinates.");
+  }
+</script>
+
+
 </body>
 </html>
