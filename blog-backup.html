@@ -82,14 +82,21 @@
 
     .grid-layout {
       display: grid;
-      grid-template-columns: 75% 25%;
+      grid-template-columns: 2fr 1fr;
       gap: 2rem;
     }
 
-    .left-column, .right-column {
+    .left-column {
       background-color: #fefefe;
       padding: 1rem;
       box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    }
+
+    .right-column {
+      background-color: #fefefe;
+      padding: 1rem;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+      max-width: 33%;
     }
 
     .right-column .widget {
@@ -104,38 +111,39 @@
       margin-top: 0;
     }
 
-    .carousel-container {
+    .carousel-wrapper {
       position: relative;
       overflow: hidden;
-      width: 100%;
     }
 
     .carousel {
       display: flex;
-      transition: transform 0.3s ease-in-out;
+      transition: transform 0.3s ease;
+      width: max-content;
     }
 
     .carousel .article {
-      min-width: 80%;
-      max-width: 80%;
+      min-width: 200px;
       margin-right: 1rem;
       background: #fafafa;
       padding: 0.5rem;
       border: 1px solid #ddd;
       box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+      flex-shrink: 0;
     }
 
-    .carousel-controls {
+    .carousel-nav {
       display: flex;
       justify-content: space-between;
       margin-top: 0.5rem;
     }
 
-    .carousel-controls button {
-      background: #eee;
+    .carousel-nav button {
+      padding: 0.3rem 0.6rem;
       border: none;
-      padding: 0.25rem 0.75rem;
+      background-color: #eee;
       cursor: pointer;
+      font-weight: bold;
     }
 
     .article-meta {
@@ -152,21 +160,6 @@
       }
     }
   </style>
-  <script>
-    let currentIndex = 0;
-    function slideCarousel(direction) {
-      const carousel = document.querySelector('.carousel');
-      const articles = document.querySelectorAll('.carousel .article');
-      const itemWidth = articles[0].offsetWidth + 16;
-      const maxIndex = articles.length - 1;
-
-      currentIndex += direction;
-      if (currentIndex < 0) currentIndex = 0;
-      if (currentIndex > maxIndex) currentIndex = maxIndex;
-
-      carousel.style.transform = `translateX(-${currentIndex * itemWidth}px)`;
-    }
-  </script>
 </head>
 <body>
 
@@ -210,13 +203,11 @@
 
     <div class="grid-layout">
       <div class="left-column">
-        <!-- Main blog articles go here -->
         <h2>Main Blog Content</h2>
         <p>Article previews, featured posts, or category sections.</p>
       </div>
 
       <div class="right-column">
-        <!-- Sidebar widgets -->
         <div class="widget"><h4>Featured Article</h4>
           <div class="article">
             <strong>Why Traffickers Are the Backbone of Media</strong>
@@ -226,8 +217,8 @@
         </div>
 
         <div class="widget"><h4>Article Carousel</h4>
-          <div class="carousel-container">
-            <div class="carousel">
+          <div class="carousel-wrapper">
+            <div class="carousel" id="carouselTrack">
               <div class="article">
                 <strong>Optimizing QA in 2025</strong>
                 <div class="article-meta">4 min read</div>
@@ -241,9 +232,9 @@
                 <div class="article-meta">5 min read</div>
               </div>
             </div>
-            <div class="carousel-controls">
-              <button onclick="slideCarousel(-1)">&#8592;</button>
-              <button onclick="slideCarousel(1)">&#8594;</button>
+            <div class="carousel-nav">
+              <button onclick="slideCarousel(-1)">&lt;</button>
+              <button onclick="slideCarousel(1)">&gt;</button>
             </div>
           </div>
         </div>
@@ -266,6 +257,19 @@
       </div>
     </div>
   </div>
+
+  <script>
+    let offset = 0;
+    const track = document.getElementById('carouselTrack');
+
+    function slideCarousel(direction) {
+      const articleWidth = track.querySelector('.article').offsetWidth + 16; // includes margin
+      offset += direction * articleWidth;
+      if (offset < 0) offset = 0;
+      if (offset > track.scrollWidth - track.clientWidth) offset = track.scrollWidth - track.clientWidth;
+      track.style.transform = `translateX(-${offset}px)`;
+    }
+  </script>
 
 </body>
 </html>
