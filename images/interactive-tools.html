@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Interactive Blog Tools | Arvin Stewart</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Montserrat', sans-serif;
+      background-color: #ffffff;
+    }
+
+    .interactive-icons {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 1rem;
+    }
+
+    .interactive-icons img {
+      width: 100px;
+      height: 100px;
+      transition: transform 0.2s ease;
+      cursor: pointer;
+    }
+
+    .interactive-icons img:hover {
+      transform: scale(1.1);
+    }
+
+    .interactive-icons p {
+      margin-top: 0.5rem;
+      color: #333;
+      font-size: 0.75rem;
+      text-align: center;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    .tool-container {
+      margin-top: 2rem;
+      border: 1px solid #ccc;
+      padding: 1rem;
+      border-radius: 8px;
+      background: #f9f9f9;
+    }
+  </style>
+</head>
+<body>
+  <div class="main-container">
+    <h3>Interactive Content</h3>
+    <p class="article-meta">Tools & Utilities</p>
+    <div class="interactive-icons">
+      <div>
+        <img src="images/coordinaatesiconpng.png" alt="Find Coordinates" onclick="showTool('geocoder')">
+        <p>Find Coordinates</p>
+      </div>
+      <div>
+        <img src="https://via.placeholder.com/64?text=🌍" alt="Reverse Geocode" onclick="showTool('reverseGeocode')">
+        <p>Reverse Geocode</p>
+      </div>
+      <div>
+        <img src="https://via.placeholder.com/64?text=📆" alt="Day Counter" onclick="showTool('dayCounter')">
+        <p>Day Counter</p>
+      </div>
+      <div>
+        <img src="https://via.placeholder.com/64?text=⏳" alt="Countdown Timer" onclick="showTool('countdown')">
+        <p>Countdown Timer</p>
+      </div>
+      <div>
+        <img src="https://via.placeholder.com/64?text=🔧" alt="More Tools" onclick="showTool('comingSoon')">
+        <p>More Tools</p>
+      </div>
+    </div>
+
+    <div id="toolDisplayArea"></div>
+  </div>
+
+  <script>
+    function showTool(tool) {
+      const container = document.getElementById('toolDisplayArea');
+      let content = "";
+
+      if (tool === 'geocoder') {
+        content = `
+          <h4>📍 Find Coordinates</h4>
+          <input type="text" id="addressInput" placeholder="Enter address" style="width: 100%; padding: 0.5rem;">
+          <button onclick="geocodeAddress()" style="margin-top: 0.5rem;">Get Coordinates</button>
+          <p id="geoOutput"></p>
+        `;
+      } else if (tool === 'reverseGeocode') {
+        content = `
+          <h4>🌍 Reverse Geocode</h4>
+          <input type="text" id="latInput" placeholder="Latitude" style="width: 48%; margin-right: 4%; padding: 0.5rem;">
+          <input type="text" id="lngInput" placeholder="Longitude" style="width: 48%; padding: 0.5rem;">
+          <button onclick="reverseGeocode()" style="margin-top: 0.5rem;">Find Address</button>
+          <p id="reverseOutput"></p>
+        `;
+      } else if (tool === 'dayCounter') {
+        content = `
+          <h4>📆 Day Counter</h4>
+          <input type="date" id="startDateInput" style="padding: 0.5rem; width: 100%;">
+          <button onclick="countDays()" style="margin-top: 0.5rem;">Calculate Days Since</button>
+          <p id="daysSinceOutput"></p>
+        `;
+      } else if (tool === 'countdown') {
+        content = `
+          <h4>⏳ Countdown Timer</h4>
+          <input type="date" id="futureDateInput" style="padding: 0.5rem; width: 100%;">
+          <button onclick="countDown()" style="margin-top: 0.5rem;">Days Until</button>
+          <p id="daysUntilOutput"></p>
+        `;
+      } else {
+        content = `<p>More tools coming soon. Stay tuned!</p>`;
+      }
+
+      container.innerHTML = `<div class="tool-container">${content}</div>`;
+    }
+
+    function countDays() {
+      const start = new Date(document.getElementById("startDateInput").value);
+      const output = document.getElementById("daysSinceOutput");
+      if (isNaN(start)) return output.textContent = "Please select a valid date.";
+      const diff = Math.floor((new Date() - start) / (1000 * 60 * 60 * 24));
+      output.textContent = `${diff} day(s) since ${start.toDateString()}`;
+    }
+
+    function countDown() {
+      const future = new Date(document.getElementById("futureDateInput").value);
+      const output = document.getElementById("daysUntilOutput");
+      if (isNaN(future)) return output.textContent = "Please select a valid future date.";
+      const diff = Math.ceil((future - new Date()) / (1000 * 60 * 60 * 24));
+      output.textContent = diff < 0 ? "That date has passed." : `${diff} day(s) left until ${future.toDateString()}`;
+    }
+
+    function geocodeAddress() {
+      const address = document.getElementById("addressInput").value;
+      const output = document.getElementById("geoOutput");
+      if (!address) return output.textContent = "Please enter an address.";
+      fetch(`https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(address)}`)
+        .then(res => res.json())
+        .then(data => {
+          if (!data.length) return output.textContent = "No results found.";
+          output.textContent = `Latitude: ${data[0].lat}, Longitude: ${data[0].lon}`;
+        })
+        .catch(() => output.textContent = "Error fetching coordinates.");
+    }
+
+    function reverseGeocode() {
+      const lat = document.getElementById("latInput").value;
+      const lon = document.getElementById("lngInput").value;
+      const output = document.getElementById("reverseOutput");
+      if (!lat || !lon) return output.textContent = "Enter both latitude and longitude.";
+      fetch(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lon}`)
+        .then(res => res.json())
+        .then(data => {
+          output.textContent = data.display_name || "Address not found.";
+        })
+        .catch(() => output.textContent = "Error fetching address.");
+    }
+  </script>
+</body>
+</html>
