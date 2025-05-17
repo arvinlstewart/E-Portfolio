@@ -92,6 +92,18 @@
       box-shadow: 0 2px 4px rgba(0,0,0,0.05);
     }
 
+    .right-column .widget {
+      margin-bottom: 2rem;
+      padding: 1rem;
+      background: #fff;
+      border: 1px solid #eee;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    }
+
+    .right-column .widget h4 {
+      margin-top: 0;
+    }
+
     @media (max-width: 768px) {
       .main-container {
         max-width: 95%;
@@ -150,9 +162,17 @@
       </div>
 
       <div class="right-column">
-        <!-- Sidebar widgets go here -->
-        <h3>Right Sidebar</h3>
-        <p>Trending posts, ads, or newsletter signup.</p>
+        <!-- Sidebar widgets -->
+        <div class="widget"><h4>Trending Article</h4><p>How Ad Ops Teams Are Reshaping Digital Buying</p></div>
+        <div class="widget"><h4>Newsletter Signup</h4><input type="email" placeholder="Your email"><button>Subscribe</button></div>
+        <div class="widget"><h4>Quote of the Week</h4><blockquote>"Strategy without tactics is the slowest route to victory."</blockquote></div>
+        <div class="widget"><h4>Mini Poll</h4><p>Do you use automated QA tools?</p><button>Yes</button> <button>No</button></div>
+        <div class="widget"><h4>Book Recommendation</h4><p>"Measure What Matters" by John Doerr</p></div>
+        <div class="widget"><h4>Upcoming Webinar</h4><p>Next Thursday: Optimizing Programmatic in 2025</p></div>
+        <div class="widget"><h4>Tool of the Week</h4><p>Check out our free Campaign Naming Tool.</p></div>
+        <div class="widget"><h4>Recent Comments</h4><ul><li>Jane on Campaign QA</li><li>Mike on First-Party Data</li></ul></div>
+        <div class="widget"><h4>Quick Tip</h4><p>Use `SUMIFS` instead of multiple `SUMIF`s for multi-criteria analysis.</p></div>
+        <div class="widget"><h4>Follow Me</h4><p><a href="#">LinkedIn</a> | <a href="#">Twitter</a></p></div>
       </div>
     </div>
   </div>
