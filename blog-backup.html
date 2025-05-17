@@ -475,7 +475,7 @@
   </div>
 
 <!--JS -->
-<script>
+  <script>
     let currentTool = "";
     const cachedValues = {};
 
@@ -483,10 +483,10 @@
       if (currentTool === tool) {
         document.getElementById('toolDisplayArea').innerHTML = "";
         currentTool = "";
-        return;
+      } else {
+        currentTool = tool;
+        showTool(tool);
       }
-      showTool(tool);
-      currentTool = tool;
     }
 
     function showTool(tool) {
@@ -532,6 +532,9 @@
     function copyText(id) {
       const el = document.getElementById(id);
       navigator.clipboard.writeText(el.textContent.trim());
+      const toast = document.getElementById("toast");
+      toast.className = "toast show";
+      setTimeout(() => { toast.className = toast.className.replace("show", ""); }, 2500);
     }
 
     function countDays() {
@@ -585,7 +588,6 @@
         .catch(() => output.textContent = "Error fetching address.");
     }
   </script>
-
 
 </body>
 </html>
