@@ -358,25 +358,23 @@
 
 .two-column-force {
   display: flex;
-  flex-wrap: nowrap;
-  overflow-x: auto;         /* Enables horizontal scroll on small screens */
-  gap: 1rem;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: nowrap; /* Ensures they never stack */
+  gap: 1rem; /* Adds spacing */
+  width: 100%;
+}
+.column {
+  flex: 1; /* Ensures equal width */
+  min-width: 0; /* Prevents overflow */
+}
+@media (max-width: 500px) {
+  .two-column-force {
+    flex-direction: column;
+    align-items: center;
+  }
 }
 
-.two-column-force .column {
-  min-width: 250px;         /* Ensures side-by-side layout even on narrow screens */
-  flex: 0 0 50%;            /* Prevents shrinking */
-  box-sizing: border-box;
-}
-
-.two-column-force .left {
-  border-right: 1px solid #ccc;
-  padding-right: 1rem;
-}
-
-.two-column-force .right {
-  padding-left: 1rem;
-}
 
 
   </style>
