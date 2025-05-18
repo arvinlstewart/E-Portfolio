@@ -353,32 +353,26 @@
   
     }
 
-.section.two-column-fixed {
+.two-column-force {
   display: flex;
-  gap: 1rem;
-  align-items: flex-start;
   flex-wrap: nowrap;
+  overflow-x: auto;         /* Enables horizontal scroll on small screens */
+  gap: 1rem;
 }
 
-.section.two-column-fixed .column {
-  flex: 1 1 50%;
-  min-width: 0; /* Prevents overflow */
+.two-column-force .column {
+  min-width: 250px;         /* Ensures side-by-side layout even on narrow screens */
+  flex: 0 0 50%;            /* Prevents shrinking */
+  box-sizing: border-box;
 }
 
-.section.two-column-fixed .left {
+.two-column-force .left {
   border-right: 1px solid #ccc;
   padding-right: 1rem;
 }
 
-.section.two-column-fixed .right {
+.two-column-force .right {
   padding-left: 1rem;
-}
-
-/* Optional: Allow horizontal scrolling on very narrow screens */
-@media (max-width: 500px) {
-  .section.two-column-fixed {
-    overflow-x: auto;
-  }
 }
 
 
@@ -488,16 +482,17 @@
   <div id="toast" class="toast">Copied to clipboard</div>
 
   <hr>
-  <div  class="section two-column-fixed" >
-    <div  class="column left">
-      <h4>Framework Design</h4>
-      <p class="article-meta">3 min read</p>
-    </div>
-    <div  class="column right">
-      <h4>Workflow Cleanup</h4>
-      <p class="article-meta">4 min read</p>
-    </div>
+  <div class="section two-column-force">
+  <div class="column left">
+    <h4>Framework Design</h4>
+    <p class="article-meta">3 min read</p>
   </div>
+  <div class="column right">
+    <h4>Workflow Cleanup</h4>
+    <p class="article-meta">4 min read</p>
+  </div>
+</div>
+
   <hr>
   <div class="section">
     <img src="https://via.placeholder.com/300x200" alt="Article 2">
