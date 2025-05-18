@@ -353,39 +353,40 @@
   
     }
 
-.two-column-split {
+.section.two-column {
   display: flex;
   gap: 1rem;
   align-items: flex-start;
-  flex-wrap: nowrap;
+  flex-wrap: wrap;
 }
 
-.two-column-split .left {
-  flex: 1;
+.section.two-column .column {
+  flex: 1 1 50%;
+}
+
+.section.two-column .left {
   border-right: 1px solid #ccc;
   padding-right: 1rem;
 }
 
-.two-column-split .right {
-  flex: 1;
+.section.two-column .right {
   padding-left: 1rem;
 }
 
-/* Responsive stacking ONLY on small screens */
-@media (max-width: 640px) {
-  .two-column-split {
+@media (max-width: 600px) {
+  .section.two-column {
     flex-direction: column;
   }
 
-  .two-column-split .left {
+  .section.two-column .left {
     border-right: none;
     padding-right: 0;
     border-bottom: 1px solid #ccc;
-    padding-bottom: 0.5rem;
-    margin-bottom: 0.5rem;
+    padding-bottom: 1rem;
+    margin-bottom: 1rem;
   }
 
-  .two-column-split .right {
+  .section.two-column .right {
     padding-left: 0;
   }
 }
@@ -498,11 +499,11 @@
 
   <hr>
   <div class="section two-column-split" >
-    <div  class="split-box left" style="flex: 1; border-right: 1px solid #ccc; padding-right: 1rem;">
+    <div  class="column left" style="flex: 1; border-right: 1px solid #ccc; padding-right: 1rem;">
       <h4>Framework Design</h4>
       <p class="article-meta">3 min read</p>
     </div>
-    <div  class="split-box left" style="flex: 1; padding-left: 1rem;">
+    <div  class="column right" style="flex: 1; padding-left: 1rem;">
       <h4>Workflow Cleanup</h4>
       <p class="article-meta">4 min read</p>
     </div>
