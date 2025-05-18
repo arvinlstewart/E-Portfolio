@@ -163,229 +163,222 @@
 
 
 
-    
+  
 
-    .interactive-icons {
-      display: flex;
-      justify-content: center;
-      align-items: flex-start;
-      flex-wrap: nowrap;
-      gap: 2rem;
-      margin-top: 1rem;
-    }
-
-    .interactive-icons div {
-      text-align: center;
-      width: 100px;
-    }
-
-    .interactive-icons img {
-      width: 80px;
-      height: 80px;
-      transition: transform 0.2s ease;
-      cursor: pointer;
-    }
-
-    .interactive-icons img:hover {
-      transform: scale(1.1);
-    }
-
-    .interactive-icons p {
-      margin-top: 0.5rem;
-      color: #333;
-      font-size: 0.75rem;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    .tool-container {
-      margin-top: 2rem;
-      border: 1px solid #ccc;
-      padding: 1rem;
-      border-radius: 8px;
-      background: #f9f9f9;
-    }
-
-    .copy-icon {
-      cursor: pointer;
-      margin-left: 10px;
-      font-size: 0.9rem;
-      color: #007BFF;
-      display: none;
-    }
-
-    .copy-icon.visible {
-      display: inline;
-    }
-
-    .toast {
-      visibility: hidden;
-      min-width: 200px;
-      margin-left: -100px;
-      background-color: #333;
-      color: #fff;
-      text-align: center;
-      border-radius: 4px;
-      padding: 10px;
-      position: fixed;
-      z-index: 1;
-      left: 50%;
-      bottom: 30px;
-      font-size: 14px;
-    }
-
-    .toast.show {
-      visibility: visible;
-      -webkit-animation: fadein 0.5s, fadeout 0.5s 2s;
-      animation: fadein 0.5s, fadeout 0.5s 2s;
-    }
-
-    @keyframes fadein {
-      from {bottom: 0; opacity: 0;}
-      to {bottom: 30px; opacity: 1;}
-    }
-
-    @keyframes fadeout {
-      from {bottom: 30px; opacity: 1;}
-      to {bottom: 0; opacity: 0;}
-    }
-
-    @media (max-width: 768px) {
-      .right-column, .sidebar, .widgets, .ad-container {
-        display: none !important;
-      }
-
-@media (max-width: 768px) {
-      .grid-layout {
-      display: grid;
-      grid-template-columns: 100%;
-      gap: 1rem;
-      }
-
-
-      .main-container {
-        width: 100% !important;
-        padding: 1rem;
-        box-sizing: border-box;
-      }
-
-      .tool-container {
-        padding: 1rem 0.5rem;
-        font-size: 0.95rem;
-      }
-
-      .interactive-icons {
-        flex-direction: row;
-        justify-content: center;
-        gap: .5rem;
-      }
-
-      .interactive-icons div {
-        width: 70px;
-      }
-
-      .interactive-icons img {
-        width: 60px;
-        height: 60px;
-      }
-
-      .interactive-icons p {
-        font-size: 0.7rem;
-      }
-
-      .left-column {
-        max-width: 100%;
-        box-sizing: border-box;
-      }
-
-      video {
-        max-width: 100%;
-        height: auto;
-        display: block;
-        margin: 0 auto;
-      }
-
-      .section {
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-      }
-    }
-
-    .interactive-icons-wrapper::after {
-  content: "\2192 Swipe";
-  position: absolute;
-  right: 1rem;
-  top: 0.5rem;
-  background: rgba(0,0,0,0.05);
-  padding: 0.25rem 0.5rem;
-  font-size: 0.7rem;
-  color: #333;
-  border-radius: 5px;
-}
-.interactive-icons-wrapper {
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
-  position: relative;
-}
-.interactive-icons {
-  display: flex;
-  align-items: flex-start;
-  gap: 1rem;
-  margin-top: 1rem;
-  flex-wrap: nowrap;
-  width: max-content;
-}
-@media (max-width: 768px) {
   .interactive-icons {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
     flex-wrap: nowrap;
-    gap: 1.2rem;
+    gap: 2rem;
+    margin-top: 1rem;
   }
 
   .interactive-icons div {
-    width: 70px;
+    text-align: center;
+    width: 100px;
   }
 
   .interactive-icons img {
-    width: 60px;
-    height: 60px;
+    width: 80px;
+    height: 80px;
+    transition: transform 0.2s ease;
+    cursor: pointer;
+  }
+
+  .interactive-icons img:hover {
+    transform: scale(1.1);
   }
 
   .interactive-icons p {
-    font-size: 0.7rem;
+    margin-top: 0.5rem;
+    color: #333;
+    font-size: 0.75rem;
   }
 
-  
+  html {
+    scroll-behavior: smooth;
+  }
+
+  .tool-container {
+    margin-top: 2rem;
+    border: 1px solid #ccc;
+    padding: 1rem;
+    border-radius: 8px;
+    background: #f9f9f9;
+  }
+
+  .copy-icon {
+    cursor: pointer;
+    margin-left: 10px;
+    font-size: 0.9rem;
+    color: #007BFF;
+    display: none;
+  }
+
+  .copy-icon.visible {
+    display: inline;
+  }
+
+  .toast {
+    visibility: hidden;
+    min-width: 200px;
+    margin-left: -100px;
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    border-radius: 4px;
+    padding: 10px;
+    position: fixed;
+    z-index: 1;
+    left: 50%;
+    bottom: 30px;
+    font-size: 14px;
+  }
+
+  .toast.show {
+    visibility: visible;
+    -webkit-animation: fadein 0.5s, fadeout 0.5s 2s;
+    animation: fadein 0.5s, fadeout 0.5s 2s;
+  }
+
+  @keyframes fadein {
+    from {bottom: 0; opacity: 0;}
+    to {bottom: 30px; opacity: 1;}
+  }
+
+  @keyframes fadeout {
+    from {bottom: 30px; opacity: 1;}
+    to {bottom: 0; opacity: 0;}
+  }
+
+  @media (max-width: 768px) {
+    .right-column, .sidebar, .widgets, .ad-container {
+      display: none !important;
     }
 
+@media (max-width: 768px) {
+    .grid-layout {
+    display: grid;
+    grid-template-columns: 100%;
+    gap: 1rem;
+    }
+
+
+    .main-container {
+      width: 100% !important;
+      padding: 1rem;
+      box-sizing: border-box;
+    }
+
+    .tool-container {
+      padding: 1rem 0.5rem;
+      font-size: 0.95rem;
+    }
+
+    .interactive-icons {
+      flex-direction: row;
+      justify-content: center;
+      gap: .5rem;
+    }
+
+    .interactive-icons div {
+      width: 70px;
+    }
+
+    .interactive-icons img {
+      width: 60px;
+      height: 60px;
+    }
+
+    .interactive-icons p {
+      font-size: 0.7rem;
+    }
+
+    .left-column {
+      max-width: 100%;
+      box-sizing: border-box;
+    }
+
+    video {
+      max-width: 100%;
+      height: auto;
+      display: block;
+      margin: 0 auto;
+    }
+
+    .section {
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+  }
+
+  .interactive-icons-wrapper::after {
+content: "\2192 Swipe";
+position: absolute;
+right: 1rem;
+top: 0.5rem;
+background: rgba(0,0,0,0.05);
+padding: 0.25rem 0.5rem;
+font-size: 0.7rem;
+color: #333;
+border-radius: 5px;
+}
+.interactive-icons-wrapper {
+overflow-x: auto;
+-webkit-overflow-scrolling: touch;
+position: relative;
+}
+
+@media (max-width: 768px) {
+.interactive-icons {
+  flex-wrap: nowrap;
+  gap: 1.2rem;
+}
+
+.interactive-icons div {
+  width: 70px;
+}
+
+.interactive-icons img {
+  width: 60px;
+  height: 60px;
+}
+
+.interactive-icons p {
+  font-size: 0.7rem;
+}
+
+
+  }
+
 .two-column-force {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  flex-wrap: nowrap; /* Forces them to stay side by side */
-  gap: 1rem;
-  overflow-x: auto; /* Enables scrolling */
-  -webkit-overflow-scrolling: touch;
-  white-space: nowrap; /* Prevents wrapping */
+display: flex;
+justify-content: space-between;
+align-items: flex-start;
+flex-wrap: nowrap; /* Forces them to stay side by side */
+gap: 1rem;
+overflow-x: auto; /* Enables scrolling */
+-webkit-overflow-scrolling: touch;
+white-space: nowrap; /* Prevents wrapping */
 }
 
 .column {
-  flex: 1;
-  min-width: 200px; /* Ensures they remain visible */
+flex: 1;
+min-width: 200px; /* Ensures they remain visible */
 }
 
 .two-column-force::after {
-  content: "\2192 Swipe";
-  position: absolute;
-  right: 1rem;
-  top: 0.5rem;
-  background: rgba(0,0,0,0.05);
-  padding: 0.25rem 0.5rem;
-  font-size: 0.7rem;
-  color: #333;
-  border-radius: 5px;
+content: "\2192 Swipe";
+position: absolute;
+right: 1rem;
+top: 0.5rem;
+background: rgba(0,0,0,0.05);
+padding: 0.25rem 0.5rem;
+font-size: 0.7rem;
+color: #333;
+border-radius: 5px;
 }
 
   </style>
